@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>CSSE 375 Argo UML Assignment</title>
+<!-- 2015-04-16 Thu 09:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CSSE 375 Argo UML Assignment</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Building ArgoUML</a></li>
+<li><a href="#sec-3">3. The Feature We are Adding</a></li>
+<li><a href="#sec-4">4. Part 1: Figuring Out How to Add Your Feature</a>
+<ul>
+<li><a href="#sec-4-1">4.1. HINT - only if you <b>REALLY</b> get stuck</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Part 2: Force-Based Layout</a>
+<ul>
+<li><a href="#sec-5-1">5.1. What is force-based layout?</a></li>
+<li><a href="#sec-5-2">5.2. What you need to do</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. How to submit your code</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+So the goal of this assignment is to get you used to techniques for dealing with large codebases.  So what we will be doing is taking a large codebase (the ArgoUML Java-based UML editor) and adding a small feature to it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Building ArgoUML</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Building any large codebase can be very tricky.  There are instructions on the ArgoUML website which I eventually managed to get to work, but it's more than I want to walk you through here.
+</p>
+
+<p>
+Instead, download the ArgoUML zipfile from Moodle and unzip it somewhere.
+</p>
+
+<p>
+This is a complete eclipse workspace, which is how ArgoUML is designed to be built.  If you point your eclipse at this workspace, you should be able to build and run ArgoUML in both regular and debug mode.
+</p>
+
+<p>
+Make sure this works early - I am willing to help you debug build problems but they can be hard to fix.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> The Feature We are Adding</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+So if you look in the Arrange Menu of ArgoUML you will see an item called "Layout".  This will take your UML class diagram and move the classes and other stuff around to approximate what ArgoUML feels is a visually pleasing layout.
+</p>
+
+<p>
+However, if you switch to a Use-Case diagram (that's the red icon with the picture of a little stick-man in it), you'll notice that the "Layout" feature is grayed out.  That's because in ArgoUML the Layout function is diagram specific and no one has implemented a layout algorithm for the use case diagram.
+</p>
+
+<p>
+Your goal will be to add this feature.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Part 1: Figuring Out How to Add Your Feature</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This part is worth 60% of your grade.
+</p>
+
+<p>
+The first step is to figure out how to insert a new layout function for the Use-Case diagram.
+</p>
+
+<p>
+This part is considered complete if:
+</p>
+
+<ol class="org-ol">
+<li>In a use-case diagram, the Layout function is not grayed out
+</li>
+<li>If you select the Layout function, it will move elements of a
+use-case diagram around.  Not necessarily in a pleasing way - you
+could move them all to the point 100 100 if you like.
+</li>
+</ol>
+
+<p>
+But figuring out how to actually insert new code into ArgoUML is
+difficult.  Don't try to understand the whole codebase - instead use
+search tools to try and hone in on potential areas to check.  I also
+might be giving a hint or two in class.  Plan to spend some time just
+digging through the code chasing leads.
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> HINT - only if you <b>REALLY</b> get stuck</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Try searching the workspace for the name of the enclosing menu "Arrange"
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Part 2: Force-Based Layout</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This part is worth 40% of your grade.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> What is force-based layout?</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+The algorithm we will use for use case diagrams will be very simple.  We won't consider anything specific to use-cases in particular.  Instead, we'll use a very simple heuristic.
+</p>
+
+<ol class="org-ol">
+<li>It's best if things aren't sitting too close to each other
+</li>
+<li>But if two things are connected with a line, it's best if they are
+not too far from each other because the long line will look ugly.
+</li>
+</ol>
+
+<p>
+This suggests a very simple physics-based algorithm.
+</p>
+
+<ol class="org-ol">
+<li>Nodes in the diagram will repel each other.  This will be particularly strong when the nodes are very close, and very weak when nodes are very far away from each other.  That way the diagram just won't really giant as nodes keep trying to get farther and father away.  Usually this repulsion will be superlinear (e.g. drops off greater than linearly).
+</li>
+
+<li>Nodes that are connected to each other by lines will be attracted to each other (i.e. as if they were connected by a spring).  This attraction is usually varies linearly with distance (twice as strong at twice as far away).  So nodes have a sort of "ideal distance" they'll approach where the force of their attraction is exactly counterbalanced by the usual repulsion.
+</li>
+
+<li>To compute the layout, we'll compute the forces that each node exerts on each other node.  Then we'll move each node a tiny bit in the direction of the force, then we'll recompute again.  We can loop a fixed number of times or just stop when the forces seem really weak.
+</li>
+</ol>
+
+<p>
+That's it.  You can also find more detailed descriptions on the internet:
+</p>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Force-directed_graph_drawing">http://en.wikipedia.org/wiki/Force-directed_graph_drawing</a>
+<a href="http://blog.ivank.net/force-based-graph-drawing-in-as3.html">http://blog.ivank.net/force-based-graph-drawing-in-as3.html</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> What you need to do</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Finding a really good layout system can take a lot of tweaking.  This is not an algorithms course so you don't have to go crazy.  Here's what I require:
+</p>
+
+<ol class="org-ol">
+<li>When your layout algorithm runs, things that are too close together move to a reasonable distance apart
+</li>
+<li>Things that are connected by lines move to a good "ideal length", even with complicated interconnections between sets of nodes and lines.
+</li>
+<li>Parts of the graph that are not connected (remember that not everything is connected in a use case diagram) don't fly apart (they can move away&#x2026;just keep it reasonable)
+</li>
+</ol>
+
+<p>
+If your code does this you'll get full credit.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> How to submit your code</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+ArgoUML is 200MB uncompressed - so I don't want you committing it to SVN and overloading our poor server.
+</p>
+
+<ol class="org-ol">
+<li>You will submit all the files you modified and added (and only those) via Moodle.
+</li>
+<li>You will demo your working code in class
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-04-16 Thu 09:34</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

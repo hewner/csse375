@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>CSSE 375 Gmail Postfix Example</title>
+<!-- 2015-05-01 Fri 14:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CSSE 375 Gmail Postfix Example</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Hacking it to work</a></li>
+<li><a href="#sec-3">3. Running a basic ubuntu container</a></li>
+<li><a href="#sec-4">4. The Dockerfile</a></li>
+<li><a href="#sec-5">5. Doing the build</a></li>
+<li><a href="#sec-6">6. Testing</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is a step by step explanation of how I configured a docker ubuntu
+container to send mail from the command line using Gmail as an SMTP
+server.  The goal is that I can type something approximately like
+this:
+</p>
+
+<pre class="example">
+echo "An Example Message Body" | mail -s "An Example Subject" person_to_send_email_to@rose-hulman.edu
+</pre>
+
+<p>
+&#x2026;and a message will be sent via gmail to that address.
+</p>
+
+<p>
+Usually the reason you want to do this is to allow things like scripts
+to email you if they have errors.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Hacking it to work</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+So the first step (at least for me) of any server configuration is
+playing around with frequent references to google and stack overflow.
+To start with, I didn't use docker at all - I just played around with
+a fresh ubuntu virtual machine.
+</p>
+
+<p>
+The key thing to realize here is that before I found this set of
+steps, I tried many failed configuration attempts.  I tried using
+sendmail instead of postfix, tried using rose-hulman's smtp servers
+verses gmail.  Eventually I stumble upon this handy tutorial here:
+</p>
+
+<p>
+<a href="https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/">https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/</a>
+</p>
+
+<p>
+That (contrary to everything else I had tried previously) works.
+Woohoo!  This gives me two configuration files that look like this:
+</p>
+
+<p>
+[<a href="main.cf">main.cf</a>]
+[<a href="sasl_passwd">sasl_passwd</a>]
+</p>
+
+<p>
+But of course, the process of trying all these mysterious things has
+left my virtual machine with a lot of extra other stuff.  Packages I
+tried to use but never worked, things like emacs and firefox.  Now I
+want to use docker to create an absolutely minimal install that I can
+use as a basis for building future containers using my gmail postfix
+configuration.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Running a basic ubuntu container</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I won't reproduce instructions for installing docker itself here.  I
+followed the instructions on this page:
+</p>
+
+<p>
+<a href="http://docs.docker.com/installation/ubuntulinux/">http://docs.docker.com/installation/ubuntulinux/</a>
+</p>
+
+<p>
+Then I tested the installation but running
+</p>
+
+<pre class="example">
+sudo docker run -it ubuntu bash
+</pre>
+
+<p>
+Be sure you test your network config by trying to ping a server
+</p>
+
+<pre class="example">
+user@ubuntu:~$ sudo docker run -it ubuntu bash
+root@ubuntu:/# ping www.google.com
+PING www.google.com (216.58.216.100) 56(84) bytes of data.
+64 bytes from ord30s22-in-f4.1e100.net (216.58.216.100): icmp_seq=1 ttl=128 time=7.46 ms
+64 bytes from ord30s22-in-f4.1e100.net (216.58.216.100): icmp_seq=2 ttl=128 time=7.47 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 7.461/7.468/7.476/0.086 ms
+root@ubuntu:/# exit
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> The Dockerfile</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Now in theory, we could proceed like the docker tutorial and start
+manually running command on the ubuntu docker container one stage at a
+time.  But this is a bad idea.  Why?
+</p>
+
+<ol class="org-ol">
+<li>It is annoying
+</li>
+<li>If something changes, we have to start the process from scratch
+</li>
+</ol>
+
+<p>
+Instead, we're going to create a Dockerfile which will make a
+reproducible process for creating our container.  It's easier to show
+than explain.  First, go and look at the non-docker instructions we're
+following online:
+</p>
+
+<p>
+<a href="https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/">https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/</a>
+</p>
+
+<p>
+Ok, now take a look at the [<a href="Dockerfile">Dockerfile</a>].  Similar, right?
+</p>
+
+<p>
+If you want details, you can see lots of details about the syntax here:
+<a href="http://docs.docker.com/reference/builder/">http://docs.docker.com/reference/builder/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Doing the build</h2>
+<div class="outline-text-2" id="text-5">
+<pre class="example">
+user@ubuntu:~/postfixDocker$ sudo docker build -t nameforcontainer .
+Sending build context to Docker daemon 10.75 kB
+Sending build context to Docker daemon 
+Step 0 : FROM ubuntu
+ ---&gt; b7cf8f0d9e82
+Step 1 : RUN apt-get update
+ ---&gt; Using cache
+ ---&gt; 7b7cdbac78a3
+Step 2 : RUN apt-get install -y postfix mailutils libsasl2-2 ca-certificates libsasl2-modules wget
+ ---&gt; Running in 67c67d1c354e
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+
+BLAH BLAH BLAH
+
+Removing intermediate container 0c1a20e5830f
+Successfully built 0b4290a75364
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Testing</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Run your new container in interactive mode like this:
+</p>
+
+<pre class="example">
+sudo docker run -it nameforcontainer bash
+</pre>
+
+<p>
+Now one thing to know about docker containers is that they don't
+persist running processes between runs.  So you can't have background
+processes that start automatically.  Instead you must restart them
+yourself in scripts (or by hand as in this example):
+</p>
+
+<pre class="example">
+user@ubuntu:~/postfixDocker$ sudo docker run -it nameforcontainer bash
+root@0f263cc3fa49:/# service postfix start
+ * Starting Postfix Mail Transport Agent postfix                         [ OK ] 
+root@0f263cc3fa49:/# echo "Message body" | mail -s "Message Subject" your_email@rose-hulman.edu
+</pre>
+
+<p>
+You should see a message in your inbox!
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-05-01 Fri 14:34</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

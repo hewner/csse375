@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for CleanSheets -->
+<jnlp
+	spec="1.5+"
+	codebase="http://csheets.sourceforge.net"
+	href="jws/CleanSheets.jnlp">
+	<information>
+		<title>CleanSheets</title>
+		<vendor>Einar Pehrson</vendor>
+		<homepage href="http://cs.pehrson.nu"/>
+		<offline-allowed/>
+		<description kind="tooltip">CleanSheets 1.4b</description>
+		<description kind="one-line">CleanSheets - an extensible spreadsheet application built on the ANTLR compiler generator and the JFC/Swing JTable component.</description>
+		<description kind="short">CleanSheets is a spreadsheet application for the Java platform that builds on the ANTLR compiler generator and the JFC/Swing JTable component. The main feature is an extension mechanism, by which plugins can be loaded at run-time.</description>
+		<icon href="images/csheets.gif"/>
+		<!-- <icon kind="splash" href="splash.gif"/> -->
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
+		<jar href="lib/csheets.jar" main="true"/>
+		<extension href="jws/ANTLR.jnlp" name="ANother Tool for Language Recognition"/>
+	</resources>
+	<application-desc main-class="csheets.CleanSheets"/>
+</jnlp> 

@@ -1,0 +1,61 @@
+#+TITLE: How To Study for the Smells Exam
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+#+DRAWERS: INSTRUCTOR
+
+* The Basics
+
+The smells exam is focused on the smells discussed in Chapter 3 of
+Refactoring.  The goal of the exam is to ensure you memorize the
+smells, their meanings, and some of their more-obvious solution.
+
+The exam is tricky if you don't study for it, but should be pretty
+simple if you do.
+
+* Format
+
+The exam will be 15 multiple choice questions, on Moodle.
+
+The exam will be worth as much as a Small Assignment.
+
+* Smells to Know
+
+1. Refused Bequest
+2. Message Chain
+3. Data Class
+4. Primitive Obsession
+5. Combinatorial Explosion
+
+This one is not in Fowlers book, but we've talked about it in relation
+to your CalendarParse assignment.  Basically, it's anytime you need to
+have a x b things (classes, methods, etc.) where a and b are two
+things you tend to add frequently.  In the CalendarParse assignment,
+we have Formats x Commands codeblocks in the original code - so every
+time we add a new format we need to add a new version of every command
+and vice versa.
+
+6. Long Parameter List (Don’t forget about solutions!)
+7. Shotgun Surgery
+8. Divergent Change
+9. Parallel Inheritance Hierarchies
+10. Duplicate Code (Don’t forget about *many* solutions!)
+11. Switch Statements (Don’t forget about solutions!)
+12. Temporary Field
+13. Comments
+14. Feature Envy
+15. Speculative Generality
+16. Data Clumps
+17. Middle Man
+
+* Sample Exam Questions
+
+So you can see some sample exam questions here:
+[file:midterm-practice.pdf]
+
+You can see the solutions here:
+[file:midterm-practice-solution.pdf]

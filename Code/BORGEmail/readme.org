@@ -1,0 +1,162 @@
+#+TITLE: CSSE 375 BORG Test Insertion Assignment
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+This is an exercise designed to familiarize you with the techniques in
+Michael Feather's book, chapter 9 and 10.
+
+In particular, you will probably want to use:
+
++ Extract Interface (362)
++ Extract Method (415)
++ Subclass and Override Method (401)
+
+* The Code
+
+This code is taken from the BORG Java Calendar project
+(https://mikeberger.github.io/borg_calendar/).  This is not the
+complete project, because building it requires some complicated
+libraries and is a pain.  It also has been modified s lightly to reduce
+the difficulty of the assignment, but it is still fairly realistic.
+
+You should be able to get the code from your svn repo.
+
+Take a look at this file:
+[file:src/net/sf/borg/model/EmailReminder.java]
+
+This is code designed to send daily reminder emails with a summary of
+the day's activities.  Your goal will be to test the sendEmail method.
+
+* Installing lombok
+
+So I've discovered that the BORG project requires an external library
+to be installed on your eclipse.  I didn't notice because it was
+already installed on mine.  The library to want to install is lombok.
+You can probably install it by simply double clicking on the
+lombok.jar included with your project download and installing it on
+your eclipse.
+
+If you have permission problems, it may be that you have to run it as
+administrator.  To do that:
+
+1.  Type cmd in your windows search bar
+2.  Right click the Cmd.exe that should come up and select Run As
+    Administrator
+3.  At the command line type
+    : java -jar C:\Wherever\lombok.jar"
+    then proceed with the install from there.
+
+Once your install lombok you must also:
+
++ Restart eclipse
+
++ Clean your project (Project -> Clean... -> Select BORGEmail and click OK)
+
+If you have trouble, stop by and see me!
+
+* Your Assignment
+
+Write a unit test for the send email method.  Of course this test
+should not actually send email.  Your test should test two things:
+
+1.  Test that when multiple email addresses are specified in the form
+    "email1@foo.com,email2@foo.com", the system sends 2 messages (not
+    one message to a bogus address).
+
+2.  Ensure that the first line of the appointment text is included in
+    the message body.
+
+You should change the sendEmail method and other parts of the code as
+little as possible, but you can change them.  Use automated UI
+refactoring tools as much as possible to ensure your change does not
+introduce much risk.
+
+You should not need to use a Mocking framework or any other
+specialized testing tool beyond jUnit.
+
+Write your test code + any classes you add to the system in the
+(already created) package yourCodeGoesHere.
+
+* How to Submit your Code
+
+You will submit via SVN.
+
+* Grading
+
+If your test works and the rest of the code is only slightly modified
+you should get 10/10.
+
+If the test works but the code seems greatly changed, 6/10.
+
+If you were unable to get the code under test but clearly made an
+attempt along the lines of Feather's approach, 4/10.
+* Something to be careful of
+Under no circumstances should you be *copying* code from the original
+function under test into your your testing classes.  For example,
+here's an incorrect approach that was submitted:
+
+#+BEGIN_SRC java
+private class TestingEmailReminder extends EmailReminder {
+	
+	public ArrayList<String> appointmentTexts;
+	public ArrayList<String> emailAddresses;
+	public int emailsSent;
+
+	public TestingEmailReminder(AppointmentModelInterface appointments) {
+		super(appointments);
+		this.appointmentTexts = new ArrayList<String>();
+		this.emailAddresses = new ArrayList<String>();
+		this.emailsSent = 0;
+	}
+	
+	@Override
+	protected String addAppointmentText(String tx, Appointment appt) {
+		if (appt.isEncrypted())
+			tx += Resource.getResourceString("EncryptedItemShort");
+		else {
+			// only show first line of appointment text
+			String s = appt.getText();
+			this.appointmentTexts.add(s);
+			int ii = s.indexOf('\n');
+			if (ii != -1) {
+				tx += s.substring(0, ii);
+			} else {
+				tx += s;
+			}
+		}
+		return tx;
+	}
+
+//even more copied code below this
+#+END_SRC
+
+See how addAppointmentText basically has code copied from
+EmailReminder?  This is *very* bad.  Why?  Because the test implies
+that it tests the original code, but actually it is testing a copy of
+the original code in a test class.  If the original code changes
+(perhaps gets a bug added) this test won't detect it because it is
+still testing the code in the test class.
+
+This is a lot different than something like:
+
+#+BEGIN_SRC java
+public class TestingClass extends RealClass {
+    @Override
+    protected int displayIntegerEntryPopupDialog() {
+        return 4;
+    }
+}
+#+END_SRC
+
+Because the goal of the test is not to check that the dialog displays
+correctly.  In the BORGEmail case, our goal is to ensure that the
+email's contents are correct which means we need to test the real code
+for that.  But it is not our goal to ensure that SendJavaMail.sendMail
+works - so we can pull out that part if necessary.

@@ -1,0 +1,13 @@
+@echo off
+
+echo Compiling...
+call build
+
+echo Copying temporary files...
+call xcopy ..\res jar\ /S /Q /Y > nul
+
+echo Creating archive...
+call jar cmf makejar.mf ../lib/csheets.jar -C jar csheets
+
+echo Removing temporary files...
+call rmdir jar /Q /S

@@ -1,0 +1,191 @@
+\documentclass{exam}
+\usepackage{listings}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+
+\lstset{language=Java,basicstyle=\ttfamily,showspaces=false,showstringspaces=false}
+\begin{document}
+
+\begin{questions}
+\question[1]
+
+Which of the following is true of a well--executed refactoring?
+
+\begin{choices}
+\choice It relies on inheritance and polymorphism
+\choice It has intermediate steps where the code is functional
+\choice It uses a refactoring IDE like Eclipse
+\choice It creates a new class (or maybe several)
+\choice When the refactoring is finished, you usually need to add several unit tests to exercise the new functionality
+\end{choices}
+
+\question[1]
+Which of the follow describes a Refused Bequest?
+
+\begin{choices}
+\choice NetworkedFile, a subclass of GameDataFile, that when you call saveToDisk() actually writes the file to a cloud storage across the network
+\choice AutosaveRecord that has a variable NetworkHanlder that is usually null
+\choice Manager, a subclass of employee, that returns -1 when the getEmployeeId() method is called because managers don't have employee ids
+\choice LoginCommand, which duplicates many methods of NetworkCommand but is not NetworkCommands' subclass
+\choice CompositeWindow is an abstract class designed to be a superclass that has no subclasses
+\end{choices}
+
+\question[1] What smell does this source code suggest?
+
+\begin{lstlisting}
+class Student
+ {
+  private String name;
+  private int gradYear;
+  private int studentID;
+
+  public String getName() {...}
+  public void setName(String name) {...}
+  public int getGradYear() {...}
+  public void setGradYear(int year) {...}
+  public int getStudentID() {...}
+  public void setStudentID(int id) {...}
+}
+\end{lstlisting}
+
+\begin{choices}
+\choice Data Class
+\choice Short Class
+\choice Refused Bequest
+\choice Data Clumps
+\choice Actually, this code is fine
+\end{choices}
+
+\question[1]
+
+You and your friend are looking at the function signature below.  Your fiends suggests that ``this might be an instance of Primitive Obsession''.  What might your friend be proposing?
+
+\begin{lstlisting}
+public int getCustomerIdForReferral(int customerIdOfReferrer, 
+                                  double referrerPercent, 
+                                  String url, 
+                                  Product p) 
+\end{lstlisting}
+\begin{choices}
+\choice That this function has a large number of parameters, many of them Java primitives, and that the number of parameters should be reduced
+\choice That referrerPercent, url, and p could be combined into a single object
+\choice That this method would make more sense if it was a method on the Product class
+\choice That the function would be improved if it used existing Java classes Integer and Double rather than int and double
+\choice That a new CustomerId object might be created, rather than using ints for customer ids
+\end{choices}
+
+% \question[1] Which of these situations would be an example of Shotgun Surgery?
+
+% \begin{choices}
+% \choice Making a change to a system and discovering the best way to make the change is to subclass an existing abstract class and implement the abstract methods
+% \choice Making a change to a system and discovering that a security hole exists in the way they write to the DB
+% \choice Making a change to the system and updating functions in several classes and a datafile
+% \choice Making a change to system and accidentally introducing a bug due to the lack of tests
+% \choice Making a change to a system in a crude way, without considering possible refactorings that might improve the design
+% \end{choices}
+
+\question[1] Which of these would be an example of divergent change?
+
+\begin{choices}
+\choice A FormatParser class that needs to be subclassed in one way when you add a new add format, and another way when you add a new output type
+\choice A Sprite class in a video game and that you subclass every time you need a new kind of sprite and implement 3 different abstract methods
+\choice A HTTPProtocol class that has one gigantic method that every new feature needs to add to
+\choice A web system where you have to both update the C++ backend code as well as the Perl webpage code
+\choice A system where everytime you add a new DataElement class, you also need to add a new DataElementRenderer class
+\end{choices}
+
+\question[1] Under what circumstances might you want to take two existing classes and give them a common superclass?
+
+\begin{choices}
+\choice Both classes have similar methods and you can remove duplication by moving them to the superclass
+\choice One class has several Temporary Variables that can be Pulled Up into the superclass
+\choice You need to use the superclass as a Middle Man for the clients of both of the classes
+\choice Both classes are part of Parallel Inheritance Hierarchies and want to remove the implicit duplcation by giving both hierarchies a shared interface
+\choice One class is a Large Class and moving methods into the superclass will make it smaller
+\end{choices}
+
+\question[1] You're reading some code and you come across the class below.  What conclusions do you draw?
+\begin{lstlisting}
+abstract class HTMLTableWriter {
+  public void outputTableHeader() {...}
+  public void outputTableFooter() {...}
+  public abstract void outputTableHeadings();
+  public abstract void outputTableContents();
+
+  public void outputTable() {
+    outputTableHeader();
+    outputTableHeadings();
+    outputTableContents();
+    outputTableFooter();
+  }
+}
+
+\end{lstlisting}
+
+\begin{choices}
+\choice This superclass is an example of Speculative Generality and it's methods should be Pushed Down into it's subclasses
+\choice The method outputTable is probably overridden in HTMLTableWriter's subclasses.  Because HTMLTableWriter is abstract the implementation here can't be called.
+\choice This class could be improved by moving outputTableHeader and outputTableFooter into a newly created class
+\choice The outputTable method is a Template Method
+\choice The outputTable method isn't really accomplishing anything --- it might be worthwhile to use Inline Method on outputTableHeader and outputTableFooter
+\end{choices}
+
+\question[1] You come across the following code.  What refactoring would most improve it?
+\begin{lstlisting}
+public void updateName(DataRecord newFile) {
+  string result = null;
+  while(newFile.hasNext()) {
+    DataRecordEntry e = newFile.getNext();
+    if(e.key().equals("name")) { result = e.value(); }
+  }
+  if(result == null) throw new RuntimeException("name not found");
+  name = result;
+}
+
+public void updateDescription(DataRecord newFile) {
+  string result = null;
+  for(DataRecordEntry i = newFile.getNext(); newFile.hasNext(); i = newFile.getNext())
+  {
+    if(i.key().equals("description")) { result = i.value(); }
+  }
+  if(result == null) throw new RuntimeException("description not found");
+  description = result;
+}
+\end{lstlisting}
+
+\begin{choices}
+\choice A single utility method should be extracted and called from both functions, eliminating the duplication
+\choice The variables e and i should be renamed to be more explanatory
+\choice A local variable should be introduced to explain the method's purpose more clearly
+\choice The functions should be changed to return an error code rather than throwing an exception when problems are found
+\choice i.key().equals(...) is a Message Chain and should be removed
+\end{choices}
+
+\question[1] Object Oriented programmers often say that switch statements are bad.  Why?
+\begin{choices}
+\choice Case statements encourage writing long methods
+\choice In languages like Java, strings cannot be used in case statements so they require you to use hard coded constants
+\choice Case statements are often vary behavior based on types, which can be replaced by polymorphism
+\choice Case statements introduce a strong performance overhead in OO languages because they can't be optimized the same way they can be in procedural languages like C
+\choice Case statements often have subtle bugs which more straightforward if statements don't
+\end{choices}
+
+\question[1] In an error reporting system, you notice a lot of the classes tend to have the same set of 3 instance variables: url, customerId, and timestamp.  What might this suggest?
+
+\begin{choices}
+\choice That these three variables often occur together, and should be replaced with a single identifier that links to a global map
+\choice That these three variables are a potential source of memory overhead, and you should profile your code to check
+\choice That these three objects might be extracted out into a single class
+\choice That your classes are likely repeating data and should be combined into one class
+\choice That there should be a common superclass of all the classes in the system, and these three fields should be protected members\
+\end{choices}
+\question[20]
+Speculative generality is one of the more complex code smells.  Obviously we want to make our code flexible --- indeed courses like CSSE 374 are about teaching us how to do that.  If we can see an opportunity to implement a particular design pattern, for example, why not implement it?
+\begin{parts}
+  \part[5] Why does Fowler think of Speculative Generality as a bad thing?
+  \part[5] Write some sample code or UML that exhibit an example of speculative generality.  Explain briefly what about your example shows speculative generality.
+  \part[5] Normally there'd be some more parts, but this is just a sample
+\end{parts}
+
+\end{questions}
+\end{document}

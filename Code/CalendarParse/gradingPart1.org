@@ -1,0 +1,69 @@
+#+TITLE: Parsing Calendar Data Part 1: Grading Guide
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+
+* Grading
+
+The main instruction for this assignment was to refactor this code to
+your satisfaction.  So in general if folks put in an effort I'm
+inclined to give them full marks.  However, I want to provide detailed
+feedback on a few key areas.
+
+** Breaking up the code
+
+One way or another the long function should be broken up into
+functions and classes.  If they didn't do this at least, I don't think
+I'd give them credit.  But good to acknowledge in the feedback
+nonetheless.
+
+Extra love if they factored in a way that removed the duplication
+between the two XML parses.
+
+** Solving the combinatorial explosion
+
+So this is probably most important.  As currently structured, the code
+requires x times y functions, where x is the number of parsers and y
+is the number of commands (i.e. a unique implementation of each
+command for each file type).  This is super bad - and even a design
+that adds new classes can still have this problem.
+
+The easiest way to solve this is to have an intermediate type -
+something like a Calendar Event (representing one particular event in
+the calendar).  Then you have type specific parsers that produce these
+events, and all the commands operate on events rather than the unique
+file types themselves.
+
+Anyway, if the student hasn't solved this problem they should
+definitely get feedback on it.  If they have solved it congratulate
+them.
+
+** Adding tests
+
+Refactoring requires tests and this code is hard to test.  If the
+student doesn't have tests you should comment on it - if they do you
+should give them congratulations.
+
+* Example Feedback
+
+Just to give you a feel for the level of detail I'm providing.
+
+#+BEGIN_QUOTE
+Removed a lot of duplication - nice job                                                                                     
+But retains the combinatorial explosion issue 
+Also not tested/testable as far as I can tell
+#+END_QUOTE
+
+* FAQ
+** What if they have no tests?
+Does not affect the grade - tests are not required, just a good idea.  Note it in the feedback.
+** What if they broke up the code but everything is still in 1 file?
+Well...in terms of 1 file seems pretty unlikely to me you could do a significant refactoring to the code while just keeping in the same file.  So yeah, probably lose some points - maybe 25% if the file is greatly broken up and cleaner, and 50% if it's just a cursory job.
+** What if the code no longer works?
+If the code doesn't work - I'd say it depends a bit.  If it looks like a small bug, take off a couple points for not testing.  If the could could never have worked/is deeply wrong then take off more (maybe 50%).
+** Where should feedback be placed?
+In the comments field in Moodle.

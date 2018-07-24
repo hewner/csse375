@@ -1,0 +1,61 @@
+
+* Introduction
+
+After talking a lot about smells and refactoring, I thought it might
+be nice to do some moderately serious refactoring in a low-stakes
+context.  Hence: in-class refactoring activity.  This is a pair
+activity, so find someone to work with.  Download the code from SVN
+and make sure the tests run.  These unit tests talk to a database
+(violating the usual Rules of Unit Tests we’ll talk about when we look
+at Feathers) so they need some fancy libraries that should hopefully
+be included and work effortlessly.
+
+Look at the code – you should see plenty of smells kicking around.
+*Look especially at the functions that access that database*: they
+have tons of duplication.
+
+* Your Main Goal
+
+Your basic goal is to refactor this code to make it as beautiful as
+you can, remove the duplication, and keep the unit tests running.
+Talk to your partner and try to get something especially nice and
+functional!  Once you finish with that, I have a few bonus goals you
+can try your skills on.
+
+This is a two day activity.  
+
+* Bonus Goals
+
+Strictly if you have time.
+
+** Bonus Goals – Medium Difficulty
+
+So in our hypothetical class system, imagine that we’re concerned
+about database load.  Some of our code is executing slowly but we’re
+not sure what queries are the problem.  We want to track each SQL
+query separately, timing how long it takes from begin to end.  Then we
+want to be able to get a report of what the average query time for
+each of the different queries the system uses.  Modify the system to
+handle this goal.
+
+For an extra challenge, write unit tests to verify that the system
+works.  Think about how you can control the way the system times
+queries so that you can ensure that the averaging is working properly.
+Or find some other way to test things out.
+
+** Bonus Goals – Hard Difficulty
+
+Imagine that our scheduling database is having problems.  Frequently,
+and for no discernible reason, certain queries just throw exceptions.
+The DB experts think that it must be something about the exact data
+that those queries contain.  You decide to modify the system so that
+every time the database throws an exception, a log file is appended to
+that lists all parameters of the query that caused the problem.
+
+Modify the system to handle this goal.
+
+For an extra challenge, write unit tests to verify that the logging
+system works.  You’ll need a way to force those mysterious
+exceptions...for unknown reasons, they never occur with your test
+data.  It also might be handy if you could somehow swap out the
+logfile for something easy to check in your tests.

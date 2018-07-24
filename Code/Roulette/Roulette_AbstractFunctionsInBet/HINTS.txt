@@ -1,0 +1,79 @@
+HINTS:
+
+
+Hint Level 1:
+
+The duplication to consider is in Game.java.  Look at the 2 functions betIsMade and placeBet.
+Both of them use 0-2 to decide which code to run, just like DrawAllShapes used square and circle
+to decide which code to run.  Just like Square and Circle became different subclasses, the 3
+different kinds of bets will become subclasses in this example.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hint Level 2:
+
+Let's make our 3 subclasses subclasses of Bet.  You can already see that we've got an array of different
+Bet objects (myPossibleBets).  We'll instead make this filled with different subclasses of bet.  Then
+our code for placebet will look like:
+
+    private String placeBet (int whichBet)
+    {
+        String result = myPossibleBets[whichBet].placeBet();
+
+        return result;
+    }
+    
+    
+    
+
+
+
+
+
+
+
+
+Hint Level 3:
+
+Here's an example of what one of the 3 bet classes will look like
+
+class RedOrBlackBet extends Bet
+{
+	public RedOrBlackBet() {
+	    super("Red or Black", 1);
+	}
+	
+	//implements newly created abstract method in Bet
+	public String placeBet() {
+	    ConsoleReader.promptOneOf("Please bet", Wheel.BLACK, Wheel.RED);
+	}
+	
+	//implements newly created abstract method in Bet
+	public String betIsMade (Wheel wheel, String betChoice)
+	{
+	    return myWheel.getColor().equals(betChoice);
+	}
+
+}
+
+

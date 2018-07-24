@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>CSSE 375 Final Spring 2015</title>
+<!-- 2015-05-19 Tue 15:12 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CSSE 375 Final Spring 2015</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Warning</a></li>
+<li><a href="#sec-3">3. The Goal</a></li>
+<li><a href="#sec-4">4. Getting the Code Building</a></li>
+<li><a href="#sec-5">5. Refactoring (6/15 points)</a></li>
+<li><a href="#sec-6">6. Adding the COUNT Button (3/15)</a></li>
+<li><a href="#sec-7">7. Tests (6/15 points)</a></li>
+<li><a href="#sec-8">8. Submitting</a></li>
+<li><a href="#sec-9">9. If you have questions or trouble, talk to me!</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This final uses the jftp software project.  It should already be in
+your SVN.  Please use the SVN version and not the one from
+sourceforge - the code is similar but the source has been slightly
+modified to make building easier.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Warning</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This is a final exam.  Please do not get or give outside help.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> The Goal</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Jftp is a software project designed to allow file transfers between
+local systems and remote repos.  We want to add an additional feature
+that counts the number of files in either remote or local directories.
+</p>
+
+
+<div class="figure">
+<p><img src="exampleWindow.PNG" alt="exampleWindow.PNG" />
+</p>
+</div>
+
+<p>
+Note the two buttons labeled COUNT (one in each directory window)
+</p>
+
+
+<div class="figure">
+<p><img src="examplePopup.PNG" alt="examplePopup.PNG" />
+</p>
+</div>
+
+<p>
+When the COUNT button is pressed, it brings up a dialog displaying the
+number of items in the directory (4, including the ".." directory, for
+the example window on the left).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Getting the Code Building</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+You should be able to run the JFtp application in the eclipse project with no additional work beyond selecting Java Application on run and choosing JFtp off the list.
+</p>
+
+<p>
+If that does not work, try updating your eclipse.
+</p>
+
+<p>
+If that still does not work, visit me as soon as possible to get it worked out.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Refactoring (6/15 points)</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The code for jFTP is actually quite bad, so I won't request that you refactor the whole system.  Instead, take a look at the function gui_init() in these two classes:
+</p>
+
+<p>
+[<a href="src/java/net/sf/jftp/gui/base/RemoteDir.java">src/java/net/sf/jftp/gui/base/RemoteDir.java</a>]
+[<a href="src/java/net/sf/jftp/gui/base/LocalDir.java">src/java/net/sf/jftp/gui/base/LocalDir.java</a>]
+</p>
+
+<p>
+You should see that this function has a large amount of duplication between these two classes, but there are also some differences.
+</p>
+
+<p>
+The function has several parts, in this assignment we will focus on the code that creates/populates the buttonPanel.  This is the part of the code we want to add to because the buttonPanel is where we want the new COUNT buttons to appear.  One sample from LocalDir is provided here so you know the section I mean:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">deleteButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.deleteImage, deleteString,
+                                <span style="color: #008000;">"Delete selected"</span>, <span style="color: #0000FF;">this</span>);
+deleteButton.setToolTipText(<span style="color: #008000;">"Delete selected"</span>);
+
+mkdirButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.mkdirImage, mkdirString,
+                               <span style="color: #008000;">"Create a new directory"</span>, <span style="color: #0000FF;">this</span>);
+mkdirButton.setToolTipText(<span style="color: #008000;">"Create directory"</span>);
+
+refreshButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.refreshImage, refreshString,
+                                 <span style="color: #008000;">"Refresh current directory"</span>, <span style="color: #0000FF;">this</span>);
+refreshButton.setToolTipText(<span style="color: #008000;">"Refresh directory"</span>);    
+        refreshButton.setRolloverIcon(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">ImageIcon</span>(HImage.getImage(<span style="color: #0000FF;">this</span>, Settings.refreshImage2)));
+        refreshButton.setRolloverEnabled(<span style="color: #D0372D;">true</span>);
+
+cdButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.cdImage, cdString,
+                            <span style="color: #008000;">"Change directory"</span>, <span style="color: #0000FF;">this</span>);
+cdButton.setToolTipText(<span style="color: #008000;">"Change directory"</span>);
+
+uploadButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.uploadImage, uploadString,
+                                <span style="color: #008000;">"Upload selected"</span>, <span style="color: #0000FF;">this</span>);
+uploadButton.setToolTipText(<span style="color: #008000;">"Upload selected"</span>);               
+<span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">uploadButton.setBackground(new Color(192,192,192));</span>
+
+zipButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.zipFileImage, zipString,
+                             <span style="color: #008000;">"Add selected to new zip file"</span>, <span style="color: #0000FF;">this</span>);
+zipButton.setToolTipText(<span style="color: #008000;">"Create zip"</span>);
+
+cpButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.copyImage, cpString,
+                            <span style="color: #008000;">"Copy selected files to another local dir"</span>,
+                            <span style="color: #0000FF;">this</span>);
+cpButton.setToolTipText(<span style="color: #008000;">"Local copy selected"</span>);
+
+rnButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.textFileImage, rnString,
+                            <span style="color: #008000;">"Rename selected file or directory"</span>, <span style="color: #0000FF;">this</span>);
+rnButton.setToolTipText(<span style="color: #008000;">"Rename selected"</span>);
+
+cdUpButton = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">HImageButton</span>(Settings.cdUpImage, cdUpString,
+                              <span style="color: #008000;">"Go to Parent Directory"</span>, <span style="color: #0000FF;">this</span>);
+cdUpButton.setToolTipText(<span style="color: #008000;">"Go to Parent Directory"</span>);
+
+label.setText(<span style="color: #008000;">"Filesystem: "</span> + StringUtils.cutPath(path));
+label.setSize(getSize().width - 10, 24);
+currDirPanel.add(label);
+currDirPanel.setSize(getSize().width - 10, 32);
+label.setSize(getSize().width - 20, 24);
+
+p.setLayout(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BorderLayout</span>());
+p.add(<span style="color: #008000;">"North"</span>, currDirPanel);
+
+buttonPanel.add(sorter);
+
+buttonPanel.add(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">JLabel</span>(<span style="color: #008000;">"  "</span>));
+
+buttonPanel.add(refreshButton);
+buttonPanel.add(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">JLabel</span>(<span style="color: #008000;">"  "</span>));
+
+buttonPanel.add(cpButton);
+buttonPanel.add(rnButton);
+buttonPanel.add(mkdirButton);
+
+buttonPanel.add(cdButton);
+buttonPanel.add(deleteButton);
+buttonPanel.add(cdUpButton);
+buttonPanel.add(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">JLabel</span>(<span style="color: #008000;">"  "</span>));
+
+buttonPanel.add(zipButton);
+buttonPanel.add(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">JLabel</span>(<span style="color: #008000;">"              "</span>));
+
+
+
+
+buttonPanel.setVisible(<span style="color: #D0372D;">true</span>);
+
+buttonPanel.setSize(getSize().width - 10, 32);
+</pre>
+</div>
+
+<p>
+Refactor the code to remove the duplication between the buttonPanel
+code in both classes.  You may improve the function in any way you
+wish - including creating new functions, classes, etc.
+</p>
+
+<p>
+I will be evaluating the quality of the resultant code.  I will
+especially be looking for duplication, be it in the 2 existing
+classes, any of their superclasses, or any classes you create.
+</p>
+
+<p>
+You do not need to write tests to accomplish this refactoring, but if
+you like feel free to write some automated buttonpanel tests.  The GUI
+should continue to function exactly as it does now however.  If you
+introduce changes, I will subtract significant points.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Adding the COUNT Button (3/15)</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You can do this part 2nd, or program in a test-first style and
+implement the unit test before implementing the feature.
+</p>
+
+<p>
+Add the feature, as depicted in the screen shots above.
+</p>
+
+<p>
+It should be possible to add your feature with very little code
+duplication between LocalDir and RemoteDir, especially now that that
+your refactoring of init_gui is done.  You do not need to refactor
+everything that's wrong with LocalDir/RemoteDir to get full credit,
+but your change should itself be nice.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Tests (6/15 points)</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+We want to test the COUNT feature we are adding for BOTH LocalDir and RemoteDir.  Put your tests in the package "yourTestsHere".
+</p>
+
+<p>
+Here on the constraints on your tests:
+</p>
+
+<ul class="org-ul">
+<li>You <b>must not</b> have your tests rely on either a particular webserver
+(e.g. ftp.csse.rose-hulman.edu) OR the local filesystem.  Instead,
+you need to create a fake connection with non-real files and test
+your remote and local dirs with that.
+</li>
+
+<li>You must create both LocalDir and RemoteDir in your tests (or maybe
+a test specific subclass of either of them).
+</li>
+
+<li>The code you test should be the actual code in those classes, not
+some copy of the code in your test-only classes.
+</li>
+
+<li>Avoid changing the codebase to allow for tests (the occasional
+extract method or extract interface is fine though).
+</li>
+
+<li>Your tests should test with several different directory sizes.
+</li>
+
+<li>Your tests should not bring up a visible GUI.
+</li>
+
+<li>You should not use any additional testing library (e.g. mocking)
+beyond JUnit.
+</li>
+
+<li>To test your feature, you can feel free to add a function like
+getDirLength() and test against that.  Obviously, in the GUI you
+must use java to bring up a dialog but you don't need to test the
+dialog creation code.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Submitting</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+You'll submit your solution via SVN.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> If you have questions or trouble, talk to me!</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Via phone email or stop by my office!
+</p>
+
+<p>
+If you want to leave a note with your solution, put in the source code
+in the unit test java file.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-05-19 Tue 15:12</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

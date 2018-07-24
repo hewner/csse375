@@ -1,0 +1,18 @@
+Introduction
+------------
+CleanSheets is a spreadsheet application for the Java platform.
+
+Formula Language
+----------------
+The language used for formulas in CleanSheets is very similar to the de-facto standard language that is used in Microsoft Excel.
+
+As is customary, an equal sign (=) is used to mark the start of a formula.
+
+Operators
+
+Order of precedence
+
+Functions
+Extensible
+
+References

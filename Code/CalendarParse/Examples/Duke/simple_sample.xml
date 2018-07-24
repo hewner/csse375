@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<events>
+  <event>
+    <start>
+      <utcdate>20121101T040000Z</utcdate>
+      <unformatted>20121101</unformatted>
+      <year>2012</year>
+      <fourdigityear>2012</fourdigityear>
+      <month>11</month>
+      <twodigitmonth>11</twodigitmonth>
+      <monthname>November</monthname>
+      <day>1</day>
+      <dayname>Thursday</dayname>
+      <twodigitday>01</twodigitday>
+      <hour24>0</hour24>
+      <twodigithour24>00</twodigithour24>
+      <hour>12</hour>
+      <twodigithour>12</twodigithour>
+      <minute>0</minute>
+      <twodigitminute>00</twodigitminute>
+      <ampm>0</ampm>
+      <longdate>November 1, 2012</longdate>
+      <shortdate>11/1/12</shortdate>
+      <time>12:00 AM</time>
+      <timezone>
+        <id/>
+      <islocal>true</islocal></timezone>
+    </start>
+    <summary>Example event 1</summary>
+    <description>A longer description would go here</description>
+  </event>
+  <event>
+    <start>
+      <utcdate>20121101T040000Z</utcdate>
+      <unformatted>20121101</unformatted>
+      <year>2012</year>
+      <fourdigityear>2012</fourdigityear>
+      <month>11</month>
+      <twodigitmonth>11</twodigitmonth>
+      <monthname>November</monthname>
+      <day>1</day>
+      <dayname>Thursday</dayname>
+      <twodigitday>01</twodigitday>
+      <hour24>0</hour24>
+      <twodigithour24>00</twodigithour24>
+      <hour>12</hour>
+      <twodigithour>12</twodigithour>
+      <minute>0</minute>
+      <twodigitminute>00</twodigitminute>
+      <ampm>0</ampm>
+      <longdate>November 1, 2012</longdate>
+      <shortdate>11/1/12</shortdate>
+      <time>12:00 AM</time>
+      <timezone>
+        <id/>
+      <islocal>true</islocal></timezone>
+    </start>
+    <summary>Example event 2</summary>
+    <description>A longer description would go here</description>
+  </event>
+  <event>
+    <start>
+      <utcdate>20121102T040000Z</utcdate>
+      <unformatted>20121102</unformatted>
+      <year>2012</year>
+      <fourdigityear>2012</fourdigityear>
+      <month>11</month>
+      <twodigitmonth>11</twodigitmonth>
+      <monthname>November</monthname>
+      <day>2</day>
+      <dayname>Friday</dayname>
+      <twodigitday>02</twodigitday>
+      <hour24>0</hour24>
+      <twodigithour24>00</twodigithour24>
+      <hour>12</hour>
+      <twodigithour>12</twodigithour>
+      <minute>0</minute>
+      <twodigitminute>00</twodigitminute>
+      <ampm>0</ampm>
+      <longdate>November 2, 2012</longdate>
+      <shortdate>11/2/12</shortdate>
+      <time>12:00 AM</time>
+      <timezone>
+        <id/>
+      <islocal>true</islocal></timezone>
+    </start>
+    <summary>Example event 3 (different day)</summary>
+    <description>A longer description would go here</description>
+  </event>
+
+</events>

@@ -1,0 +1,511 @@
+#+TITLE: Courses In Class Refactoring Solution
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+#+DRAWERS: INSTRUCTOR
+
+
+* Step 1: Playing with a function
+
+I start out without any strong intuition about what I want to do,
+except a feeling that there is a strong similarity between all the
+functions that use a database.  There are similarity between classes
+too, but I'm not 100% sure what to make of that so I decide to start
+in the simplest possible way.
+
+I look at the function Course::create and decide to pull out the
+database specific code, hoping that maybe I can reuse that in some of
+the other functions:
+
+#+BEGIN_SRC java
+public static Course create(String name, int credits) 
+    throws Exception 
+{
+  Connection conn = null;
+
+  try {
+      conn = DriverManager.getConnection(url, "", "");
+      Statement statement = conn.createStatement();
+      statement.executeUpdate(
+    	"DELETE FROM course WHERE name = '" + name + "'");
+      statement.executeUpdate(
+    	"INSERT INTO course VALUES ('" + name 
+    	+ "', " + credits + ")");
+      return new Course(name, credits);
+  } finally {
+      try { conn.close(); } catch (Exception ignored) {}
+  }
+}
+#+END_SRC
+
+It takes me a minute to figure out what I want to do with the 2
+different SQL commands.  I decide on making my new function take an
+array of Strings.
+
+#+BEGIN_SRC java
+public static void doDBCommands(String[] commands) throws Exception {
+	Connection conn = null;
+
+	try {
+		conn = DriverManager.getConnection(url, "", "");
+		Statement statement = conn.createStatement();
+		for (String command : commands) {
+			statement.executeUpdate(command);
+		}
+	} finally {
+		try {
+			conn.close();
+		} catch (Exception ignored) {
+		}
+	}
+}
+
+public static Course create(String name, int credits) throws Exception {
+
+	String[] commands = { 
+			"DELETE FROM course WHERE name = '" + name + "'",
+			"INSERT INTO course VALUES ('" + name + "', " + credits + ")" 
+			};
+	doDBCommands(commands);
+	return new Course(name, credits);
+}
+#+END_SRC
+
+Run my tests: they pass.  Woo!
+
+* Step 2: Generalize that to find (failure)
+
+Moving down the file, let's see if we can do the same thing to find.
+
+#+BEGIN_SRC java
+	public static Course find(String name) {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, "", "");
+			Statement statement = conn.createStatement();
+			ResultSet result = statement
+					.executeQuery("SELECT * FROM course WHERE Name = '" + name
+							+ "'");
+			if (!result.next())
+				return null;
+
+			int credits = result.getInt("Credits");
+			return new Course(name, credits);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception ignored) {
+			}
+		}
+	}
+#+END_SRC
+
+Hmmm...unfortunately this sucker calls execute *Query* not
+executeUpdate.  Maybe I could just switch my executeUpdate to
+executeQuery?
+
+I try it and run my tests.  No dice.
+
+Ok.  I think there's something here but find is gonna be more
+complicated.  Let me try instead on update -- that looks easier.
+
+* Step 3: Generalize that to update
+
+Update becomes
+
+#+BEGIN_SRC java
+public void update() throws Exception {
+	String[] commands = { 
+			"DELETE FROM COURSE WHERE name = '" + name + "'",
+			"INSERT INTO course VALUES('" + name + "'," + credits + ")" 
+			};
+	doDBCommands(commands);
+}
+#+END_SRC
+
+Sweet.  I'm now more confident I might have something here.
+
+Poking around, I think there are some other functions that could
+easily improved with my doDBCommands function, but many of them are
+queries and can't be.
+
+* Step 4: I try to write a version of doDBCommands for query (failure)
+
+I change the code to look like this:
+
+#+BEGIN_SRC java
+public static ResultSet doDBQuery(String querySQL) {
+	Connection conn = null;
+	try {
+		conn = DriverManager.getConnection(url, "", "");
+		Statement statement = conn.createStatement();
+		ResultSet result = statement
+				.executeQuery(querySQL);
+
+		return result;
+	} catch (Exception ex) {
+		return null;
+	} finally {
+		try {
+			conn.close();
+		} catch (Exception ignored) {
+		}
+	}
+}
+
+public static Course find(String name) {
+	ResultSet result = doDBQuery("SELECT * FROM course WHERE Name = '"
+			+ name + "'");
+	try {
+		if (!result.next())
+			return null;
+
+		int credits = result.getInt("Credits");
+		return new Course(name, credits);
+	} catch (SQLException ignored) {
+		return null;
+	}
+}
+#+END_SRC
+
+I'm not fully happy with it, especially after I run my tests and they
+fail.  NullPointerException?  Oh, maybe I should not be stupidly
+swallowing the results of exceptions and returning null, huh?
+
+But my goal is to refactor - not change this code's error handling.
+Still adding a print statement to figure out what's up would aid my
+debugging.
+
+I toss a ignored.printStackTrace into find.
+
+: java.sql.SQLException: ResultSet not open. Operation 'next' not permitted. Verify that autocommit is OFF.
+
+Hmmm...I figure out that this is because I'm calling a function on a
+resultSet after the connection is closed.  Uh oh.
+
+* Step 5: What do I do?
+
+Ok, so I can't use a ResultSet as my result.  But it looks like what
+is coming back is very simple - maybe I could use some other data
+structure?
+
+Hmmmm...in this case the query returns an int.  What other options are
+there?  Looking around I see both ints and Strings, with some queries
+needing to get more than one value.  Also in each cause I need to get
+specific fields.
+
+I propose - I'll pass a list of strings, and return a list of strings
+(that can be converted into an int).
+
+I also rework the ways exceptions get thrown so that errors or passed
+to find as exceptions to find, which then returns null (preserving the
+existing behavior).
+
+#+BEGIN_SRC java
+public static String[] doDBQuery(String querySQL, String[] columns) throws SQLException {
+	Connection conn = null;
+	try {
+		conn = DriverManager.getConnection(url, "", "");
+		Statement statement = conn.createStatement();
+		ResultSet row = statement
+				.executeQuery(querySQL);
+		if(!row.next())
+			throw new SQLException("No rows returned!");
+		String[] results = new String[columns.length];
+		for(int i = 0; i < results.length; i++) {
+			results[i] = row.getString(columns[i]);
+		}
+		return results;
+	} finally {
+		try {
+			conn.close();
+		} catch (Exception ignored) {
+		}
+	}
+}
+
+public static Course find(String name) {
+	try {
+		String[] results = doDBQuery("SELECT * FROM course WHERE Name = '"
+			+ name + "'", new String[] {"Credits"});
+		return new Course(name, Integer.parseInt(results[0]));
+	} catch (SQLException ignored) {
+		return null;
+	}
+}
+#+END_SRC
+
+* Step 6: Extract these DB functions to a class
+
+At this point Course is working reasonably nicely.  But it has crazy
+static DB functions.  Let's pull thing out to their own class.
+
+I do a bit of renaming as well.
+
+#+BEGIN_SRC java
+public class DBCommands {
+	static String url = "jdbc:derby:courses";
+
+	static {
+		try {
+			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+		} catch (Exception ignored) {
+		}
+	}
+
+	public static void doDBUpdate(String[] commands) throws SQLException {
+		Connection conn = null;
+
+		try {
+			conn = DriverManager.getConnection(url, "", "");
+			Statement statement = conn.createStatement();
+			for (String command : commands) {
+				statement.executeUpdate(command);
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception ignored) {
+			}
+		}
+	}
+
+	public static String[] doDBQuery(String querySQL, String[] columns) throws SQLException {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, "", "");
+			Statement statement = conn.createStatement();
+			ResultSet row = statement
+					.executeQuery(querySQL);
+			if(!row.next())
+				throw new SQLException("No rows returned!");
+			String[] results = new String[columns.length];
+			for(int i = 0; i < results.length; i++) {
+				results[i] = row.getString(columns[i]);
+			}
+			return results;
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception ignored) {
+			}
+		}
+	}
+}
+#+END_SRC
+
+* Step 7: Make Offering Use the New Functions
+
+I test as a replace each function.
+
+Update and find both are easy fixes.  Max id needs another query:
+
+#+BEGIN_SRC java
+public static int getMaxOfferingId() throws SQLException 
+{
+    Connection conn = null;
+
+    try {
+        conn = DriverManager.getConnection(url, "", "");
+        Statement statement = conn.createStatement();
+
+        ResultSet result = statement.executeQuery("SELECT MAX(ID) FROM offering");
+        result.next();
+        return result.getInt(1);
+
+    } finally {
+        try { conn.close(); } catch (Exception ignored) {}
+    }
+}
+#+END_SRC
+
+Inserted a bug with my change to max id - discovered it with tests and
+quickly fixed it.
+
+New version of offering:
+#+BEGIN_SRC java
+public class Offering {
+    private int id;
+    private Course course;
+    private String daysTimes;
+
+    public static Offering create(Course course, String daysTimesCsv) 
+        throws SQLException 
+    {
+    	int newId = DBCommands.getMaxOfferingId() + 1;
+		String[] commands = { 
+				"INSERT INTO offering VALUES ("
+	                    + newId + ",'" + course.getName() 
+	                    + "','" + daysTimesCsv + "')"
+				};
+		DBCommands.doDBUpdate(commands);
+		return new Offering(newId, course, daysTimesCsv);
+    }
+
+    public static Offering find(int id) {
+    	try {
+    		String[] results = DBCommands.doDBQuery("SELECT * FROM offering WHERE ID =" + id, 
+    				new String[] {"Course","DateTime"});
+    		String courseName = results[0]; 
+    		Course course = Course.find(courseName); 
+    		String dateTime = results[1];
+    		return new Offering(id, course, dateTime);
+	} catch (SQLException ignored) {
+		return null;
+	}
+    }
+
+    public void update() throws SQLException{
+		String[] commands = { 
+				"DELETE FROM Offering WHERE ID=" + id,
+				"INSERT INTO Offering VALUES(" + id + ",'" +
+	                      course.getName() + "','" + daysTimes + "')"
+				};
+		DBCommands.doDBUpdate(commands);
+    }
+
+// everything else is unchanged
+#+END_SRC
+
+* Step 8: Update Schedule
+
+I notice there a several places where I only need to a 1 line update.
+I make a new version of doDBUpdate that takes just a string.
+
+#+BEGIN_SRC java
+public static void doDBUpdate(String command) throws SQLException {
+	doDBUpdate(new String[] {command});
+}
+#+END_SRC
+
+I change Offering to use the new method.
+
+I update deleteAll and create.
+
+Then I discover that Schedule::find and Schedule:all both have queries
+that iterate over several rows.
+
+* Step 9: Make doDBQuery return multiple results
+
+...and make a new DBQueryRow that all existing uses will use.  I write
+this and then run tests:
+
+#+BEGIN_SRC java
+	public static String[] doDBQueryRow(String querySQL, String[] columns) throws SQLException {
+		List<String[]> results = doDBQuery(querySQL,columns);
+		if(results.size() != 1) {
+			throw new SQLException("Expected 1 row.  Got " + results.size());
+		}
+		return results.get(0);
+	}
+	
+	public static List<String[]> doDBQuery(String querySQL, String[] columns) throws SQLException {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, "", "");
+			Statement statement = conn.createStatement();
+			ResultSet rows = statement
+					.executeQuery(querySQL);
+			List<String[]> results = new LinkedList<String[]>();
+			while(rows.next()) {
+				String[] rowResult = new String[columns.length];
+				for(int i = 0; i < rowResult.length; i++) {
+					rowResult[i] = rows.getString(columns[i]);
+				}
+				results.add(rowResult);
+			}
+			return results;
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception ignored) {
+			}
+		}
+	}
+#+END_SRC
+
+Then I updated schedule (this took a little careful work):
+#+BEGIN_SRC java
+public static void deleteAll() throws SQLException {
+	DBCommands.doDBUpdate("DELETE FROM schedule");
+}
+
+public static Schedule create(String name) throws SQLException {
+
+	DBCommands.doDBUpdate("DELETE FROM schedule WHERE name = '" + name
+			+ "'");
+	return new Schedule(name);
+}
+
+public static Schedule find(String name) {
+	try {
+		String[] rowNames = { "OfferingId" };
+		String sql = "SELECT * FROM schedule WHERE Name= '" + name + "'";
+
+		Schedule schedule = new Schedule(name);
+
+		for (String[] row : DBCommands.doDBQuery(sql, rowNames)) {
+			int offeringId = Integer.parseInt(row[0]);
+			Offering offering = Offering.find(offeringId);
+			schedule.add(offering);
+		}
+		return schedule;
+	} catch (SQLException ex) {
+		return null;
+	}
+
+}
+
+public static Collection<Schedule> all() throws SQLException {
+	String[] rowNames = { "Name" };
+	String sql = "SELECT DISTINCT Name FROM schedule";
+	ArrayList<Schedule> result = new ArrayList<Schedule>();
+
+	for (String[] row : DBCommands.doDBQuery(sql, rowNames)) {
+		result.add(Schedule.find(row[0]));
+
+	}
+
+	return result;
+}
+
+public void update() throws SQLException {
+
+	String[] commands = new String[schedule.size() + 1];
+	commands[0] = "DELETE FROM schedule WHERE name = '" + name + "'";
+
+	for (int i = 0; i < schedule.size(); i++) {
+		Offering offering = (Offering) schedule.get(i);
+		commands[i + 1] = "INSERT INTO schedule VALUES('" + name + "',"
+				+ offering.getId() + ")";
+	}
+	DBCommands.doDBUpdate(commands);
+}
+#+END_SRC
+
+* Step 10: The future
+
+Overall, I am unhappy with the result of this refactoring.  Seems like
+what's really going on here is we want to have a closure or
+closure-like thing that lets me replace the internals of the functions
+while allow freedom to make statements and use resultset object
+freely.
+
+Exactly how that's implemented is tricky - maybe some superclass with
+a template method and anonymous inner classes, maybe something with
+the new Java closures...needs a little more research but I think that
+complexity is worth it given the code here.
+
+But I did learn a lot doing this refactoring and now I'm positioned to
+understand the design clearly and how to fix it better - so overall I
+consider the refactoring worth it BECAUSE of what it taught me about
+the code and the design ideas it provided to the future (hopefully
+final design.
+
+* Many other refactorings are possible: yours may well be nicer than mine

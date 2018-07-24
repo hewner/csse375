@@ -1,0 +1,77 @@
+#+TITLE: CSSE375 Assignment: Parsing Calendar Data
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+
+* What is this?
+
+So imagine that you’re writing an application take takes different
+feeds of calendar event data.  The goal of this application is to load
+in a variety of different kinds of event data and produce a unified
+calendar with all the events listed on the day they occur.  The code
+you’ve been give implements a rudimentary user interface.  It asks for
+a input file and a calendar format.  Then it puts you into “command mode”
+where you can enter specific commands. Right now the only command that
+works is “displayday” which finds all the events that occur on a
+particular day and prints out summaries of all the title of events
+that occur on that day.
+
+
+You can see an example of it working below (the data file in question
+is Examples/Duke/simple_sample.xml).
+
+#+BEGIN_EXAMPLE
+Ready for commands! Available commands: 
+quit
+displayday YYYY MM DD
+> displayday 2012 11 01
+Example event 1
+Example event 2
+> displayday 2012 11 02
+Example event 3 (different day)
+> quit
+Exiting normally.
+#+END_EXAMPLE
+
+The code you’ve been given is designed to parse two kinds of data
+source.  One is a kind of calendar data used by Duke university.  The
+other is the output of GoogleCalendar.  Both of these formats are XML.
+
+
+I’ve included some sample data, but if you’d like to generate your own
+you can do so here:
+http://calendar.duke.edu/static/url_machine/
+https://www.google.com/calendar/feeds/hewner%40gmail.com/public/basic
+
+You can also find instructions for getting your own google calendar
+data here (use the XML options):
+
+http://support.google.com/calendar/bin/answer.py?hl=en&answer=37648
+
+
+If you’re not familiar with XML files, you can see a brief intro here: http://www.ibm.com/developerworks/xml/tutorials/xmlintro/section2.html.
+
+
+* What do I need to do?
+
+So right now the code is ugly.  I'm not going to enumerate its design
+problems (we'll talk about it a little in class) - I'd like to see
+your take.
+
+Imagine that we want to take this idea of interacting with different
+calendars and expand it.  We want to add many more supported types of
+calendars, and we want to add many more operations.  We want a design
+that will let us add support for new calendar types and new operations
+really easily.
+
+Refactor the code to improve the design and make the code clean.
+
+It should require significant changes, including new classes,
+structure, etc.
+
+Do not change the functionality of the code at all - from the user's
+perspective, the code should function in exactly the same way.

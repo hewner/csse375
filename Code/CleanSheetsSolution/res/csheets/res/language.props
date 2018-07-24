@@ -1,0 +1,80 @@
+# Unary operators
+Negator
+Percent
+
+# Binary arithmetic operators
+Adder
+Subtracter
+Multiplier
+Divider
+Exponentiator
+
+# Binary relational operators
+Equal
+NotEqual
+LessThan
+LessThanOrEqual
+GreaterThan
+GreaterThanOrEqual
+
+# Miscellaneous binary operators
+Concatenator
+RangeReference
+
+# Logic functions
+True
+False
+And
+Or
+Not
+
+# Mathematic functions
+Count
+Sum
+Average
+Factorial
+
+# Pseudo-statements
+If
+Do
+
+# # # Numeric functions reflected from java.lang.Math
+#
+# # Trigonometry
+# Sin
+# Sinh
+# Asin
+# Cos
+# Cosh
+# Acos
+# Tan
+# Tanh
+# Atan
+# Atan2
+# Hypot
+#
+# # Powers
+# Pow
+# Sqrt
+# Cbrt
+# Exp
+# Expm1
+# Log
+# Log10
+# Log1p
+#
+# # Rounding
+# Abs
+# Ceil
+# Floor
+# Rint
+# Ieeeremainder
+# Ulp
+#
+# Miscellaneous Mathematic
+# Min
+# Max
+# Signum
+# Random
+# ToDegrees
+# ToDadians

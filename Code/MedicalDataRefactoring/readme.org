@@ -1,0 +1,53 @@
+#+TITLE: Medical Data Refactoring Assignment
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+The main goal of this assignment is to focus your attention on
+refactoring safely and carefully.  The system you have been given is
+real code from a medical research project.  The system is ugly, but it
+has been tested and works correctly.  Because this testing was done
+manually and can't be easily repeated carefully, we need to improve
+the design with absolute minimum risk.
+
+Read the code and understand how it works, write automated tests for
+it, then completely refactor it.  Keep the existing functionality
+*exactly* the same.  
+
+You can see the code here: [file:../MedicalDataRefactoring] but it
+should be populated to your svn repos.
+
+* Grading
+
+** Keep Existing Functionality Exactly the Same
+
+Because the goal of this refactoring is safety, I will be enforcing a
+high bar on keeping the existing functionality unchanged.  I've
+reserved 50% of the test data from the sample data I have provided
+you.  I will run your code against this unknown sample data at grading
+time, and it must perform identically to the original code.  If there
+is any variation at all, you will lose 50% of the credit for this
+assignment.
+
+Bear in mind that this a real medical system in use.  So a error in
+refactoring would affect patient treatment - very bad.
+
+** Automated Tests (50% of grade)
+
+You must add automated tests to the system.  They should be invoked from JUnit.
+
+** Improved Design (50% of grade)
+
+Your redesign should:
+
+1. Remove all duplication
+2. Make CohortEntity stop being a Data Class
+3. Fix any other problems or smells
+4. Add any new classes you think would improve the design

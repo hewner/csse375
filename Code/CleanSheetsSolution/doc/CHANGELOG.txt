@@ -1,0 +1,71 @@
+VERSION 1.4b (2005-12-06)
+=========================
+Added features
+- Adding and removing spreadsheets in a workbook
+- Cell style:
+  o Border - Fixed width, color
+  o Format - Numbers and dates
+- Tab-separated strings can be imported from the clipboard
+- Functions: DO AND OR NOT AVERAGE FACT
+- Selection and auto-resizing of rows
+
+Improvements
+- Loading of language elements simplified
+- Spreadsheet table performance improved further
+- Dialogs use Look and Feel decoration
+- Division by 0 handled as error
+
+VERSION 1.3b (2005-06-04)
+=========================
+Added features
+- Cell style:
+  o Font - Family, style and size
+  o Alignment - Horizontal and vertical
+  o Color - Foreground and background
+- Spreadsheet style:
+  o Column and row dimensions
+- Copy, move and delete operations are propagated to extensions
+- Tab-separated strings can be exported to the clipboard
+
+Bugs fixed
+- Copying does not use serialization
+- Spreadsheet table performance was improved
+- Spreadsheet table updated when extension data changes
+
+VERSION 1.2b (2005-05-22)
+=========================
+Added features
+- Menus for controlling UI components of extensions
+- Disallowed circular references
+
+Bugs fixed
+- Row header rendering is restricted to clip bounds
+- Absolute references are copied properly
+- Tool tips are shown properly
+- Exiting the application works the same when closing the window
+
+VERSION 1.1a (2005-05-10)
+=========================
+Added features
+- Dynamic loading of extensions at run-time
+- New user interface actions
+
+Bugs fixed
+- User interface actions
+- Several bugs related to serialization and other I/O-operations
+- Improved handling of properties
+
+VERSION 1.0a (2005-05-03)
+=========================
+The initial release of CleanSheets.
+
+Major features:
+- Excel-style formula language
+  o Cell and range references
+  o 2 unary operators: - %
+  o 12 binary operators: + - * / ^ == <> < <= > >= & :
+  o 35 functions: SUM IF TRUE FALSE and all double methods from java.lang.Math
+- Formula compiler, generated with ANTLR
+- I/O support for native serialized format and for comma-separated files
+- JFC/Swing GUI with a customized JTable component
+- Extension mechanism

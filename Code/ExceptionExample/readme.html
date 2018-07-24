@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>CSSE 375 Exception Example: Backup System</title>
+<!-- 2015-05-18 Mon 08:43 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CSSE 375 Exception Example: Backup System</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. The Problem</a></li>
+<li><a href="#sec-3">3. Getting started</a></li>
+<li><a href="#sec-4">4. Clean Up The Code in BackupSystem</a></li>
+<li><a href="#sec-5">5. Add a new feature</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The code for this assignment should be in your SVN.
+</p>
+
+<p>
+So this code is meant to represent a very simple file backup system.
+The idea is that we want to backup lists of files, but these files may
+need to be backed up to different locations.  Everything is meant to
+be controlled by so-called file manifests.  These are files that
+contain what needs to be backed up where.  They look like this:
+</p>
+
+<pre class="example">
+FILE coolFile.txt /home/buffalo/sourceDir /backupDir
+FILE otherFile.txt /home/buffalo/otherDir /secretEncryptedBackupDir
+MANIFEST secretProject.txt
+</pre>
+
+<p>
+The first two lines just configure two files (filename sourceDir backupDir).
+</p>
+
+<p>
+The 3rd line provides a link to another manifest.  One manifest may
+include several other sub-manifests that all need to get backed up.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> The Problem</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Like most things involving files, there are a lot of possible error
+cases in this system.  We'll think about 3:
+</p>
+
+<ul class="org-ul">
+<li>The file needs to exist
+</li>
+<li>The backup directory needs to exist
+</li>
+<li>The file should NOT already exist in the backup directory
+</li>
+</ul>
+
+<p>
+The code already handles these cases, but unfortunately it does not
+use exceptions.  This makes the code filled with random print messages
+and weird error handling (that can easily be forgotten):
+</p>
+
+<p>
+Here's some examples in BackupSystem.java
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #6434A3;">boolean</span> <span style="color: #006699;">parseManifest</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">filename</span>) {
+        <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">contents</span> = fs.getFileContents(filename);
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">lines</span> = contents.split(<span style="color: #008000;">"\n"</span>);
+        <span style="color: #0000FF;">for</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">line</span> : lines) {
+                <span style="color: #0000FF;">if</span>(line.startsWith(<span style="color: #008000;">"FILE"</span>)) {
+                        <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>parseFileLine(line)) {
+                                System.err.println(<span style="color: #008000;">"error reading file line!"</span>);
+                                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">false</span>;
+
+                        }
+                } <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span>(line.startsWith(<span style="color: #008000;">"MANIFEST"</span>)) {
+                        <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>parseManifestLine(line)) {
+                                System.err.println(<span style="color: #008000;">"error reading manifest line"</span>);
+                                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">false</span>;
+                        }
+                } <span style="color: #0000FF;">else</span> {
+                        System.err.println(<span style="color: #008000;">"Bad unknown line!"</span>);
+                }
+        }
+        <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">true</span>;
+}
+
+<span style="color: #0000FF;">private</span> <span style="color: #6434A3;">boolean</span> <span style="color: #006699;">parseFileLine</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">line</span>) {
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">parts</span> = line.split(<span style="color: #008000;">" "</span>);
+        <span style="color: #6434A3;">BackupLink</span> <span style="color: #BA36A5;">newLink</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BackupLink</span>(<span style="color: #0000FF;">this</span>.fs);
+        <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>newLink.setSource(parts[1], parts[2])) {
+                System.err.println(<span style="color: #008000;">"Error setting source!"</span>);
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">false</span>;
+        }
+        <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>newLink.setBackupDestination(parts[3])) {
+                System.err.println(<span style="color: #008000;">"Error setting backup destination!"</span>);
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">false</span>;
+        }
+        backups.add(newLink);
+        <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">true</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Getting started</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Start by looking at [<a href="src/backups/BackupLink.java">src/backups/BackupLink.java</a>] - this is the code that actually
+checks for the 3 error conditions.
+</p>
+
+<p>
+Modify this code so that it throws exceptions rather than returns
+false in bad situations.  Define your own exception type that the functions throw.
+</p>
+
+<p>
+You'll also need to modify the unit tests in TestBackupLink (but I've
+provided some example code there).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Clean Up The Code in BackupSystem</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Now that BackupLink uses exceptions, it should be easy to clean up the
+functions above.  
+</p>
+
+<p>
+Keep parseManifest returning a boolean (not throwing
+an exception) &#x2013; we'll keep the external interface the same.
+parseManifest should catch all exceptions, print what happened to
+System.err, and then return false (and not attempt to continue the
+parse).
+</p>
+
+<p>
+This means that we should probably change parseManifestLine so that it
+calls a utility function rather than parseManifest directly.
+Otherwise you may have some troubles because some of the recursive
+calls to parseManifest will eat exceptions otherwise.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Add a new feature</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+One tricky thing that can happen in this system is an erroneous FILE
+line aborts the whole processing, but figuring out what manifest the
+problematic line is from can be difficult.  Modify the code so that
+the exception thrown somehow includes the manifest file it was a part
+of.  To make this interesting, do it without modifying the signatures
+of the functions of BackupLink - somehow encode it in the global
+state.
+</p>
+
+<p>
+To make things even more interesting, ensure that this global state is
+always correct, even when an exception is thrown.  This means you'll
+have to use finally blocks to reset the state as the exception moves up
+the call stack.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-05-18 Mon 08:43</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

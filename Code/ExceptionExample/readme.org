@@ -1,0 +1,124 @@
+#+TITLE: CSSE 375 Exception Example: Backup System
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+The code for this assignment should be in your SVN.
+
+So this code is meant to represent a very simple file backup system.
+The idea is that we want to backup lists of files, but these files may
+need to be backed up to different locations.  Everything is meant to
+be controlled by so-called file manifests.  These are files that
+contain what needs to be backed up where.  They look like this:
+
+#+BEGIN_EXAMPLE
+FILE coolFile.txt /home/buffalo/sourceDir /backupDir
+FILE otherFile.txt /home/buffalo/otherDir /secretEncryptedBackupDir
+MANIFEST secretProject.txt
+#+END_EXAMPLE
+
+The first two lines just configure two files (filename sourceDir backupDir).
+
+The 3rd line provides a link to another manifest.  One manifest may
+include several other sub-manifests that all need to get backed up.
+
+* The Problem
+
+Like most things involving files, there are a lot of possible error
+cases in this system.  We'll think about 3:
+
++ The file needs to exist
++ The backup directory needs to exist
++ The file should NOT already exist in the backup directory
+
+The code already handles these cases, but unfortunately it does not
+use exceptions.  This makes the code filled with random print messages
+and weird error handling (that can easily be forgotten):
+
+Here's some examples in BackupSystem.java
+#+BEGIN_SRC java
+public boolean parseManifest(String filename) {
+	String contents = fs.getFileContents(filename);
+	String[] lines = contents.split("\n");
+	for(String line : lines) {
+		if(line.startsWith("FILE")) {
+			if(!parseFileLine(line)) {
+				System.err.println("error reading file line!");
+				return false;
+				
+			}
+		} else if(line.startsWith("MANIFEST")) {
+			if(!parseManifestLine(line)) {
+				System.err.println("error reading manifest line");
+				return false;
+			}
+		} else {
+			System.err.println("Bad unknown line!");
+		}
+	}
+	return true;
+}
+
+private boolean parseFileLine(String line) {
+	String[] parts = line.split(" ");
+	BackupLink newLink = new BackupLink(this.fs);
+	if(!newLink.setSource(parts[1], parts[2])) {
+		System.err.println("Error setting source!");
+		return false;
+	}
+	if(!newLink.setBackupDestination(parts[3])) {
+		System.err.println("Error setting backup destination!");
+		return false;
+	}
+	backups.add(newLink);
+	return true;
+}
+#+END_SRC
+
+* Getting started
+
+Start by looking at [file:src/backups/BackupLink.java] - this is the code that actually
+checks for the 3 error conditions.
+
+Modify this code so that it throws exceptions rather than returns
+false in bad situations.  Define your own exception type that the functions throw.
+
+You'll also need to modify the unit tests in TestBackupLink (but I've
+provided some example code there).
+
+* Clean Up The Code in BackupSystem
+
+Now that BackupLink uses exceptions, it should be easy to clean up the
+functions above.  
+
+Keep parseManifest returning a boolean (not throwing
+an exception) -- we'll keep the external interface the same.
+parseManifest should catch all exceptions, print what happened to
+System.err, and then return false (and not attempt to continue the
+parse).
+
+This means that we should probably change parseManifestLine so that it
+calls a utility function rather than parseManifest directly.
+Otherwise you may have some troubles because some of the recursive
+calls to parseManifest will eat exceptions otherwise.
+
+* Add a new feature
+
+One tricky thing that can happen in this system is an erroneous FILE
+line aborts the whole processing, but figuring out what manifest the
+problematic line is from can be difficult.  Modify the code so that
+the exception thrown somehow includes the manifest file it was a part
+of.  To make this interesting, do it without modifying the signatures
+of the functions of BackupLink - somehow encode it in the global
+state.
+
+To make things even more interesting, ensure that this global state is
+always correct, even when an exception is thrown.  This means you'll
+have to use finally blocks to reset the state as the exception moves up
+the call stack.

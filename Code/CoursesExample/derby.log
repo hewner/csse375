@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Mon Mar 25 15:35:17 EDT 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-013d-a30c-2d22-000006bb4e20 
+on database directory C:\Users\hewner\Desktop\RefactoringCoursesExample\courses  with class loader sun.misc.Launcher$AppClassLoader@3aec32de 
+Loaded from file:/C:/Users/hewner/Desktop/RefactoringCoursesExample/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_13-b20
+user.dir=C:\Users\hewner\Desktop\RefactoringCoursesExample
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

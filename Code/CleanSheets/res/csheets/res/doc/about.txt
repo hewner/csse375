@@ -1,0 +1,7 @@
+CleanSheets
+version 1.4b
+
+© 2005 Einar Pehrson
+
+Website: http://csheets.sourceforge.net
+E-mail: cs@pehrson.nu

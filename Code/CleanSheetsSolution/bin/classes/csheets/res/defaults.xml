@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="mainwindow.width">700</entry>
+<entry key="mainwindow.height">700</entry>
+
+<entry key="filetype0.extension">cls</entry>
+<entry key="filetype0.description">CleanSheets workbook (*.cls)</entry>
+<entry key="filetype1.extension">csv</entry>
+<entry key="filetype1.description">Comma-separated file (*.csv)</entry>
+
+<entry key="dependencies.ui.sidebar">true</entry>
+<entry key="style.ui.toolbar">true</entry>
+</properties>

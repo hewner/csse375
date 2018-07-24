@@ -1,0 +1,20 @@
+// $ANTLR 2.7.5 (20050128): ../src/csheets/ext/assertion/AssertionParser.g -> AssertionParserTokenTypes.txt$
+AssertionParser    // output token vocab name
+EXCEPT=4
+COMMA("','")=5
+OR=6
+LBRACK("'['")=7
+RBRACK("']'")=8
+TO=9
+NUMBER("a numeric constant")=10
+GT("'>'")=11
+LT("'<'")=12
+GTEQ("'>='")=13
+LTEQ("'<='")=14
+INTEGER=15
+EOL("end of line")=16
+WS("whitespace")=17
+DIGIT=18
+PLUS("'+'")=19
+MINUS("'-'")=20
+EXPONENT=21

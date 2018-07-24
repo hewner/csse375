@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for ANother Tool for Language Recognition -->
+<jnlp
+	spec="1.5+"
+	codebase="http://csheets.sourceforge.net"
+	href="jws/ANTLR.jnlp">
+	<information>
+		<title>ANother Tool for Language Recognition</title>
+		<vendor>Terence Parr</vendor>
+		<homepage href="http://www.antlr.org/"/>
+		<offline-allowed/>
+	</information>
+	<resources>
+		<jar href="lib/antlr.jar"/>
+	</resources>
+	<component-desc/>
+</jnlp> 

@@ -1,0 +1,11 @@
+Angry IP Scanner
+
+* Good final maybe
+* use feathers style tests for the pinging
+* introduce a composite pattern into the outputters, or maybe some sort of predicate system
+* Got it building on home computer - took some doing but not too much
+
+Argo UML
+
+Got it building on home computer
+Quite complicated - couldn't figure out how it determines what features are available for what kinds of things.  Maybe a good in class demo.

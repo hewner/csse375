@@ -1,0 +1,95 @@
+#+TITLE: CSSE 375 Argo UML Assignment
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+So the goal of this assignment is to get you used to techniques for dealing with large codebases.  So what we will be doing is taking a large codebase (the ArgoUML Java-based UML editor) and adding a small feature to it.
+
+* Building ArgoUML
+
+Building any large codebase can be very tricky.  There are instructions on the ArgoUML website which I eventually managed to get to work, but it's more than I want to walk you through here.
+
+Instead, download the ArgoUML zipfile from Moodle and unzip it somewhere.
+
+This is a complete eclipse workspace, which is how ArgoUML is designed to be built.  If you point your eclipse at this workspace, you should be able to build and run ArgoUML in both regular and debug mode.
+
+Make sure this works early - I am willing to help you debug build problems but they can be hard to fix.
+
+* The Feature We are Adding
+
+So if you look in the Arrange Menu of ArgoUML you will see an item called "Layout".  This will take your UML class diagram and move the classes and other stuff around to approximate what ArgoUML feels is a visually pleasing layout.
+
+However, if you switch to a Use-Case diagram (that's the red icon with the picture of a little stick-man in it), you'll notice that the "Layout" feature is grayed out.  That's because in ArgoUML the Layout function is diagram specific and no one has implemented a layout algorithm for the use case diagram.
+
+Your goal will be to add this feature.
+
+* Part 1: Figuring Out How to Add Your Feature
+
+This part is worth 60% of your grade.
+
+The first step is to figure out how to insert a new layout function for the Use-Case diagram.
+
+This part is considered complete if:
+
+1.  In a use-case diagram, the Layout function is not grayed out
+2.  If you select the Layout function, it will move elements of a
+    use-case diagram around.  Not necessarily in a pleasing way - you
+    could move them all to the point 100 100 if you like.
+
+But figuring out how to actually insert new code into ArgoUML is
+difficult.  Don't try to understand the whole codebase - instead use
+search tools to try and hone in on potential areas to check.  I also
+might be giving a hint or two in class.  Plan to spend some time just
+digging through the code chasing leads.
+
+** HINT - only if you *REALLY* get stuck
+
+Try searching the workspace for the name of the enclosing menu "Arrange"
+
+* Part 2: Force-Based Layout
+
+This part is worth 40% of your grade.
+
+** What is force-based layout?
+
+The algorithm we will use for use case diagrams will be very simple.  We won't consider anything specific to use-cases in particular.  Instead, we'll use a very simple heuristic.
+
+1.  It's best if things aren't sitting too close to each other
+2.  But if two things are connected with a line, it's best if they are
+    not too far from each other because the long line will look ugly.
+
+This suggests a very simple physics-based algorithm.
+
+1.  Nodes in the diagram will repel each other.  This will be particularly strong when the nodes are very close, and very weak when nodes are very far away from each other.  That way the diagram just won't really giant as nodes keep trying to get farther and father away.  Usually this repulsion will be superlinear (e.g. drops off greater than linearly).
+
+2.  Nodes that are connected to each other by lines will be attracted to each other (i.e. as if they were connected by a spring).  This attraction is usually varies linearly with distance (twice as strong at twice as far away).  So nodes have a sort of "ideal distance" they'll approach where the force of their attraction is exactly counterbalanced by the usual repulsion.
+
+3.  To compute the layout, we'll compute the forces that each node exerts on each other node.  Then we'll move each node a tiny bit in the direction of the force, then we'll recompute again.  We can loop a fixed number of times or just stop when the forces seem really weak.
+
+That's it.  You can also find more detailed descriptions on the internet:
+
+http://en.wikipedia.org/wiki/Force-directed_graph_drawing
+http://blog.ivank.net/force-based-graph-drawing-in-as3.html
+
+** What you need to do
+
+Finding a really good layout system can take a lot of tweaking.  This is not an algorithms course so you don't have to go crazy.  Here's what I require:
+
+1.  When your layout algorithm runs, things that are too close together move to a reasonable distance apart
+2.  Things that are connected by lines move to a good "ideal length", even with complicated interconnections between sets of nodes and lines.
+3.  Parts of the graph that are not connected (remember that not everything is connected in a use case diagram) don't fly apart (they can move away...just keep it reasonable)
+
+If your code does this you'll get full credit.
+
+* How to submit your code
+
+ArgoUML is 200MB uncompressed - so I don't want you committing it to SVN and overloading our poor server.
+
+1.  You will submit all the files you modified and added (and only those) via Moodle.
+2.  You will demo your working code in class

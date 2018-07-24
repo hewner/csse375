@@ -1,0 +1,4186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>CSSE 375 Course Notes</title>
+<!-- 2015-05-20 Wed 12:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+<script type="text/javascript" src="http://orgmode.org/org-info.js">
+/**
+ *
+ * @source: http://orgmode.org/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/org-info.js.
+ *
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "2");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">CSSE 375 Course Notes</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Week 1 : Getting things started</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Day 1: Introduction</a></li>
+<li><a href="#sec-1-2">1.2. Day 2: Fowler Video Store Example&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></a></li>
+<li><a href="#sec-1-3">1.3. Project meeting</a></li>
+<li><a href="#sec-1-4">1.4. Day 3: What is a Refactoring?</a></li>
+<li><a href="#sec-1-5">1.5. CalendarParse DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-13 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+<li><a href="#sec-1-6">1.6. Read Chapter 3 of Refactoring DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-16 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Week 2</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Day 1: Bad Smells 1 - Comments, Feature Envy, Data Class</a></li>
+<li><a href="#sec-2-2">2.2. Day 2: Bad Smells 2 - Change Preventers</a></li>
+<li><a href="#sec-2-3">2.3. Project meeting</a></li>
+<li><a href="#sec-2-4">2.4. Day 3: Bad Smells 3</a></li>
+<li><a href="#sec-2-5">2.5. Bad Smells Written Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-20 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+<li><a href="#sec-2-6">2.6. Milestone 1 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-18 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+<li><a href="#sec-2-7">2.7. Part of Chapter 7 of Refactoring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Week 3</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Day 1: Bad Smells 4</a></li>
+<li><a href="#sec-3-2">3.2. Day 2: In-class refactoring 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></a></li>
+<li><a href="#sec-3-3">3.3. Project meeting</a></li>
+<li><a href="#sec-3-4">3.4. Day 3: Bad Smells 5 - Speculative generality and others</a></li>
+<li><a href="#sec-3-5">3.5. CalendarParse Part 2 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-27 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Week 4</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Day 1: Smells Exam</a></li>
+<li><a href="#sec-4-2">4.2. Day 2: In-class refactoring 2</a></li>
+<li><a href="#sec-4-3">4.3. Project meeting</a></li>
+<li><a href="#sec-4-4">4.4. Day 3: 100 Ways to improve your programs with refactoring</a></li>
+<li><a href="#sec-4-5">4.5. Milestone 2 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-03 Fri&gt;</span></span></a></li>
+<li><a href="#sec-4-6">4.6. Medical Data Refactoring DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-05 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Spring Break</a></li>
+<li><a href="#sec-6">6. Week 5: First largescale coding assignment&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a>
+<ul>
+<li><a href="#sec-6-1">6.1. Project meeting/Milestone Demo</a></li>
+<li><a href="#sec-6-2">6.2. Day 1 &amp; 2: ArgoUML Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-19 Sun&gt;</span></span></a></li>
+<li><a href="#sec-6-3">6.3. Feathers Ch. 9&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></a></li>
+<li><a href="#sec-6-4">6.4. Day 3: Working With Legacy Code</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Week 6</a>
+<ul>
+<li><a href="#sec-7-1">7.1. Day 1: Feathers Ch. 9 - Part 1</a></li>
+<li><a href="#sec-7-2">7.2. Day 2: Feathers Ch. 9 - Part 2</a></li>
+<li><a href="#sec-7-3">7.3. Project meeting</a></li>
+<li><a href="#sec-7-4">7.4. Day 3: More Feathers Dependency Breaking Techniques</a></li>
+<li><a href="#sec-7-5">7.5. BORG Email Feathers Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-29 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Week 7</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Day 1: Good software writing 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></a></li>
+<li><a href="#sec-8-2">8.2. Project Work Day</a></li>
+<li><a href="#sec-8-3">8.3. Day 2: Good software writing 2</a></li>
+<li><a href="#sec-8-4">8.4. Day 3: Deployment &amp; Configuration Management 1</a></li>
+<li><a href="#sec-8-5">8.5. Milestone 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Week 8: Deployment &amp; Configuration Management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></a>
+<ul>
+<li><a href="#sec-9-1">9.1. Day 1</a></li>
+<li><a href="#sec-9-2">9.2. Day 4</a></li>
+<li><a href="#sec-9-3">9.3. Docker Example: Getting Postfix Configured</a></li>
+<li><a href="#sec-9-4">9.4. Docker Assignment DUE IN CLASS <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-05-08 Fri&gt;</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Week 9</a>
+<ul>
+<li><a href="#sec-10-1">10.1. Day 1: Final Project Demo</a></li>
+<li><a href="#sec-10-2">10.2. Day 2: Software Configuration Management</a></li>
+<li><a href="#sec-10-3">10.3. Day 3: Exceptions</a></li>
+<li><a href="#sec-10-4">10.4. Day 4: Exception Activity</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Week 10</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Day 1: One more large-scale coding activity</a></li>
+<li><a href="#sec-11-2">11.2. Day 2: Continuing with CleanSheets</a></li>
+<li><a href="#sec-11-3">11.3. Day 3: The final summary</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">12. Final Exam DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-05-26 Tue&gt;</span></span></a></li>
+<li><a href="#sec-13">13. Stuff we didn't get to</a>
+<ul>
+<li><a href="#sec-13-1">13.1. Day 1: The final</a></li>
+<li><a href="#sec-13-2">13.2. Day 2: Parallel Class hierarchies</a></li>
+<li><a href="#sec-13-3">13.3. Day 3: Large scale refactoring (last chapter in refactoring book)</a></li>
+<li><a href="#sec-13-4">13.4. Day 4: ???</a></li>
+<li><a href="#sec-13-5">13.5. Day 2: Feathers Refactoring</a></li>
+<li><a href="#sec-13-6">13.6. Day 3: Effects Diagram</a></li>
+<li><a href="#sec-13-7">13.7. Day 1 &amp; 2: One more large scale coding activity in class</a></li>
+<li><a href="#sec-13-8">13.8. Day 3: Exceptions Activity</a></li>
+<li><a href="#sec-13-9">13.9. Day 4: Exceptions 2</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Week 1 : Getting things started</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Begins <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-09 Mon&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Day 1: Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><ol class="org-ol"><li><a id="sec-1-1-1" name="sec-1-1-1"></a>Essential junior project logistics<br  /><ol class="org-ol"><li><a id="sec-1-1-1-1" name="sec-1-1-1-1"></a>The registrar screwup<br  /></li>
+<li><a id="sec-1-1-1-2" name="sec-1-1-1-2"></a>Requirements<br  /><ol class="org-ol"><li><a id="sec-1-1-1-2-1" name="sec-1-1-1-2-1"></a>You must have a weekly smaller team meeting time<br  /></li>
+<li><a id="sec-1-1-1-2-2" name="sec-1-1-1-2-2"></a>List of features/stories for Iteration 10 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-11 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span><br  /><div class="outline-text-6" id="text-1-1-1-2-2">
+<ul class="org-ul">
+<li>The goal is mostly to get new folks integrated on the team
+</li>
+<li>Everyone must code a feature, but it can be small
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-1-1-1-3" name="sec-1-1-1-3"></a>Team 1<br  /><ol class="org-ol"><li><a id="sec-1-1-1-3-1" name="sec-1-1-1-3-1"></a>Team 1 assignments<br  /><div class="outline-text-6" id="text-1-1-1-3-1">
+<ul class="org-ul">
+<li>ANDRIOD daveyle
+</li>
+<li>ANDRIOD johnsoaa
+</li>
+<li>ANDRIOD millerna
+</li>
+<li>ANDRIOD rockwotj
+</li>
+<li>ANDRIOD willisaj
+</li>
+<li>PLATFORM cartersm
+</li>
+<li>PLATFORM jenkinjk
+</li>
+<li>PLATFORM roccoma
+</li>
+<li>QA hullzr
+</li>
+<li>QA maderwc
+</li>
+<li>QA watersdr
+</li>
+<li>QA haloskzd
+</li>
+<li>QA liuj1
+</li>
+<li>WEB lashomjt
+</li>
+<li>WEB royappmj
+</li>
+<li>WEB cheungnj 
+</li>
+<li>WEB hortoncb 
+</li>
+<li>WEB mayja1 
+</li>
+<li>iOS finkac 
+</li>
+<li>iOS vanakema 
+</li>
+<li>iOS thaimp
+</li>
+<li>iOS davidsac
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-1-1-3-2" name="sec-1-1-1-3-2"></a>Features I suggest for Iteration 1<br  /><div class="outline-text-6" id="text-1-1-1-3-2">
+<ul class="org-ul">
+<li>Adding a "store" where you can buy trophies with points used for
+gamification
+</li>
+<li>Way to see other user's trophies
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-1-1-1-3-3" name="sec-1-1-1-3-3"></a>Other things Mike &amp; I talked about<br  /><div class="outline-text-6" id="text-1-1-1-3-3">
+<ul class="org-ul">
+<li>refactoring to unify api
+</li>
+<li>setup scripts, ci-framework
+</li>
+<li>gamification add prizes trophies
+</li>
+<li>image storage bucket
+</li>
+<li>uptime
+</li>
+<li>deployment
+</li>
+<li>Running on google cloud
+</li>
+
+<li>Agenda by Friday for meeting
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-1-1-1-4" name="sec-1-1-1-4"></a>Team 2<br  /><ol class="org-ol"><li><a id="sec-1-1-1-4-1" name="sec-1-1-1-4-1"></a>Team 2 assignments<br  /><div class="outline-text-6" id="text-1-1-1-4-1">
+<ul class="org-ul">
+<li>ANDRIOD mcnelljd
+</li>
+<li>ANDRIOD tombn
+</li>
+<li>ANDRIOD patterda
+</li>
+<li>BL jarvisoa
+</li>
+<li>BL taylorj7
+</li>
+<li>PLATFORM kassalje
+</li>
+<li>PLATFORM ryanjm
+</li>
+<li>QA chanand
+</li>
+<li>QA kanherp
+</li>
+<li>QA kochelmj
+</li>
+<li>WEB beyerpc
+</li>
+<li>WEB zengc
+</li>
+<li>WEB bollivga
+</li>
+<li>iOS enricotj
+</li>
+<li>iOS jungckjp
+</li>
+<li>iOS butlerjr
+</li>
+<li>iOS kittisj
+</li>
+<li>iOS carroljb
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-1-1-4-2" name="sec-1-1-1-4-2"></a>Features I suggest for Iteration 1<br  /><div class="outline-text-6" id="text-1-1-1-4-2">
+<ul class="org-ul">
+<li>Monitoring around EIT banner data upload
+</li>
+<li>UI improvements &amp; features for public beta
+</li>
+<li>Searching for classes more intelligently than in a giant list
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-1-1-4-3" name="sec-1-1-1-4-3"></a>Proposed Features<br  /><div class="outline-text-6" id="text-1-1-1-4-3">
+<ul class="org-ul">
+<li>Issues with syncing with eit data, deleting. failed courses
+</li>
+<li>ui things
+</li>
+<li>undo
+</li>
+<li>290 490 being distinct
+</li>
+<li>beta testing
+</li>
+</ul>
+</div>
+</li></ol>
+</li></ol>
+</li>
+
+
+<li><a id="sec-1-1-2" name="sec-1-1-2"></a>The essential problem of maintenance<br  /><ol class="org-ol"><li><a id="sec-1-1-2-1" name="sec-1-1-2-1"></a>Software doesn't age or wear out - so why do we need maintenance?<br  /><div class="outline-text-5" id="text-1-1-2-1">
+<p>
+Basically, we need to keep making changes to "finished" code
+</p>
+<ul class="org-ul">
+<li>Because we need new features, big and small
+</li>
+<li>Because the technological context changes
+</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="sec-1-1-2-2" name="sec-1-1-2-2"></a>What is special about "maintenance" as opposed to 'ordinary' coding?<br  /><ol class="org-ol"><li><a id="sec-1-1-2-2-1" name="sec-1-1-2-2-1"></a>Sins of the past<br  /><div class="outline-text-6" id="text-1-1-2-2-1">
+<p>
+“For I, the LORD your God, am a jealous God, punishing the children
+for the sin of the fathers to the third and fourth generation…”
+      &#x2013;Deuteronomy 5:9
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-1-2-2-2" name="sec-1-1-2-2-2"></a>Lost and incomplete information<br  /><div class="outline-text-6" id="text-1-1-2-2-2">
+<p>
+Death or better career opportunities come swiftly to the only member
+of the team who understands critical system XXX.
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-1-2-2-3" name="sec-1-1-2-2-3"></a>Changes degrade the system<br  /><div class="outline-text-6" id="text-1-1-2-2-3">
+<p>
+The original design might have been cleanly designed and easy to
+understand.
+</p>
+
+<p>
+But after several years of changes a lot of the abstractions have
+broken and it is much harder to understand and riskier to change
+</p>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-1-1-2-3" name="sec-1-1-2-3"></a>The focus of this class<br  /><div class="outline-text-5" id="text-1-1-2-3">
+<ul class="org-ul">
+<li>How to sense (smell) when systems have problems
+</li>
+<li>How to review code and constructively point out problem areas
+</li>
+<li>How to incrementally restructure (refactor) code to clean it and
+prepare the way for new changes
+</li>
+<li>How to add tests to systems where tests were not originally included
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-1-1-3" name="sec-1-1-3"></a>Introduce upcoming assignment: CalendarParse<br  /><ol class="org-ol"><li><a id="sec-1-1-3-1" name="sec-1-1-3-1"></a>Small Group Discussion&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span><br  /><div class="outline-text-5" id="text-1-1-3-1">
+<p>
+Read the readme:  [<a href="Code/CalendarParse/readme.html">Code/CalendarParse/readme.html</a>]
+Look at the code: [<a href="Code/CalendarParse/src/CalendarParseMain.java">Code/CalendarParse/src/CalendarParseMain.java</a>]
+</p>
+
+<p>
+<b>What is wrong with this code?</b>
+</p>
+
+<p>
+<b>How would you fix it?</b>
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-1-3-2" name="sec-1-1-3-2"></a>My major issues (no peeking)<br  /><div class="outline-text-5" id="text-1-1-3-2">
+<ol class="org-ol">
+<li>One big function - should be several classes
+</li>
+<li>No good way to automated test
+</li>
+<li>Need for duplication removal/abstraction in the parsing
+</li>
+<li>Potential for combintorial explosion
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-1-1-4" name="sec-1-1-4"></a>Setup needed for Day 2 Activity<br  /><div class="outline-text-4" id="text-1-1-4">
+<p>
+You will need to checkout the FowlerVideo project from SVN.  For that,
+you will need your SVN setup.  Follow the instructions here:
+</p>
+
+<p>
+[<a href="how_to_checkout_repo.html">how_to_checkout_repo.html</a>]
+</p>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Day 2: Fowler Video Store Example&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></h3>
+<div class="outline-text-3" id="text-1-2">
+</div><ol class="org-ol"><li><a id="sec-1-2-1" name="sec-1-2-1"></a>Course logistics<br  /></li>
+<li><a id="sec-1-2-2" name="sec-1-2-2"></a>Video Store Live Coding<br  /><div class="outline-text-4" id="text-1-2-2">
+<p>
+The goal of this is to show how major design changes can occur in a
+series of many tiny, safe steps.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-2-2-1" name="sec-1-2-2-1"></a>This is Chapter 1 of Fowler's Refactoring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span><br  /><div class="outline-text-5" id="text-1-2-2-1">
+<p>
+Not required reading, but if you found my discussion confusing or want
+to see the later steps it is worth checking out.
+</p>
+</div>
+</li></ol>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Project meeting</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><ol class="org-ol"><li><a id="sec-1-3-1" name="sec-1-3-1"></a>Review of Iteration 1 goals<br  /></li>
+<li><a id="sec-1-3-2" name="sec-1-3-2"></a>Discussion of topics for future iterations<br  /><ol class="org-ol"><li><a id="sec-1-3-2-1" name="sec-1-3-2-1"></a>Section 1: Redesign for cross-platform design consistency<br  /></li>
+<li><a id="sec-1-3-2-2" name="sec-1-3-2-2"></a>Section 2: Public beta<br  /></li></ol>
+</li>
+<li><a id="sec-1-3-3" name="sec-1-3-3"></a>Agenda for meeting with customers Monday<br  /></li></ol>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Day 3: What is a Refactoring?</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Grant me the serenity to accept the code I cannot change, the courage
+to refactor the things I can, and the wisdom to know the difference.
+  &#x2013;My Twitter feed this morning
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-4-1" name="sec-1-4-1"></a>Fowler's definition<br  /><div class="outline-text-4" id="text-1-4-1">
+<p>
+<b>Refactoring</b> (noun) a change made to the internal structure of
+ software to make it easier to understand and cheaper to modify without
+ changing its observable behavior.
+</p>
+
+<p>
+<b>Refactor</b> (verb) to restructure software by applying a series of
+ refactorings without changing its observable behavior.
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-4-2" name="sec-1-4-2"></a>Refactoring improves the design of code<br  /><div class="outline-text-4" id="text-1-4-2">
+<p>
+When you know the design you want, it can safely get you there
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-4-3" name="sec-1-4-3"></a>Refactoring makes code easier to understand<br  /><div class="outline-text-4" id="text-1-4-3">
+<blockquote>
+<p>
+Early on I do [small refactorings that test my understanding].  As the
+code gets clearer, I find I can see things about the design I could
+not see before&#x2026;Ralph Johnson describes these early refactorings as
+wiping the dirt off a window so you can see beyond.
+</p>
+</blockquote>
+
+<p>
+:INSTRUCTOR:
+Discuss the idea of refactorings to clarify design.
+</p>
+
+<p>
+Make the point that renaming, extracting methods, etc. increases your
+engagement with the code.  And once refactoring, larger design changes
+can be revealed.
+:END:
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-4-4" name="sec-1-4-4"></a>Refactoring makes you program faster<br  /><div class="outline-text-4" id="text-1-4-4">
+<p>
+This is the final goal
+</p>
+
+<ul class="org-ul">
+<li>Better code = better speed
+</li>
+<li>Easy to forget when you get coder Stockholm syndrome
+</li>
+<li>Applies to refactorings that remove complexity as well
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-4-5" name="sec-1-4-5"></a>Things that make refactoring difficult<br  /><div class="outline-text-4" id="text-1-4-5">
+<ul class="org-ul">
+<li>No tests (maybe you should write some?)
+</li>
+<li>Public interfaces
+</li>
+<li>Code ownership
+</li>
+<li>Database object mapping
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-4-6" name="sec-1-4-6"></a>Refactoring and performance<br  /><div class="outline-text-4" id="text-1-4-6">
+<p>
+In short, you are usually willing to sacrifice minor performance loss
+for gains in clarity
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-4-7" name="sec-1-4-7"></a>Upfront design verses refactoring<br  /><div class="outline-text-4" id="text-1-4-7">
+<p>
+Extreme programming tenant: simplest thing that could possibly work
+</p>
+
+<p>
+Pros of Designing In Advance
+</p>
+<ul class="org-ul">
+<li>Your
+</li>
+<li>Cool
+</li>
+<li>Ideas
+</li>
+<li>Here
+</li>
+</ul>
+
+<p>
+Pros of Designing As You Go
+</p>
+<ul class="org-ul">
+<li>Your
+</li>
+<li>Cool
+</li>
+<li>Ideas
+</li>
+<li>Here
+</li>
+</ul>
+
+<p>
+:INSTRUCTOR:
+Look at the code for the CalendarParse assignment.  Contrast high
+design upfront, verses writing it as is and then refactoring
+</p>
+
+<p>
+Ask them to rank themselves on a scale 1 to 5
+:END:
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-1-4-7-1" name="sec-1-4-7-1"></a>My answer (no peeking)<br  /><div class="outline-text-5" id="text-1-4-7-1">
+<p>
+Pros of Designing In Advance
+</p>
+
+<ul class="org-ul">
+<li>Faster (as long as you're right)
+</li>
+<li>Understand the problem more, think harder
+</li>
+<li>Maybe have a fancier design that is more expandable
+</li>
+</ul>
+
+<p>
+Pros of Designing As You Go
+</p>
+
+<ul class="org-ul">
+<li>Get design ideas from the code
+</li>
+<li>Avoid unworkable designs
+</li>
+<li>Keep the code simpler
+</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="sec-1-4-7-2" name="sec-1-4-7-2"></a>The rule of 3s<br  /><div class="outline-text-5" id="text-1-4-7-2">
+<ol class="org-ol">
+<li>First time you do something, do it simply
+</li>
+<li>Second time, you grit your teeth but you deal with it being a
+little ugly
+</li>
+<li>3rd time, you refactor till it's nice
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-1-4-7-3" name="sec-1-4-7-3"></a>Indirection and the cost of design<br  /><div class="outline-text-5" id="text-1-4-7-3">
+<p>
+Lets consider the humble case statement:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">switch</span>(type) {
+        <span style="color: #0000FF;">case</span> REGULAR:   <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">$2.00 for 2 day rental, and $1.50 for each additional day</span>
+                thisAmount += 2.0;
+                <span style="color: #0000FF;">if</span>(rental.getDaysRented() &gt; 2)
+                        thisAmount += (rental.getDaysRented() - 2) * 1.5;
+                <span style="color: #0000FF;">break</span>;
+        <span style="color: #0000FF;">case</span> NEW_RELEASE: 
+                <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">more code</span>
+        <span style="color: #0000FF;">case</span> CHILDRENS:  
+                <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">still more code</span>
+}
+</pre>
+</div>
+
+<p>
+When we replace it with polymorphism it looks something like like
+this:
+</p>
+<pre class="example">
+double cost = rental.getMovieType().computeCost();
+</pre>
+
+<p>
+But the code to do the actual computation is always going to need to
+live somewhere.  Why do we prefer one to another?
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-4-7-4" name="sec-1-4-7-4"></a>My answer (no peeking)<br  /><div class="outline-text-5" id="text-1-4-7-4">
+<p>
+In the polymorphic version we've made explicit an abstraction: MovieType
+</p>
+
+<p>
+This abstraction uses indirection - a simple method call hides a
+multiplicity of possible functions.
+</p>
+
+<p>
+This is a win if:
+</p>
+<ol class="org-ol">
+<li>This abstraction was used in a lot of places, therefore when we
+make it explicit it simplifies a lot of code
+</li>
+<li>As #1, but for the future (i.e. it simplifies code we will write in
+the future)
+</li>
+<li>This abstraction corresponds well to how we think about the
+problem, meaning it's in-line with expectation of other programmers
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-1-4-8" name="sec-1-4-8"></a>This is a discussion of topics in Ch. 2 of Fowler&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span><br  /><div class="outline-text-4" id="text-1-4-8">
+<p>
+Not required reading but you might find it edifying
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> CalendarParse DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-13 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-1-5">
+</div><ol class="org-ol"><li><a id="sec-1-5-1" name="sec-1-5-1"></a>Step 1: Check out the assignment from SVN<br  /><div class="outline-text-4" id="text-1-5-1">
+<p>
+Follow the instructions here: [<a href="how_to_checkout_repo.html">how_to_checkout_repo.html</a>]
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-5-2" name="sec-1-5-2"></a>Step 2: Improve the design of the code<br  /><div class="outline-text-4" id="text-1-5-2">
+<p>
+Details here: [<a href="Code/CalendarParse/readme.html">Code/CalendarParse/readme.html</a>]
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-5-3" name="sec-1-5-3"></a>Grading<br  /><div class="outline-text-4" id="text-1-5-3">
+<p>
+Grading guide here: [<a href="Code/CalendarParse/gradingPart1.html">Code/CalendarParse/gradingPart1.html</a>]
+</p>
+</div>
+</li></ol>
+</div>
+
+
+
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Read Chapter 3 of Refactoring DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-16 Mon&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Especially focus on the ones we'll cover before the written assignment:
+</p>
+
+<p>
+Comments, Feature Envy, Data Class, Divergent Change, Shotgun Surgery,
+Temporary Field, Refused Bequest, Parallel Class Hierarchies,
+Alternative Classes With Different Interfaces
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Week 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Day 1: Bad Smells 1 - Comments, Feature Envy, Data Class</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><ol class="org-ol"><li><a id="sec-2-1-1" name="sec-2-1-1"></a>Why smells?<br  /><div class="outline-text-4" id="text-2-1-1">
+<ol class="org-ol">
+<li>Sort of a visceral feeling
+</li>
+<li>Not proof positive a design problem &#x2013; just a hint that something
+might be amiss
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-2-1-2" name="sec-2-1-2"></a>Smells guide refactoring<br  /><div class="outline-text-4" id="text-2-1-2">
+<ul class="org-ul">
+<li>I often just let smells guide me when I’m working on a system
+</li>
+
+<li>When a system is big and messy, smells let me clean up and clarify
+so that the “big design” can emerge
+</li>
+
+<li>Often I look for a single change that will improve several smells at
+once – maybe move a function into a Data Class and out of a Large
+Class
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-1-3" name="sec-2-1-3"></a>Comments<br  /><div class="outline-text-4" id="text-2-1-3">
+<p>
+Not all comments are bad.  But if I see a method with a lot of
+internal comments - that's usually a bad sign
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-1-3-1" name="sec-2-1-3-1"></a>But I really need a comment here!<br  /><div class="outline-text-5" id="text-2-1-3-1">
+<p>
+Can you refactor the code so that it is obvious?  If so, that is
+preferred
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-1-3-2" name="sec-2-1-3-2"></a>Use function and variable names as documentation<br  /><div class="outline-text-5" id="text-2-1-3-2">
+<pre class="example">
+//updates the current max
+m = val &gt; m ? val : m;
+</pre>
+
+<p>
+verses
+</p>
+
+<pre class="example">
+currentMax = val &gt; currentMax ? val : currentMax;
+</pre>
+</div>
+</li>
+
+<li><a id="sec-2-1-3-3" name="sec-2-1-3-3"></a>Don't use comments when they are not needed<br  /><div class="outline-text-5" id="text-2-1-3-3">
+<pre class="example">
+average = average + 2; //adds two to the average
+</pre>
+
+<p>
+How would you interpret this?
+</p>
+
+<pre class="example">
+average = average + 4; //adds two to the average
+</pre>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-2-1-4" name="sec-2-1-4"></a>Feature Envy<br  /><div class="outline-text-4" id="text-2-1-4">
+<p>
+When one block of code really likes using the methods and fields of a
+different class
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">otherObject.setMode(<span style="color: #D0372D;">otherObject</span>.<span style="color: #D0372D;">CoordinateSystem</span>.POLAR);
+<span style="color: #6434A3;">double</span> <span style="color: #BA36A5;">var1</span> = otherObject.getAngle();
+<span style="color: #6434A3;">double</span> <span style="color: #BA36A5;">var2</span> = otherObject.getDistance();
+otherObject.annotate(<span style="color: #008000;">"magnitude"</span>, Math.abs(var2));
+</pre>
+</div>
+
+<p>
+&#x2026;often can be moved to the "envied" class
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-1-5" name="sec-2-1-5"></a>Data Class<br  /><div class="outline-text-4" id="text-2-1-5">
+<p>
+Classes with nothing but getters and setters
+</p>
+
+<pre class="example">
+public class Movie {
+	
+	public static enum Type { CHILDRENS, REGULAR, NEW_RELEASE};
+	
+	private String title;
+	private Type priceCode;
+	
+	public Movie(String title, Type priceCode) {
+		this.title = title;
+		this.priceCode = priceCode;
+	}
+	
+	public Type getPriceCode() {
+		return this.priceCode;
+	}
+	
+	public void setPriceCode(Type incomingPriceCode) {
+		this.priceCode = incomingPriceCode;
+	}
+	
+	public String getTitle() {
+		return this.title;
+	}
+
+}
+</pre>
+
+<p>
+&#x2026;often can have real functionality added to them
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-1-6" name="sec-2-1-6"></a>CommentsFeatureEnvyDataClass&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span><br  /><div class="outline-text-4" id="text-2-1-6">
+<p>
+It's a package in your svn repos.
+</p>
+
+<p>
+There are 3 packages.  One has a problem with comments, one has a
+problem with feature envy, one has a problem with a data class.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-1-6-1" name="sec-2-1-6-1"></a>Step 1: Which is which?<br  /></li>
+<li><a id="sec-2-1-6-2" name="sec-2-1-6-2"></a>Step 2: Refactor and fix the problems<br  /></li>
+<li><a id="sec-2-1-6-3" name="sec-2-1-6-3"></a>My solution (no peeking)<br  /><div class="outline-text-5" id="text-2-1-6-3">
+<p>
+[<a href="Code/CommentsFeatureEnvyDataClassSolution/src">Code/CommentsFeatureEnvyDataClassSolution/src</a>]
+</p>
+</div>
+</li></ol>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Day 2: Bad Smells 2 - Change Preventers</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><ol class="org-ol"><li><a id="sec-2-2-1" name="sec-2-2-1"></a>Divergent Change<br  /><div class="outline-text-4" id="text-2-2-1">
+<p>
+When 2 different routine changes have to modify the same object for
+different reasons.
+</p>
+
+<p>
+Say for example you've got a GameRender class, which handles rendering
+your cool video game.  As a result, you frequently edit this class as
+you tweak and optimize the way rendering works.
+</p>
+
+<p>
+BUT, imagine that also, the GameRender class contains a hard-coded
+config list of all game sprite images.  So everytime you need to add a
+new sprite, you also add a line to that config value.
+</p>
+
+<p>
+This suggests the class is maybe doing 2 different things and ought to
+be split into two classes (or maybe the config value should be in a
+file&#x2026;.whatever).
+</p>
+
+<p>
+Not a super common one though.
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-2-2" name="sec-2-2-2"></a>Shotgun Surgery&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span><br  /><div class="outline-text-4" id="text-2-2-2">
+<p>
+This one on the other hand is very common.  This is where to make a
+routine change you have to edit multiple places.
+</p>
+
+<p>
+For example, take a look at this code which is designed to let you
+play Roulette where you can bet in various ways (e.g. on Red, Black,
+Odds, Evens, a Range of Numbers, etc.)  
+</p>
+
+<p>
+[<a href="Code/Roulette/Roulette_BadEdition">Code/Roulette/Roulette_BadEdition</a>]
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-2-2-1" name="sec-2-2-2-1"></a>Step 1: Now imagine you want to add a new kind of bet<br  /><div class="outline-text-5" id="text-2-2-2-1">
+<p>
+How many files will you have to edit to make this change?
+Which files and where?
+I see at least 3
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-2-2-2" name="sec-2-2-2-2"></a>Step 2: How could we design this code so that we can change as few files as possible?<br  /><div class="outline-text-5" id="text-2-2-2-2">
+<p>
+Discuss it in small groups and make some UML.
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-2-2-3" name="sec-2-2-2-3"></a>Step 3: Look at some of my solutions<br  /><div class="outline-text-5" id="text-2-2-2-3">
+<p>
+Which do you like best?  Why?
+</p>
+
+<p>
+[<a href="Code/Roulette/">Code/Roulette/</a>]
+</p>
+</div>
+</li></ol>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Project meeting</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><ol class="org-ol"><li><a id="sec-2-3-1" name="sec-2-3-1"></a>Goal: Make plan for next iteration<br  /></li></ol>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Day 3: Bad Smells 3</h3>
+<div class="outline-text-3" id="text-2-4">
+</div><ol class="org-ol"><li><a id="sec-2-4-1" name="sec-2-4-1"></a>Note upcoming homework assignments<br  /></li>
+<li><a id="sec-2-4-2" name="sec-2-4-2"></a>Feather's Duplicated Code Example&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span><br  /><div class="outline-text-4" id="text-2-4-2">
+<p>
+The code should be in your SVN repos, but you can also find it here:
+[<a href="Code/FeathersExample">Code/FeathersExample</a>]
+</p>
+
+<p>
+My final solution is here (but I'd recommend you just follow along in Feathers Ch 21):
+[<a href="Code/FeathersExampleSolution">Code/FeathersExampleSolution</a>]
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-4-2-1" name="sec-2-4-2-1"></a>I do the refactoring of writeBody with live coding<br  /></li>
+<li><a id="sec-2-4-2-2" name="sec-2-4-2-2"></a>Then I let the students do the size refactoring<br  /></li>
+<li><a id="sec-2-4-2-3" name="sec-2-4-2-3"></a>Then I do the final stage with a fieldlist<br  /></li></ol>
+</li>
+
+<li><a id="sec-2-4-3" name="sec-2-4-3"></a>This is Chapter 21 of Working With Legacy Code&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span><br  /><div class="outline-text-4" id="text-2-4-3">
+<p>
+Not required reading, but if you found my discussion confusing or want
+to see the later steps it is worth checking out.
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Bad Smells Written Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-20 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Maybe an analysis of CohortTable
+</p>
+
+<p>
+Look on Moodle for the details.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Milestone 1 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-18 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+The goal of this milestone is mainly to get new teammates up to speed.
+</p>
+
+<p>
+Therefore:
+</p>
+<ul class="org-ul">
+<li>Every team member must code a feature
+</li>
+<li>The features can be small, but should be non-trivial
+</li>
+<li>Document your features in the wiki or Trello, and add appropriate
+links &amp; team assignments to the backlog google doc
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Part of Chapter 7 of Refactoring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+Up to and including "Hide Delegate" but no further
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Week 3</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Day 1: Bad Smells 4</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><ol class="org-ol"><li><a id="sec-3-1-1" name="sec-3-1-1"></a>Unborn Classes<br  /><ol class="org-ol"><li><a id="sec-3-1-1-1" name="sec-3-1-1-1"></a>Primitive Obsession<br  /><div class="outline-text-5" id="text-3-1-1-1">
+<p>
+Imagine that you work on some company's online webstore codebase.
+</p>
+
+<p>
+This company has a unique product id for every product that looks like this: ABC-12345
+</p>
+
+<p>
+Under what circumstances would you want a <b>ProductId</b> class?  Not a
+Product class (maybe there is already several of those) but a
+ProductId class?
+</p>
+
+<ul class="org-ul">
+<li>Your
+</li>
+<li>Cool
+</li>
+<li>Ideas
+</li>
+<li>Here
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-1-1-1-1" name="sec-3-1-1-1-1"></a>My Solution (no peeking!)<br  /><div class="outline-text-6" id="text-3-1-1-1-1">
+<p>
+IN SHORT: I would have one if there was logical functions that could
+go there that don't make obvious sense elsewhere.
+</p>
+
+<p>
+But, more explicitly:
+</p>
+<ul class="org-ul">
+<li>You get type safety, plus your types are explicit
+</li>
+<li>You can ensure validity with constructors
+</li>
+<li>You can potentially move useful functions there, and they are easy
+for folks to find
+</li>
+<li>You maybe can pull functions out of over-busy classes like Product
+</li>
+</ul>
+
+<p>
+Cons:
+</p>
+
+<p>
+More complicated, if it's really just a string
+</p>
+
+<p>
+???:
+Things like storing and unstoring - there are pros and cons
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-3-1-1-2" name="sec-3-1-1-2"></a>Data Clumps<br  /><div class="outline-text-5" id="text-3-1-1-2">
+<pre class="example">
+double getDistance(double x1, double y1, double z1,
+                   double x2, double y2, double z2) {
+</pre>
+
+<p>
+When you have data that is "clumped" into logical groupings.
+</p>
+
+<p>
+Not a problem in a standalone place by itself, but oftentimes these
+clumps are repeated over and over.
+</p>
+
+<p>
+Can simplify code to make a class, also maybe there are some methods
+that can go in that class.
+</p>
+
+<p>
+But even a Data Class is sometimes preferable to a data clump.
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-1-1-3" name="sec-3-1-1-3"></a>Long Parameter List<br  /><ol class="org-ol"><li><a id="sec-3-1-1-3-1" name="sec-3-1-1-3-1"></a>Sometimes parameter lists are long because you have data clumps.<br  /></li>
+
+<li><a id="sec-3-1-1-3-2" name="sec-3-1-1-3-2"></a>Sometimes there's an object that encapsulates what you need<br  /><div class="outline-text-6" id="text-3-1-1-3-2">
+<p>
+And your passing rather than just asking objects.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #6434A3;">boolean</span> <span style="color: #006699;">isProductValid</span>(<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">id</span>,
+                              <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">address</span>,
+                              <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Suppliers</span>&gt; <span style="color: #BA36A5;">suppliers</span>,
+                              <span style="color: #6434A3;">Date</span> <span style="color: #BA36A5;">createdDate</span>,
+                              <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">regionCode</span>) {
+<span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">becomes</span>
+<span style="color: #0000FF;">public</span> <span style="color: #6434A3;">boolean</span> <span style="color: #BA36A5;">isProductValid</span>(<span style="color: #6434A3;">Product</span> <span style="color: #BA36A5;">p</span>) {
+    <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">id</span> = p.getId();
+    <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">address</span> = p.getAddress();
+    <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">etc</span>
+
+<span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">or even</span>
+
+p.isValid();
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-3-1-1-3-3" name="sec-3-1-1-3-3"></a>Math<br  /><div class="outline-text-6" id="text-3-1-1-3-3">
+<p>
+Lots of parameters you're passing around for a calculation, maybe you
+need a Method Object.  This is a somewhat obscure case, so I won't
+talk about it in detail here but check out Fowler's discussion in
+"Replace Method with Method Object" (pg. 135).
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-1-1-3-4" name="sec-3-1-1-3-4"></a>Sometimes there's a unifying abstraction missing<br  /><div class="outline-text-6" id="text-3-1-1-3-4">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #006699;">doGameTick</span>(<span style="color: #6434A3;">Hero</span> <span style="color: #BA36A5;">hero</span>, 
+                  <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Tiles</span>&gt; <span style="color: #BA36A5;">tiles</span>, 
+                  <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Monster</span>&gt; <span style="color: #BA36A5;">monsters</span>,
+                  <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Trap</span>&gt; <span style="color: #BA36A5;">traps</span>,
+                  <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">PowerUp</span>&gt; <span style="color: #BA36A5;">powerups</span>,
+                  <span style="color: #6434A3;">Renderer</span> <span style="color: #BA36A5;">graphics</span>,
+                  <span style="color: #6434A3;">double</span> <span style="color: #BA36A5;">timer</span>,
+                  <span style="color: #6434A3;">long</span> <span style="color: #BA36A5;">score</span>,
+                  <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">LevelModifiers</span>&gt; <span style="color: #BA36A5;">modifiers</span>,
+                  <span style="color: #6434A3;">MusicGenerator</span> <span style="color: #BA36A5;">music</span>,
+                  <span style="color: #6434A3;">KeyboardLayout</span> <span style="color: #BA36A5;">keyboard</span>)
+</pre>
+</div>
+
+
+<p>
+What if we changed it to this?  Would it be better?
+</p>
+
+<pre class="example">
+public void doGameTick()
+</pre>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-1-1-3-4-1" name="sec-3-1-1-3-4-1"></a>My solution<br  /><div class="outline-text-7" id="text-3-1-1-3-4-1">
+<p>
+Neither of these is a good thing, but I think it is more obviously bad
+in the second one.  In that case it's clear that we're using global
+data and touching too much.  But the first one - even if its not
+using global data - is really doing too much too.
+</p>
+
+<p>
+Obviously, everything needs to happen in a game tick.
+</p>
+
+<p>
+But within that we need some underlying abstraction that simplifies
+what's going on.
+</p>
+</div>
+</li></ol>
+</li></ol>
+</li></ol>
+</li>
+
+<li><a id="sec-3-1-2" name="sec-3-1-2"></a>Problematic Classes<br  /><ol class="org-ol"><li><a id="sec-3-1-2-1" name="sec-3-1-2-1"></a>Temporary Field<br  /><div class="outline-text-5" id="text-3-1-2-1">
+
+<div class="figure">
+<p><img src="images/TemporaryVariable.png" alt="TemporaryVariable.png" />
+</p>
+</div>
+
+<p>
+A field that exists only for part of an object's lifetime.
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-1-2-2" name="sec-3-1-2-2"></a>Refused Bequest<br  /><div class="outline-text-5" id="text-3-1-2-2">
+<p>
+When an object does not want everything it inherits from it's parent.
+</p>
+
+<ul class="org-ul">
+<li>Usually fine: object implements several of it's parents abstract
+methods as blank
+</li>
+<li>Slightly bad: object "zeros out" the methods of it's parent
+</li>
+<li>Very bad: methods on the parent do not make sense on the object
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-3-1-2-3" name="sec-3-1-2-3"></a>Classic interview question&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span><br  /><div class="outline-text-5" id="text-3-1-2-3">
+<p>
+Say you want to have a filesystem with files and directories.
+</p>
+<ul class="org-ul">
+<li>Files need methods to get contents
+</li>
+<li>Directories need methods to get lists of files/subdirectories
+</li>
+<li>Both files and directories need methods to get size, delete, etc.
+</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="images/fileAndDirectory.png" alt="fileAndDirectory.png" />
+</p>
+</div>
+
+<p>
+Should File inherit from Directory or should Directory inherit from File?
+</p>
+
+<p>
+Discuss in groups and we will vote.
+</p>
+
+<ol class="org-ol">
+<li>File should be the superclass of directory
+</li>
+<li>Directory should be the superclass of File
+</li>
+<li>Neither of these&#x2026;and if so, what is the alternative?
+</li>
+</ol>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-1-2-3-1" name="sec-3-1-2-3-1"></a>My Solution (no peeking!)<br  /><div class="outline-text-6" id="text-3-1-2-3-1">
+<p>
+#3 because of refused bequest
+</p>
+</div>
+</li></ol>
+</li></ol>
+</li></ol>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Day 2: In-class refactoring 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Let's practice a bit.  You'll want to be in <b>pairs</b> for this activity
+(not triads, not by yourself).
+</p>
+
+<p>
+See the details here: [<a href="Code/CoursesExample/readme.html">Code/CoursesExample/readme.html</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Project meeting</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Just a day for meeting with the teams you need to meet with!
+</p>
+
+<p>
+I'm here to help if you need me - but otherwise I'm going to let you work!
+</p>
+
+<p>
+BUT, please work on the project and not CalendarParse or other
+classwork unless you a finished with your contribution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Day 3: Bad Smells 5 - Speculative generality and others</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><ol class="org-ol"><li><a id="sec-3-4-1" name="sec-3-4-1"></a>Message Chains<br  /><div class="outline-text-4" id="text-3-4-1">
+<p>
+Why is this potentially undesirable?
+</p>
+
+<pre class="example">
+if(model.getUser(userId).getAddress().getCountry() == Country.USA) {
+</pre>
+
+<p>
+Basically:
+</p>
+<ul class="org-ul">
+<li>It means a lot of dependency between the caller and the objects in
+the chain
+</li>
+<li>Oftentimes it means the early objects in the chain don't have the
+right interface
+</li>
+<li>We might even be doing something really sketchy
+</li>
+</ul>
+
+<p>
+Better:
+</p>
+
+<pre class="example">
+if(getUser().isInTheUS()) {
+</pre>
+</div>
+</li>
+
+<li><a id="sec-3-4-2" name="sec-3-4-2"></a>Middle Man<br  /><div class="outline-text-4" id="text-3-4-2">
+<p>
+<img src="images/middleMan.png" alt="middleMan.png" />
+Looking at a system like this, one might be inclined to ask:
+</p>
+<ol class="org-ol">
+<li>Should we add a method getOrder(int orderNumber) to OrderHistory?
+</li>
+<li>Should OrderHistory exist at all in the first place?
+</li>
+</ol>
+
+<p>
+A. Situations where your would keep OrderHistory but add a getOrder
+method, maybe removing several methods from OrderHistory:
+</p>
+
+<ul class="org-ul">
+<li>Your ideas here
+</li>
+</ul>
+
+<p>
+B. Situations where you would remove OrderHistory entirely, adding
+instead a getOrders to User:
+</p>
+
+<ul class="org-ul">
+<li>Your ideas here
+</li>
+</ul>
+
+<p>
+C. Situations where you would keep things as they are:
+</p>
+
+<ul class="org-ul">
+<li>Your ideas here
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-4-2-1" name="sec-3-4-2-1"></a>My solution (no peeking!)<br  /><div class="outline-text-5" id="text-3-4-2-1">
+<p>
+A.  I would do this is OrderHistory has a bunch of methods that act on
+the whole history, but also some methods that are just specific to
+orders.
+</p>
+
+<p>
+B.  If OrderHistory just always delegates to Order 
+</p>
+
+<p>
+Or if all the methods of OrderHistory can be migrated to User because
+User is not too large.
+</p>
+
+<p>
+C.  I wanted to isolate my clients from the existance of the Order object.
+</p>
+
+<p>
+Or if the majority of methods in OrderHistory are not just delegation
+to Order, so I can keep the client interface simpler by just not
+having to talk about Order.
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-3-4-3" name="sec-3-4-3"></a>Parallel Class Hierarchies<br  /><div class="outline-text-4" id="text-3-4-3">
+
+<div class="figure">
+<p><img src="images/ParallelClassHierarchies.png" alt="ParallelClassHierarchies.png" />
+</p>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-4-3-0-1" name="sec-3-4-3-0-1"></a>How can we solve the issue in this image?<br  /></li>
+<li><a id="sec-3-4-3-0-2" name="sec-3-4-3-0-2"></a>My solution (no peeking!)<br  /><div class="outline-text-6" id="text-3-4-3-0-2">
+<p>
+Never an easy thing.  The basic idea is there is some abstraction
+necessary - some sort of way to have either a generic Model Object or
+a Generic view object that will accomplish the task.
+</p>
+
+<p>
+E.g.
+maybe a config language that let's us build a GUI automatically from a Model
+Or a DB layer that let's us make the model objects just be dumb data holders
+</p>
+
+<p>
+Not even always possible but potentially worth thinking about
+</p>
+</div>
+</li>
+
+<li><a id="sec-3-4-3-0-3" name="sec-3-4-3-0-3"></a>Another one<br  /><div class="outline-text-6" id="text-3-4-3-0-3">
+
+<div class="figure">
+<p><img src="images/ParallelClassHierarchies2.png" alt="ParallelClassHierarchies2.png" />
+</p>
+</div>
+</div>
+</li></ol>
+</li>
+
+
+
+<li><a id="sec-3-4-4" name="sec-3-4-4"></a>Speculative Generality<br  /><div class="outline-text-4" id="text-3-4-4">
+<p>
+What makes generality speculative?
+</p>
+
+<p>
+<b>Consider this:</b>
+</p>
+
+<p>
+When you want to make a button invoke a particular action in Java,
+what you generally do is make a new class that implements the
+ActionListener interface, then you register that listener with the
+button.  Like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">JButton</span> <span style="color: #BA36A5;">button</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">JButton</span>(<span style="color: #008000;">"Press me!"</span>);
+<span style="color: #6434A3;">ActionListener</span> <span style="color: #BA36A5;">myListener</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">NewClassIMade</span>();
+button.addActionListener(myListener);
+panel.add(button);
+</pre>
+</div>
+
+<p>
+But you could also implement this using straightforward classes.
+There could be just an button class with a method onClick() than can
+be overriden (or maybe is abstract).  Then the code would be simpler
+and not rely on any fancy patterns.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">JButton</span> <span style="color: #BA36A5;">button</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">NewClassIMade</span>(<span style="color: #008000;">"Press me!"</span>);
+panel.add(button);
+</pre>
+</div>
+
+<p>
+Why is this not speculative generality?
+</p>
+
+<p>
+Answer in groups of 2-3.  HINT: I think this is a slightly tougher
+question than it might initially seem to be.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-4-4-1" name="sec-3-4-4-1"></a>My solution (no peeking!)<br  /><div class="outline-text-5" id="text-3-4-4-1">
+<p>
+I hesitate to call this a solution because it really is an interesting
+issue.
+</p>
+
+<p>
+My answer would probably be that decouples two complex hierarchies -
+the hierarchy of GUI elements and the hierarchy of your individual
+code and whatever event handling it might do.  This allows many good
+things:
+</p>
+
+<ul class="org-ul">
+<li>New GUI objects can be created, and switched out pretty seamlessly
+</li>
+<li>One object can be a listener for many different things, plus you can
+do crazy stuff with your own inheritance hierarchy if you wish
+</li>
+<li>Your class isn't polluted with random methods and fields that are
+specific to the GUI - similarly GUI classes don't need to worry
+about you accidentally overriding some critical method
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-3-4-4-2" name="sec-3-4-4-2"></a>Do you need those cool features in <b>your</b> observer code?<br  /><div class="outline-text-5" id="text-3-4-4-2">
+<p>
+Be honest
+</p>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-3-4-5" name="sec-3-4-5"></a>When should I be general and when should I be simple?<br  /><div class="outline-text-4" id="text-3-4-5">
+<p>
+Kent Beck's rules, which I think are pretty good:
+</p>
+
+<p>
+You want code that (in priority order):
+</p>
+
+<ol class="org-ol">
+<li>passes its tests
+</li>
+<li>minimizes duplication
+</li>
+<li>reveals its intent
+</li>
+<li>has fewer classes/modules/packages…
+</li>
+</ol>
+</div>
+
+<ol class="org-ol"><li><a id="sec-3-4-5-1" name="sec-3-4-5-1"></a>Some further reading for those who are interested<br  /><div class="outline-text-5" id="text-3-4-5-1">
+<p>
+Two very nice articles that argue that this is literally all you need
+for design are here:
+</p>
+
+<p>
+<a href="http://www.jbrains.ca/permalink/the-four-elements-of-simple-design">http://www.jbrains.ca/permalink/the-four-elements-of-simple-design</a>
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-3-4-6" name="sec-3-4-6"></a>Can we apply these rules to our observer conundrum above?<br  /></li>
+<li><a id="sec-3-4-7" name="sec-3-4-7"></a>General takeaway<br  /><div class="outline-text-4" id="text-3-4-7">
+<ol class="org-ol">
+<li>Simplicity is usually best - you only need the fancy solutions on
+pretty hard problems
+</li>
+<li>BUT when you do run into a pretty hard problem, you are really glad
+you have the "big guns".  So learning complex abstractions and
+ideas (e.g. patterns) is very valuable, even if you only use them
+occasionally.
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+
+
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> CalendarParse Part 2 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-03-27 Fri&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+See details here: [<a href="Code/CalendarParse/part2.html">Code/CalendarParse/part2.html</a>]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Week 4</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Day 1: Smells Exam</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+See the study guide here: [<a href="smellsExamPratice/howToStudy.html">smellsExamPratice/howToStudy.html</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Day 2: In-class refactoring 2</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Continue to work on the refactoring from last week.
+</p>
+
+<p>
+No peeking until the right time, but if you like, my solution is here:
+</p>
+
+<p>
+[<a href="Code/CoursesExampleSolution/solutionNotes.html">Code/CoursesExampleSolution/solutionNotes.html</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Project meeting</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Note that we'll be doing a formal presentation to Mike/Matt next Monday.
+</p>
+
+<p>
+We need to make an agenda for that.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Day 3: 100 Ways to improve your programs with refactoring</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+One of things I really like about refactoring is how serious Fowler is
+about improving the clarity of his code.  Recall Kent Beck's design
+rules:
+</p>
+
+<p>
+You want code that (in priority order):
+</p>
+
+<ol class="org-ol">
+<li>passes its tests
+</li>
+<li>minimizes duplication
+</li>
+<li><b>reveals its intent</b>
+</li>
+<li>has fewer classes/modules/packages…
+</li>
+</ol>
+
+<p>
+Oftentimes to do #3 you might have to do some very serious
+refactorings.  But other times, you can greatly improve the design of
+code in many small ways.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-1" name="sec-4-4-1"></a>Decompose Conditional<br  /><div class="outline-text-4" id="text-4-4-1">
+<p>
+When you have a complicated conditional expression&#x2026;
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">if</span>(date.before (SUMMER_START) || date.after(SUMMER_END))
+     charge = quantity * _winterRate + _winterServiceCharge;
+<span style="color: #0000FF;">else</span> charge = quantity * _summerRate;
+</pre>
+</div>
+
+<p>
+BECOMES
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">if</span> (notSummer(date))
+     charge = winterCharge(quantity);
+<span style="color: #0000FF;">else</span> charge = summerCharge (quantity);
+</pre>
+</div>
+
+<p>
+Basic idea here is that you can create 3 new methods:
+</p>
+<ol class="org-ol">
+<li>One for the complex conditional
+</li>
+<li>One for the "if part"
+</li>
+<li>One for the else part
+</li>
+</ol>
+
+<p>
+This can all be accomplished using 3 simple "extract methods" in
+Eclipse.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-1-1" name="sec-4-4-1-1"></a>Why is this better? (no peeking)<br  /><div class="outline-text-5" id="text-4-4-1-1">
+<ol class="org-ol">
+<li>It provides great "documentation" in the method itself
+</li>
+<li>The extracted methods themselves are straightforward (i.e. have a
+logical name, don't require too many parameters)
+</li>
+<li>Hides stuff you don't care about
+</li>
+<li>Provides more extension points for modification and subclassing
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-4-4-2" name="sec-4-4-2"></a>Consolidate Conditional Expression<br  /><div class="outline-text-4" id="text-4-4-2">
+<p>
+When you have a sequence of conditional test with the same result&#x2026;
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">double</span> <span style="color: #006699;">disabilityAmount</span>() {
+    <span style="color: #0000FF;">if</span> (_seniority &lt; 2) <span style="color: #0000FF;">return</span> 0;
+    <span style="color: #0000FF;">if</span> (_monthsDisabled &gt; 12) <span style="color: #0000FF;">return</span> 0;
+    <span style="color: #0000FF;">if</span> (_isPartTime) <span style="color: #0000FF;">return</span> 0;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">compute the disability amount</span>
+</pre>
+</div>
+
+<p>
+BECOMES
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">double</span> <span style="color: #006699;">disabilityAmount</span>() {
+    <span style="color: #0000FF;">if</span> (isNotEligableForDisability()) <span style="color: #0000FF;">return</span> 0;
+    <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">compute the disability amount</span>
+</pre>
+</div>
+
+<p>
+Combine all the situations that produce the same result and extract it
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-2-1" name="sec-4-4-2-1"></a>Why is this better?<br  /><div class="outline-text-5" id="text-4-4-2-1">
+<ol class="org-ol">
+<li>Documents the method
+</li>
+<li>Makes clear the similarly
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-4-4-3" name="sec-4-4-3"></a>Remove control flag<br  /><div class="outline-text-4" id="text-4-4-3">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">boolean</span> <span style="color: #BA36A5;">found</span> = <span style="color: #D0372D;">false</span>;
+<span style="color: #0000FF;">while</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>found) {
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">code</span>
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">code</span>
+   <span style="color: #0000FF;">if</span>(current.equals(target)) {
+       <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">code</span>
+       found = <span style="color: #D0372D;">true</span>; <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">ends the loop</span>
+   }
+}
+</pre>
+</div>
+
+<p>
+BECOMES
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">while</span>(<span style="color: #D0372D;">true</span>) {
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">code</span>
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">code</span>
+   <span style="color: #0000FF;">if</span>(current.equals(target)) {
+       <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">code</span>
+       <span style="color: #0000FF;">break</span>;
+   }
+}
+</pre>
+</div>
+
+<p>
+Replace control flags with break or (especially) return.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-3-1" name="sec-4-4-3-1"></a>Why is this better?<br  /><div class="outline-text-5" id="text-4-4-3-1">
+<ol class="org-ol">
+<li>Removes the need for the variable
+</li>
+<li>Makes the fact that the loop is ending explicit (and prevents potential bugs)
+</li>
+<li>while(true) often adds clarity
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-4-4-4" name="sec-4-4-4"></a>Replace Nested Conditional with Guard Clauses<br  /><div class="outline-text-4" id="text-4-4-4">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">double</span> <span style="color: #006699;">getPayAmount</span>() {
+    <span style="color: #6434A3;">double</span> <span style="color: #BA36A5;">result</span>;
+    <span style="color: #0000FF;">if</span> (_isDead) result = deadAmount();
+    <span style="color: #0000FF;">else</span> {
+        <span style="color: #0000FF;">if</span> (_isSeparated) result = separatedAmount();
+        <span style="color: #0000FF;">else</span> {
+            <span style="color: #0000FF;">if</span> (_isRetired) result = retiredAmount();
+            <span style="color: #0000FF;">else</span> result = normalPayAmount();
+        };
+   }
+   <span style="color: #0000FF;">return</span> result;
+};
+
+<span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">BECOMES</span>
+
+<span style="color: #6434A3;">double</span> <span style="color: #006699;">getPayAmount</span>() {
+    <span style="color: #0000FF;">if</span> (_isDead) <span style="color: #0000FF;">return</span> deadAmount();
+    <span style="color: #0000FF;">if</span> (_isSeparated) <span style="color: #0000FF;">return</span> separatedAmount();
+    <span style="color: #0000FF;">if</span> (_isRetired) <span style="color: #0000FF;">return</span> retiredAmount();
+
+    <span style="color: #0000FF;">return</span> normalPayAmount(); <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">&lt;-- could even INLINE this sucker</span>
+}
+</pre>
+</div>
+
+<p>
+The key to realize here that an if/else clause applies equal
+conceptual weight to both clauses.  BUT oftentimes one of the clauses
+is an obscure edge case - not usually part of execution.
+</p>
+
+<p>
+If something is an edge case &#x2013; hide it's implementation with an
+extracted method and just return out of the whole function.
+</p>
+
+<p>
+This might seem obscure but it's not.  Take a look at the first
+example above.  See how the call to normalPayAmount() seems really
+obscure (an else's else's else)?  What if 99% of your people were
+actually that case.
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-4-5" name="sec-4-4-5"></a>Replace Conditional with Polymorphism<br  /><div class="outline-text-4" id="text-4-4-5">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">double</span> <span style="color: #006699;">getSpeed</span>() {
+    <span style="color: #0000FF;">switch</span> (_type) {
+    <span style="color: #0000FF;">case</span> EUROPEAN:
+        <span style="color: #0000FF;">return</span> getBaseSpeed();
+    <span style="color: #0000FF;">case</span> AFRICAN:
+        <span style="color: #0000FF;">return</span> getBaseSpeed() - getLoadFactor() *_numberOfCoconuts;
+    <span style="color: #0000FF;">case</span> NORWEGIAN_BLUE:
+         <span style="color: #0000FF;">return</span> (_isNailed) ? 0 : getBaseSpeed(_voltage);
+    }
+    <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">RuntimeException</span> (<span style="color: #008000;">"Should be unreachable"</span>);
+}
+</pre>
+</div>
+
+<p>
+BECOMES
+</p>
+
+
+<div class="figure">
+<p><img src="images/replaceConditional.PNG" alt="replaceConditional.PNG" />
+</p>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-5-1" name="sec-4-4-5-1"></a>When might you NOT want to do this?<br  /><div class="outline-text-5" id="text-4-4-5-1">
+<p>
+This is definitely one of the places that I think OO-orthodoxy
+conflicts with style of other language paradigms in that a lot of OO
+people would REALLY hate a case statement like this.
+</p>
+
+<p>
+Let me put it thus way&#x2026;I think the most likely candidate for a
+polymorphic refactoring is when:
+</p>
+
+<ol class="org-ol">
+<li>This case statement occurs in multiple places in your code
+</li>
+<li>You expect to add new types to this case statement
+</li>
+</ol>
+
+<p>
+If both of these things are true, I think anyone would agree a common
+abstraction is necessary - and in OO subclassing is a likely choice.
+</p>
+
+<p>
+Even without 1 and 2, I would think hard about it because there may be
+an abstraction here trying to be born.  Could other code use those
+subclasses somehow - is there functionality that could migrate there?
+</p>
+
+<p>
+But if 1 and 2 are false and I don't see a good abstraction - I have
+written a case statement or two in my days.
+</p>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-4-4-6" name="sec-4-4-6"></a>Delegation and Inheritance<br  /><div class="outline-text-4" id="text-4-4-6">
+<p>
+Read/Skim this:
+</p>
+
+<p>
+[<a href="otherFiles/delegationInteritance.pdf">otherFiles/delegationInteritance.pdf</a>]
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-4-4-6-1" name="sec-4-4-6-1"></a>When should you use delegation, when should you use inheritance?<br  /><div class="outline-text-5" id="text-4-4-6-1">
+<p>
+Note one thing I want you take away from this is that refactorings
+often oppose each other.
+</p>
+
+<p>
+BUT on to the main point:
+</p>
+
+<ol class="org-ol">
+<li>This is actually the observer/inheritance debate I brought up with
+regard to java a few days ago with regard to speculative
+generality
+</li>
+<li>As before, the key benefit of using delegation is separating two
+class's interfaces and inheritance hierarchies.
+</li>
+<li>The main downside is the annoyance/complexity of the delegation
+</li>
+</ol>
+
+<p>
+There are other prototype based OO languages like Self and Lua which
+really blur the line between these two options, and use it to get
+inheritance-like behavior with much simpler rules.
+</p>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-4-4-7" name="sec-4-4-7"></a>Plus Delta<br  /><div class="outline-text-4" id="text-4-4-7">
+<p>
+I am trying a lot of things with this course.
+</p>
+
+<ol class="org-ol">
+<li>I am making it a little more coding-oriented and a little less
+lecture-oriented
+</li>
+<li>I am trying to keep the project as important but not overwhelm the
+class with just project work
+</li>
+<li>I am trying to use fewer slides, with more class discussion and
+have course notes (with solutions) readily available to you
+</li>
+</ol>
+
+<p>
+Your feedback is very important!  Plus Delta on Moodle!
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Milestone 2 DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-03 Fri&gt;</span></span></h3>
+</div>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Medical Data Refactoring DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-05 Sun&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+See details here: [<a href="Code/MedicalDataRefactoring/readme.html">Code/MedicalDataRefactoring/readme.html</a>]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Spring Break</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Woo!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Week 5: First largescale coding assignment&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Project meeting/Milestone Demo</h3>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Day 1 &amp; 2: ArgoUML Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-19 Sun&gt;</span></span></h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+[<a href="Code/ArgoUML/readme.html">Code/ArgoUML/readme.html</a>]
+</p>
+
+<p>
+Key tricks for navigating a large codebase
+</p>
+<ul class="org-ul">
+<li>Grep/search
+</li>
+<li>Find declaration/references
+</li>
+<li>Setting breakpoints
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Feathers Ch. 9&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Reading">Reading</span></span></h3>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Day 3: Working With Legacy Code</h3>
+<div class="outline-text-3" id="text-6-4">
+</div><ol class="org-ol"><li><a id="sec-6-4-1" name="sec-6-4-1"></a>Logistics<br  /><div class="outline-text-4" id="text-6-4-1">
+<ol class="org-ol">
+<li>Reminder: Please meet with your teams and make sure Google
+Docs/Trello is updated for next iteration by monday
+</li>
+<li>Reminder: Finish ArgoUML and bring code in demoable state Monday
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-6-4-2" name="sec-6-4-2"></a>What is <b>legacy</b> code?<br  /><div class="outline-text-4" id="text-6-4-2">
+<p>
+What do you think of when you hear the phrase "legacy code"?
+</p>
+
+<ul class="org-ul">
+<li>Been around a while - needs to changed
+</li>
+<li>Guy who wrote it is gone
+</li>
+<li>Bad style!! /\documentation
+</li>
+<li>Uses outdated/deprecated technology
+</li>
+<li>No longer meets "the standards"
+</li>
+<li>Old language
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-6-4-2-1" name="sec-6-4-2-1"></a>Feathers's Point of View<br  /><div class="outline-text-5" id="text-6-4-2-1">
+<blockquote>
+<p>
+"Code without tests is bad code.  It doesn’t matter how well written it is; it doesn’t matter how pretty or object oriented or well encapsulated it is.  With tests, we can change the behavior of our code quickly and verifiably.  Without them, we don’t really know if our code is getting better or worse."
+</p>
+
+<ul class="org-ul">
+<li>Feathers, preface
+</li>
+</ul>
+</blockquote>
+
+<p>
+Do you agree?
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-6-4-3" name="sec-6-4-3"></a>Your tests are probably bad<br  /><div class="outline-text-4" id="text-6-4-3">
+<p>
+Are your tests?
+</p>
+
+<ul class="org-ul">
+<li>Difficult/time consuming to run
+</li>
+<li>Break for reasons unrelated to your code (that is, they break if
+the database or internet is down, or because your “test file” has
+changed)
+</li>
+<li>Test a small fraction of your overall code
+</li>
+<li>Test most of it indirectly (i.e. big tests that test the whole
+system end-to-end rather than testing individual small functions)
+</li>
+</ul>
+
+<p>
+Tests of this sort generally don’t tell you anything you couldn’t get by just running the code directly
+</p>
+
+<ul class="org-ul">
+<li>Most of the tests I have written have been like this
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-4" name="sec-6-4-4"></a>What is a good unit test?<br  /><div class="outline-text-4" id="text-6-4-4">
+<ul class="org-ul">
+<li>Small test that focuses on a small section of the code
+</li>
+<li>Does not depend on the database, internet, writing/reading files
+</li>
+<li>Directly inspects the output (i.e. does not rely on `proxy’ measures
+like number of elements or lack of an exception)
+</li>
+<li>Runs instantly with the push of a button and finishes in less than
+1/10th of a second
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-5" name="sec-6-4-5"></a>Back to Feather's point of view<br  /><div class="outline-text-4" id="text-6-4-5">
+<p>
+Edit and Pray
+</p>
+<ul class="org-ul">
+<li>How most changes to legacy code happen in the real world
+</li>
+<li>Smart developers fight against this by testing by hand or building
+specialized test tools
+</li>
+<li>Smart developers also refuse to doubt their ability to understand,
+make changes, and improve the codebase
+</li>
+<li>BUT, as systems grow larger and folks leave BIG SYSTEM PARANOIA sets
+in.  This is the death rattle of a software project.
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-6" name="sec-6-4-6"></a>What can we do, Michael Feathers?<br  /><div class="outline-text-4" id="text-6-4-6">
+<p>
+Have rigorous unit testing for your code, then you can make changes
+with confidence!
+</p>
+
+<p>
+This is (probably) true if&#x2026;  
+</p>
+<ol class="org-ol">
+<li>You adopt Feather's very rigorous idea of what unit testing ought
+to be like
+</li>
+<li>You are writing your code from scratch
+</li>
+</ol>
+
+<p>
+#2 never happens and the previous devs never did #1
+</p>
+
+<p>
+Is Michael Feather's just complaining about the obvious?
+</p>
+</div>
+</li>
+
+<li><a id="sec-6-4-7" name="sec-6-4-7"></a>Except&#x2026;<br  /><div class="outline-text-4" id="text-6-4-7">
+<p>
+Feathers thinks you can add unit tests to an existing system.
+</p>
+
+<p>
+With techniques&#x2026;secret ninja techniques.
+</p>
+</div>
+</li>
+
+<li><a id="sec-6-4-8" name="sec-6-4-8"></a>Why is adding tests to an existing system hard?<br  /><div class="outline-text-4" id="text-6-4-8">
+<p>
+An example
+</p>
+
+<p>
+[<img src="images/FeathersInvoice.png" alt="FeathersInvoice.png" />]
+</p>
+
+<p>
+Groups of 3.  Imagine that we were changing getResponseText and
+getValue&#x2026;so we want to test them.  What about these classes suggests
+that testing might be a problem?
+</p>
+
+<ul class="org-ul">
+<li>Your
+</li>
+<li>Ideas
+</li>
+<li>Here
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-6-4-8-1" name="sec-6-4-8-1"></a>Feathers answer<br  /><div class="outline-text-5" id="text-6-4-8-1">
+<p>
+Complete details on page 15, but in short:
+</p>
+
+<ul class="org-ul">
+<li>Invoice looks ok (although hard to be sure it doesn't have secret
+stuff like globals going on)
+</li>
+<li>DBConnection &amp; InvoiceUpdateServelt both look like a pain to
+construct, and they both are needed to construct
+InvoiceUpdateResponder
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-8-2" name="sec-6-4-8-2"></a>What might you do here?<br  /><div class="outline-text-5" id="text-6-4-8-2">
+<ul class="org-ul">
+<li>Your
+</li>
+<li>Ideas
+</li>
+<li>Here
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-8-3" name="sec-6-4-8-3"></a>Feather's answer<br  /><div class="outline-text-5" id="text-6-4-8-3">
+<p>
+[<img src="images/FeathersInvoice2.png" alt="FeathersInvoice2.png" />]
+</p>
+
+<ol class="org-ol">
+<li>Examine dependency on Servlet and figure out it actually only
+depended on a list of invoice ids, make that the parameter instead
+</li>
+<li>Replace DBConnection with an (identical) interface - that lets us
+switch out a fake one at test time
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-6-4-9" name="sec-6-4-9"></a>Dilemma<br  /><div class="outline-text-4" id="text-6-4-9">
+<p>
+When we change code, we should have tests in place.  To put tests in
+place, we often have to change code.
+</p>
+
+<ul class="org-ul">
+<li>Usually we need to be conservative
+</li>
+<li>This can come at the cost of pretty design (thought not always as in
+the system above)
+</li>
+<li>Feathers compares this ugliness to scars left by a surgery: not a
+great thing but generally better than alternatives:
+
+<ul class="org-ul">
+<li>Leave the code untested, and therefore unsafe to modify
+</li>
+<li>Do a complete re-design, at massive risk
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-6-4-10" name="sec-6-4-10"></a>What we will be working on<br  /><div class="outline-text-4" id="text-6-4-10">
+<p>
+Techniques to allow us to insert tests into existing code
+</p>
+
+<p>
+Generally they will be tricky - using indirection to allow large
+changes with very minimal modification to the existing system
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Week 6</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Day 1: Feathers Ch. 9 - Part 1</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+We're going to go through the following sections of Chapter 9,
+following along from the book:
+</p>
+
+<p>
+The Case of the Irritating Parameter
+The Case of the Hidden Dependency
+The Case of the Irritating Global Dependency
+</p>
+
+<p>
+Then I'm going to ask you to practice these techniques on some example
+code.  It should be available in your svn repos, but if not it's here:
+</p>
+
+<p>
+[<a href="Code/FeathersCh9Activity1">Code/FeathersCh9Activity1</a>]
+</p>
+
+<p>
+When you're finished you can see my solution here:
+</p>
+
+<p>
+[<a href="Code/FeathersCh9Activity1Solution">Code/FeathersCh9Activity1Solution</a>]
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Day 2: Feathers Ch. 9 - Part 2</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+One major technique today: Subclass and Override Method.  We're going
+to look at 2 of Feather's examples:
+</p>
+
+<p>
+The Case of the Aliased Parameter
+The Case of the Undetectable Side Effect
+</p>
+
+<p>
+Then we'll practice this technique on some example code (should be in
+your svn repos):
+</p>
+
+<p>
+[<a href="Code/FeathersTriangle/src">Code/FeathersTriangle/src</a>]
+</p>
+
+<p>
+This code is designed to draw a (rotated) triangle.  The way the constructor parameters interact is displayed here:
+</p>
+
+<p>
+[<img src="images/Triangle.PNG" alt="Triangle.PNG" />]
+</p>
+
+<p>
+When you're finished you can see my solution here:
+</p>
+
+<p>
+[<a href="Code/FeathersTriangleSolution/src">Code/FeathersTriangleSolution/src</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> Project meeting</h3>
+</div>
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> Day 3: More Feathers Dependency Breaking Techniques</h3>
+<div class="outline-text-3" id="text-7-4">
+</div><ol class="org-ol"><li><a id="sec-7-4-1" name="sec-7-4-1"></a>Seams<br  /><div class="outline-text-4" id="text-7-4-1">
+<pre class="example">
+int someMethod() {
+    //code
+    badMethod();
+    //still more code
+}
+
+//almost anywhere else
+void badMethod() {
+    // code we'd rather not run in test
+}
+</pre>
+
+<p>
+How can we change THE REST OF THE UNIVERSE such that someMethod will
+run, but not run the code in BadMethod.
+</p>
+
+<ul class="org-ul">
+<li>In some languages you can override the global
+</li>
+<li>Subclass and Override Method
+</li>
+<li>Abuse the preprocessor
+</li>
+<li>Use the linker
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-2" name="sec-7-4-2"></a>Some methods that use some interesting seams<br  /><ol class="org-ol"><li><a id="sec-7-4-2-1" name="sec-7-4-2-1"></a>Link Substitution<br  /><div class="outline-text-5" id="text-7-4-2-1">
+<p>
+Use the linker to change the contents of functions in C
+</p>
+
+<p>
+Can also be used by editing the classpath in Java
+</p>
+
+<p>
+Demo working Link Substitution in Eclipse
+</p>
+
+<p>
+Page 377
+</p>
+</div>
+</li>
+
+<li><a id="sec-7-4-2-2" name="sec-7-4-2-2"></a>Pull Up Feature<br  /><div class="outline-text-5" id="text-7-4-2-2">
+<ul class="org-ul">
+<li>Make an abstract superclass that contains the "cluster" of methods you care about
+</li>
+
+<li>Make all other methods you need abstract
+</li>
+
+<li>Make a test specific subclass of the class for testing
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-2-3" name="sec-7-4-2-3"></a>Text Redefinition<br  /><div class="outline-text-5" id="text-7-4-2-3">
+<p>
+Use the evil magic of interpreted languages to change whatever you don't like!
+</p>
+</div>
+</li></ol>
+</li>
+
+
+
+
+<li><a id="sec-7-4-3" name="sec-7-4-3"></a>Some methods where you have to make seams<br  /><ol class="org-ol"><li><a id="sec-7-4-3-1" name="sec-7-4-3-1"></a>Sprout Method<br  /><div class="outline-text-5" id="text-7-4-3-1">
+<ul class="org-ul">
+<li>When you need to add some code but you can't get the whole system under test
+</li>
+<li>Page 59
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-2" name="sec-7-4-3-2"></a>Adapt Parameter<br  /><div class="outline-text-5" id="text-7-4-3-2">
+<ul class="org-ul">
+<li>Useful when you can't use extract interface because you can't modify
+the parameter class (e.g. it's a library class)
+</li>
+<li>The Adapter pattern from GOF
+</li>
+<li>Potentially a pain&#x2026;but maybe even a design improvement
+</li>
+<li>Page 326
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-3" name="sec-7-4-3-3"></a>Expose Static Method<br  /><div class="outline-text-5" id="text-7-4-3-3">
+<ul class="org-ul">
+<li>Take a non-static method and make it static
+</li>
+<li>Useful for testing heavy calculating methods
+</li>
+<li>Only works in limited circumstances (what are they?)
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-4" name="sec-7-4-3-4"></a>What if you can't make a long calculating method static?<br  /><div class="outline-text-5" id="text-7-4-3-4">
+<p>
+Because they use fields
+</p>
+
+<p>
+&#x2026;why not "Break out a method object"?
+</p>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-5" name="sec-7-4-3-5"></a>Break Out a Method Object<br  /></li>
+
+<li><a id="sec-7-4-3-6" name="sec-7-4-3-6"></a>What is a method object?<br  /><div class="outline-text-5" id="text-7-4-3-6">
+<ul class="org-ul">
+<li>An object that represents a particular calculation
+</li>
+
+<li>Fowler mentions it as a way of refactoring code that takes a ton of parameters
+</li>
+
+<li>Has sub-methods that describe the calculation
+</li>
+
+<li>Data is passed between the sub-methods mostly as fields
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-7" name="sec-7-4-3-7"></a>Feathers thinks this can be useful for testing too<br  /><div class="outline-text-5" id="text-7-4-3-7">
+<p>
+See page 330
+</p>
+</div>
+</li>
+
+<li><a id="sec-7-4-3-8" name="sec-7-4-3-8"></a>Encapsulate Global References<br  /><div class="outline-text-5" id="text-7-4-3-8">
+<p>
+I personally like starting with the second example on page 342
+</p>
+</div>
+</li></ol>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> BORG Email Feathers Assignment DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-04-29 Wed&gt;</span></span>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+[<a href="Code/BORGEmail/readme.html">Code/BORGEmail/readme.html</a>]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Week 7</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Day 1: Good software writing 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Activity">Activity</span></span></h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Get in teams of 4-5 &amp; move to sit with your team.  You'll likely need
+some paper and laptops.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-1-1" name="sec-8-1-1"></a>Your task<br  /><div class="outline-text-4" id="text-8-1-1">
+<p>
+You job is to document how the system here allows new types of Bets to
+be added easily:
+</p>
+
+<p>
+[<a href="Code/Roulette/Roulette_ExternalFactory/src/roulette">Code/Roulette/Roulette_ExternalFactory/src/roulette</a>]
+</p>
+
+<p>
+Here are the rules:
+</p>
+
+<ol class="org-ol">
+<li>You may only work on this for 1 class period.  You will turn in
+stapled stack of sheets to me at the end of class
+</li>
+<li>Diagrams must be drawn by hand (not made using a tool)
+</li>
+<li>Words may be written by hand or with an editor, but you must print
+them out physically and hand them to me
+</li>
+</ol>
+
+<p>
+The best team submission will receive bragging rights, and maybe a prize.
+</p>
+
+<p>
+Best means:
+</p>
+<ol class="org-ol">
+<li>Clearly explains how the system works
+</li>
+<li>If several team implement #1, whichever is shortest to read
+</li>
+</ol>
+
+<p>
+One or two short clear pages is better than a huge pile of crap  
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Project Work Day</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>Please ensure you can build the Feather's assignment on your local computer!
+</li>
+<li>Otherwise work with your teams
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Day 2: Good software writing 2</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+Please get in your same groups of 4-5 from Monday's class
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-3-1" name="sec-8-3-1"></a>Activity<br  /><div class="outline-text-4" id="text-8-3-1">
+<ul class="org-ul">
+<li>I'll hand out one of the documents from the other class
+</li>
+<li>I'd like you to critique it
+</li>
+<li>Make a list of the top 2-4 things you don't like about it
+</li>
+<li>Don't talk about bad handwriting - obviously this was made under time constraints
+</li>
+<li>You have 5 minutes to make your list
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-8-3-2" name="sec-8-3-2"></a>Major issues your class found<br  /><div class="outline-text-4" id="text-8-3-2">
+<ul class="org-ul">
+<li>Your Ideas Here
+</li>
+<li>Too verbose
+</li>
+<li>Example not good
+</li>
+<li>Disorganized: Figuring out how things linked together
+</li>
+<li>Didn't explain - more just steps
+</li>
+<li>Vague on steps
+</li>
+<li>Too succinct !
+</li>
+<li>No reasoning or explanation
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-3-2-1" name="sec-8-3-2-1"></a>What the other class said about you<br  /><div class="outline-text-5" id="text-8-3-2-1">
+<ul class="org-ul">
+<li>Not enough detail about <b>why</b> you needed to do stuff
+</li>
+<li>No explaination of BetFactory
+</li>
+<li>BetOption not explained but in the diagram
+</li>
+<li>Incorrect statement
+</li>
+<li>Never talked about private parameterless constructor
+</li>
+<li>Too long got confusing
+</li>
+<li>Too verbose - 2 examples
+</li>
+<li>Split of steps from explainations unnecessary
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-8-3-3" name="sec-8-3-3"></a>Buffalo's critique of your writing<br  /><div class="outline-text-4" id="text-8-3-3">
+<p>
+Overall pretty good
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-3-3-1" name="sec-8-3-3-1"></a>BEST: Most of you thought about your audience<br  /><div class="outline-text-5" id="text-8-3-3-1">
+<p>
+Included explicit instructions for the common case
+</p>
+</div>
+</li>
+<li><a id="sec-8-3-3-2" name="sec-8-3-3-2"></a>Good: Some of you used a worked example<br  /><div class="outline-text-5" id="text-8-3-3-2">
+<p>
+This can be an excellent approach, not usually used enough
+</p>
+</div>
+</li>
+<li><a id="sec-8-3-3-3" name="sec-8-3-3-3"></a>Good: Your all omitted unnecessary detail from your diagrams<br  /><div class="outline-text-5" id="text-8-3-3-3">
+<ul class="org-ul">
+<li>Always necessary
+</li>
+<li>Some folks omitted a little too much
+</li>
+<li>Learn the 3 UML lines you ought to know
+</li>
+<li>Putting notes on your diagram is a good thing, but keep it focused
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-8-3-3-4" name="sec-8-3-3-4"></a>WORST: tended to shy away from the really complicated part<br  /><div class="outline-text-5" id="text-8-3-3-4">
+<ul class="org-ul">
+<li>In this case it was how Bets could be constructed using the external factory
+</li>
+<li>Do not trust your instincts
+</li>
+<li>Start with the hardest part
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-8-3-3-5" name="sec-8-3-3-5"></a>Bad: Use code when you can<br  /></li>
+<li><a id="sec-8-3-3-6" name="sec-8-3-3-6"></a>Bad: Class Diagram is not the only kind of diagram<br  /><div class="outline-text-5" id="text-8-3-3-6">
+<p>
+[<img src="images/SequenceDiagram.png" alt="SequenceDiagram.png" />]
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-8-3-4" name="sec-8-3-4"></a>A final note: keeping things updated<br  /><div class="outline-text-4" id="text-8-3-4">
+<ul class="org-ul">
+<li>Out of date documentation is worse than nothing
+</li>
+<li>Wikis is a common solution (imperfect, but generally better than
+alternatives)
+</li>
+<li>Always have a very small amount of very good documentation
+</li>
+<li>Integrate your documentation into your unit testing framework if you
+can
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4"><span class="section-number-3">8.4</span> Day 3: Deployment &amp; Configuration Management 1</h3>
+<div class="outline-text-3" id="text-8-4">
+</div><ol class="org-ol"><li><a id="sec-8-4-1" name="sec-8-4-1"></a>Software is an ecosystem<br  /><div class="outline-text-4" id="text-8-4-1">
+<p>
+Before it can run, most software products need
+</p>
+
+<ul class="org-ul">
+<li>Its raw code
+</li>
+<li>Flat data or configuration files in the right places
+</li>
+<li>Any libraries it depends on, installed correctly and at the right
+versions
+</li>
+<li>A variety of external supporting executables: monitoring scripts,
+data pulling processes, installers updaters and
+uninstallers, services or utilities that must run the background
+</li>
+<li>To be installed correctly within the OS itself - added to the path
+or to the correct menus, associated with the right file types, have
+all the necessary background stuff set to run on startup
+</li>
+</ul>
+
+<p>
+How does this stuff get setup?
+</p>
+</div>
+</li>
+<li><a id="sec-8-4-2" name="sec-8-4-2"></a>My first IT Job<br  /><div class="outline-text-4" id="text-8-4-2">
+<p>
+I was responsible for configuring computers in a college that had a
+custom in-house developed app.  To install that app, I followed a 7
+page printed document that included installing a variety of other
+software systems (e.g. Filemaker Pro - a sort of database) and even
+explicitly replacing a dll in a specific windows directory.
+</p>
+
+<p>
+What is the drawbacks of this system?
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-4-2-1" name="sec-8-4-2-1"></a>My answers<br  /><div class="outline-text-5" id="text-8-4-2-1">
+<ol class="org-ol">
+<li>Extremely slow (~2 hours)
+</li>
+<li>High chance or errors, especially if some issues are not obvious
+</li>
+<li>No way to update existing systems
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-8-4-3" name="sec-8-4-3"></a>My first IT Job Part 2<br  /><div class="outline-text-4" id="text-8-4-3">
+<p>
+Then eventually we made an "image" of a harddrive with this custom
+software installed.  I would boot in a special way, overrwrite all the
+data on the target system harddrive, and the system would be
+configured identically to the image.
+</p>
+
+<p>
+What are the drawbacks of this approach?
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-8-4-3-1" name="sec-8-4-3-1"></a>My answers<br  /><div class="outline-text-5" id="text-8-4-3-1">
+<ol class="org-ol">
+<li>Still pretty slow (~45 minutes)
+</li>
+<li>Knowledge about how to build "from scratch" can be lost
+</li>
+<li>Difficult to create a new image
+</li>
+<li>Not possible to upgrade/change without destroying everything on the
+computer
+</li>
+<li>Monolithic
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-8-4-4" name="sec-8-4-4"></a>apt-get - a package system<br  /><div class="outline-text-4" id="text-8-4-4">
+<p>
+Maintains a repository of "packages" (i.e. software plus carefully designed build/install scripts)
+</p>
+
+<p>
+Knows about dependencies between packages
+</p>
+
+<p>
+When you ask to install one package (i.e. apache) it figures out what it needs to install and installs what you want plus everything it needs to run (insofar as package dependencies are concerned anyway)
+</p>
+
+<p>
+Packages are carefully maintained for security (that's both pro and con)
+</p>
+
+<p>
+Packages can be automatically upgraded piecemeal (that's both pro and con)
+</p>
+
+<p>
+Similar systems exist for many other languages/systems (e.g. Haskell, ruby, emacs, other flavors of linux)
+</p>
+
+<p>
+Disadvantages:
+</p>
+<ul class="org-ul">
+<li>can be quite complicated to create a package
+</li>
+<li>running multiple package systems gets complicated fast and no system
+is really universal
+</li>
+<li>not really designed for things like configs
+</li>
+<li>only one version of each thing can be installed per host
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-8-4-5" name="sec-8-4-5"></a>Docker<br  /><div class="outline-text-4" id="text-8-4-5">
+<p>
+Lightweight "containers" that are supposed to act like super-low overhead images
+</p>
+
+<p>
+Built by running commands on a "base image" makes them pretty portable
+</p>
+
+<p>
+You can run many of these per host, and they don't interfere with each other
+</p>
+</div>
+</li>
+
+<li><a id="sec-8-4-6" name="sec-8-4-6"></a>Docker cons?<br  /><ol class="org-ol"><li><a id="sec-8-4-6-1" name="sec-8-4-6-1"></a>Buffalo's answer<br  /><div class="outline-text-5" id="text-8-4-6-1">
+<ul class="org-ul">
+<li>Parts of containers can't be updated piecemeal
+</li>
+<li>Management/interactions between containers are complex
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-8-4-7" name="sec-8-4-7"></a>For next class:<br  /><div class="outline-text-4" id="text-8-4-7">
+<ul class="org-ul">
+<li>Install VMWare (available on Banner software)
+</li>
+<li>Download and install the image file on Moodle
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-8-5" class="outline-3">
+<h3 id="sec-8-5"><span class="section-number-3">8.5</span> Milestone 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+Submitted as usual
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Week 8: Deployment &amp; Configuration Management&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Assignment">Assignment</span></span></h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Day 1</h3>
+<div class="outline-text-3" id="text-9-1">
+</div><ol class="org-ol"><li><a id="sec-9-1-1" name="sec-9-1-1"></a>If you have not installed VMWare + my VM - start downloading now<br  /></li>
+<li><a id="sec-9-1-2" name="sec-9-1-2"></a>Go try the docker tutorial!<br  /><div class="outline-text-4" id="text-9-1-2">
+<p>
+<a href="https://www.docker.com/tryit/">https://www.docker.com/tryit/</a>
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Day 4</h3>
+<div class="outline-text-3" id="text-9-2">
+</div><ol class="org-ol"><li><a id="sec-9-2-1" name="sec-9-2-1"></a>Testing your Docker image<br  /><div class="outline-text-4" id="text-9-2-1">
+<p>
+Prepare by getting your zipping up your Dockerfile and associated
+configs.  Be sure to name your directory something unique!
+</p>
+
+<pre class="example">
+mv DockerPostfix hewner-DockerSolution
+zip -r hewner.zip hewner-DockerSolution
+</pre>
+
+<p>
+Also be sure that your docker has comment in it that explains the run
+command you wish the tester to use!
+</p>
+
+<p>
+Then fill out the form!
+</p>
+</div>
+</li>
+
+<li><a id="sec-9-2-2" name="sec-9-2-2"></a>Steps for running your partner's docker<br  /><div class="outline-text-4" id="text-9-2-2">
+<ol class="org-ol">
+<li>Unzip the file the send you
+</li>
+<li>Edit the code so that it sends to your email address
+</li>
+<li>Do a docker build
+</li>
+<li>Look in the Dockerfile to find the run command they want you to use
+</li>
+<li>run the docker using the given run command
+</li>
+<li>Visit localhost:8888 on your host system and make sure apache is running
+</li>
+<li>Hit localhost:8888/nonExistantFile.txt to generate a 404 (5 times)
+</li>
+<li>Wait and minute and see if you get an email
+</li>
+<li>If you do: 10/10
+</li>
+<li>Otherwise investigate and figure out the grade they should get
+</li>
+<li>Fill out the form
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-9-2-3" name="sec-9-2-3"></a>The Final Project Demo Monday<br  /><div class="outline-text-4" id="text-9-2-3">
+<p>
+1 very quick demo from each group
+Organized however you wish but make a list
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Docker Example: Getting Postfix Configured</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+[<a href="Code/DockerPostfix/readme.html">Code/DockerPostfix/readme.html</a>]
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Docker Assignment DUE IN CLASS <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-05-08 Fri&gt;</span></span></h3>
+<div class="outline-text-3" id="text-9-4">
+<p>
+[<a href="Code/DockerPostfix/webpageAndMonitoring.html">Code/DockerPostfix/webpageAndMonitoring.html</a>]
+</p>
+
+<p>
+Actually, the final deadline will be Midnight on <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-05-11 Mon&gt;</span></span>.
+But we will do an activity with everyone's images on Friday, so if you
+can have them done by then it would be better.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Week 9</h2>
+<div class="outline-text-2" id="text-10">
+</div><div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Day 1: Final Project Demo</h3>
+</div>
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Day 2: Software Configuration Management</h3>
+<div class="outline-text-3" id="text-10-2">
+</div><ol class="org-ol"><li><a id="sec-10-2-1" name="sec-10-2-1"></a>What is Software Configuration Management<br  /><div class="outline-text-4" id="text-10-2-1">
+<p>
+Definition: Set of management disciplines within the software
+engineering process to develop and maintain the integrity of a
+baseline.
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-2" name="sec-10-2-2"></a>What is a baseline?<br  /><div class="outline-text-4" id="text-10-2-2">
+<p>
+A standardized, deployable version of your software + all the
+associated bells and whistles to make it run.
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-3" name="sec-10-2-3"></a>Your Dockerfile is like a baseline<br  /><div class="outline-text-4" id="text-10-2-3">
+<p>
+Imagine that it also checked out a bunch of html + javascript from
+your company's source control (at a very specific version or branch)
+</p>
+
+<p>
+Also imagine that it specified highly specific versions of every
+package that you checked out
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-4" name="sec-10-2-4"></a>As you see, there's a LOT more to what makes a working system than just CODE<br  /><div class="outline-text-4" id="text-10-2-4">
+<p>
+Ecosystem, blah blah blah
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-5" name="sec-10-2-5"></a>You could store that Dockerfile in source control<br  /><div class="outline-text-4" id="text-10-2-5">
+<p>
+Now you can always go back to an old version of your server
+configuration, which will include everything:
+</p>
+<ul class="org-ul">
+<li>Config files
+</li>
+<li>Startup scripts that startup all the appropriate daemons
+</li>
+<li>Exact versions of every library you depend on  
+</li>
+<li>The source code that goes with this
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-10-2-6" name="sec-10-2-6"></a>A baseline is just a "complete" state of the system<br  /><div class="outline-text-4" id="text-10-2-6">
+<p>
+I say complete here, as opposed to the partial view that you get when
+you just consider the source code by itself
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-7" name="sec-10-2-7"></a>Consistency is the goal of baselines<br  /><div class="outline-text-4" id="text-10-2-7">
+<p>
+It’s 4:59pm on a Friday.  You get a call&#x2026;a customer who is using a 1
+year old version of your software just called with a big problem.
+Luckily you can easy see how the code can be fixed with a one line
+change.
+</p>
+
+<ul class="org-ul">
+<li>Can you get the exact version of the code that your customer’s one
+year old version of the software was built with?
+</li>
+<li>If you can, can you rebuild it using the exact same libraries,
+compiler versions, and build scripts that it was originally built on
+</li>
+<li>If you can, can you repackage all the config files, documentation,
+etc. etc. exactly they way they were one year ago and get the
+customer a install CD just like the one they got last year (plus one
+tiny code change)
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-10-2-8" name="sec-10-2-8"></a>Ok, with that all said - what is Software Configuration Management?<br  /><div class="outline-text-4" id="text-10-2-8">
+<p>
+<b>Definition:</b> Set of management disciplines within the software
+engineering process to develop and maintain the integrity of a
+baseline.
+</p>
+
+<p>
+That is, basically, who controls what goes in the baseline?
+e.g. Who gets to decide what goes in the Dockerfile?
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-9" name="sec-10-2-9"></a>In early stages of development, usually there are no rules<br  /><div class="outline-text-4" id="text-10-2-9">
+<p>
+People might be even just developing straight on their desktops in a
+non-repeatable way
+</p>
+
+<p>
+Or even if there is a baseline, anybody can add a new library or
+daemon
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-10" name="sec-10-2-10"></a>As the project nears launch, there is a desire to "freeze" the baseline<br  /><div class="outline-text-4" id="text-10-2-10">
+<ul class="org-ul">
+<li>Restrict the code changes
+</li>
+<li>Especially restrict changes to daemons and shared libraries
+</li>
+<li>This is where you have a software configuration management committee
+that must approve all changes BUT this is only one approach
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-10-2-11" name="sec-10-2-11"></a>In agile approaches&#x2026;<br  /><div class="outline-text-4" id="text-10-2-11">
+<p>
+How do they solve this problem
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-10-2-11-1" name="sec-10-2-11-1"></a>My answer (no peeking!)<br  /><div class="outline-text-5" id="text-10-2-11-1">
+<ol class="org-ol">
+<li>Use automating (like docker) to make the creation of the baseline
+automated and frequent (continuous integration)
+</li>
+<li>Use automated testing to ensure changes to the baseline didn't
+break anything
+</li>
+<li>The goal here is that we can reduce the need to freeze, shortening
+the path between customer need and final deployment BUT still not
+have unstable baselines
+</li>
+<li>One of the main areas that actual technology can solve what is
+often considered a social problem
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-10-2-12" name="sec-10-2-12"></a>Deciding on a Software Configuration Management policy is hugely important<br  /><div class="outline-text-4" id="text-10-2-12">
+<p>
+If your policy is too lenient, untested changes can be inserted that
+break everyone's working environment or introduce customer-facing bugs.
+</p>
+
+<p>
+If your policy is too restrictive, adding features becomes much harder
+and your team becomes less responsive to customers
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-2-13" name="sec-10-2-13"></a>Why is it so important to maintain the integrity of the baseline?<br  /><div class="outline-text-4" id="text-10-2-13">
+<ul class="org-ul">
+<li>Identification – You need to know what exactly is in your baseline.
+</li>
+
+<li>Consistency – often parts of the baseline depend on each other.  If
+they get out of sync, code can fail.
+</li>
+
+<li>Management – Someone is responsible for deciding what changes are
+in/out.  That process needs to be clear.
+</li>
+
+<li>Auditing – You need to know who did what and when.
+</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="sec-10-2-14" name="sec-10-2-14"></a>A frequent choice<br  /><div class="outline-text-4" id="text-10-2-14">
+<ol class="org-ol">
+<li>Anybody can change the state of the system in source control
+</li>
+<li>Baselines are "cut" at regular times (e.g. every Monday at 8am),
+those include any-and-all changes
+</li>
+<li>QA then tests the baseline
+</li>
+<li>Bugfixes can modify the baseline but additional features need
+super-special approval
+</li>
+<li>A "release candidate" is cut that is the baseline + all bugfixes
+</li>
+<li>QA retests the release candidate&#x2026;hopefully finding no bugs
+</li>
+<li>The release candidate is released to customers
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-10-2-15" name="sec-10-2-15"></a>Let me close by saying, the example you did as a class project was a simple case<br  /><div class="outline-text-4" id="text-10-2-15">
+<p>
+In real (larger) systems, you have to think about:
+</p>
+
+<ol class="org-ol">
+<li>More complicated building including issues of binary compatibility
+</li>
+<li>Multiple server types (e.g. monitoring server, webserver,
+processing server), and multiple configurations (e.g. development,
+staging, production)
+</li>
+<li>Configuring external factors like routers and in something like
+docker the config of the host machine
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Day 3: Exceptions</h3>
+<div class="outline-text-3" id="text-10-3">
+</div><ol class="org-ol"><li><a id="sec-10-3-1" name="sec-10-3-1"></a>The basics of Exceptions<br  /><div class="outline-text-4" id="text-10-3-1">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">try</span> {
+        <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">ExceptionClass</span>(&#8220;Some data&#8221;)
+} <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">OtherExceptionClass</span> <span style="color: #BA36A5;">e</span>) {
+   <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">if OtherExceptionClass is the same as</span>
+   <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">ExceptionClass (or one if it&#8217;s superclasses)</span>
+   <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">we go here.  Otherwise the exception continues</span>
+   <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">to the next try&#8230;perhaps outside of this function</span>
+        dealWithException(e.getData());
+}
+</pre>
+</div>
+
+<p>
+An uncaught exception can easily end your program.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-10-3-1-1" name="sec-10-3-1-1"></a>Points I want to cover<br  /><div class="outline-text-5" id="text-10-3-1-1">
+<ol class="org-ol">
+<li>An exception is generated from a throw statement, which is passed
+an exception (in Java, a class that implements the Throwable
+interface)
+</li>
+<li>If it not within a try block, it ends the current function
+(without returning) and acts like a throw in the next function up
+the static.
+
+<p>
+In short, it just keeps ending functions up the stack until it
+encounters an enclosing a try/catch
+</p>
+</li>
+<li>If the type of exception thrown matches the catch, the exception
+becomes a parameter to the catch and is "handled" (i.e. execution
+continues normally from there).  Ensure that whatever your catch
+does really handles the exception, or re-throws if the system is
+not in a good state.
+</li>
+<li>If the type of exception does not match the catch, the exception
+continues looking for the nearest enclosing try block on the stack
+</li>
+<li>If nothing catches the exception, the program is aborted and a
+stack trace is printed
+</li>
+</ol>
+</div>
+</li></ol>
+</li>
+
+
+<li><a id="sec-10-3-2" name="sec-10-3-2"></a>Consolidating Error Handling<br  /><div class="outline-text-4" id="text-10-3-2">
+<p>
+The use of exceptions improves your code by consolidating error handling.
+</p>
+
+<p>
+Here's some code without exceptions (result == -1 is an error result).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">result1</span> = getData();
+<span style="color: #0000FF;">if</span>(result1 != -1) {
+        result2 = processData(result1);
+        <span style="color: #0000FF;">if</span>(result2 != -1) {
+                displayData(result2);
+                <span style="color: #0000FF;">return</span>;
+        } <span style="color: #0000FF;">else</span> {
+                System.err.println(&#8220;Error processing data&#8221;);
+                <span style="color: #0000FF;">return</span>;
+} <span style="color: #0000FF;">else</span> {
+        System.err.println(&#8220;Error getting data&#8221;);
+}
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-10-3-3" name="sec-10-3-3"></a>Same Code With Exceptions<br  /><div class="outline-text-4" id="text-10-3-3">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">try</span> {
+        <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">result1</span> = getData();
+        result2 = processData(result1);
+        displayData(result3);
+} <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">ProcessingException</span> <span style="color: #BA36A5;">e</span>) {
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">let the functions themselves</span>
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">decide what to display in their</span>
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">error</span>
+        System.err.println(e);
+}
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-10-3-4" name="sec-10-3-4"></a>Don't do this #1<br  /><div class="outline-text-4" id="text-10-3-4">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">try</span> {
+        callFunction();
+} <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">CatastrophicException</span> <span style="color: #BA36A5;">e</span>) {
+        e.printStackTrace();
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">just continuing on, maybe hiding this </span>
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">error with later code, corrupting data </span>
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">files</span>
+}
+<span style="color: #0000FF;">return</span>;
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-10-3-5" name="sec-10-3-5"></a>Don't do this #2<br  /><div class="outline-text-4" id="text-10-3-5">
+<pre class="example">
+try {
+	callFunction1();
+} catch (ProcessingException e) {
+	e.printStackTrace();
+        return false;
+}
+try {
+	callFunction2();
+} catch (ProcessingException e) {
+	e.printStackTrace();
+        return false;
+}
+</pre>
+</div>
+
+<ol class="org-ol"><li><a id="sec-10-3-5-1" name="sec-10-3-5-1"></a>What's wrong?<br  /><div class="outline-text-5" id="text-10-3-5-1">
+<p>
+By surrounding each section in it's own try/catch we are elliminating
+the benefits of consolidating error handling.
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-10-3-6" name="sec-10-3-6"></a>Moving up the call hierarchy<br  /><div class="outline-text-4" id="text-10-3-6">
+<p>
+The use of exceptions improves your code by making it easy to move up
+the call hierarchy.
+</p>
+
+<p>
+For example:
+</p>
+
+<ol class="org-ol">
+<li>In main, we request the user enter a file name.  We take the name
+give and call process file.
+</li>
+<li>In process file, we open the file and call doXMLParse
+</li>
+<li>In doXMLParse we break the file into events.  For each even we call
+parseEvent
+</li>
+<li>parseEvent we get the date string out of the event XML.  Then we
+pass it to parseDate
+</li>
+<li>In parseDate, we discover that that date string is malformed.  ERROR!
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-10-3-7" name="sec-10-3-7"></a>Put data in your exceptions!<br  /><div class="outline-text-4" id="text-10-3-7">
+<p>
+The use of exceptions improves your code by allowing you to report
+relevant data in your exception.
+</p>
+
+<p>
+<b>Put everything you can think of in an exception</b>
+</p>
+
+<p>
+If there is a parsing error, I want to know
+</p>
+<ul class="org-ul">
+<li>What line of the data file the error occurred on
+</li>
+<li>What the problematic text was
+</li>
+</ul>
+
+<p>
+If I was “expecting” something – what was I expecting
+</p>
+
+<p>
+If there is an SQL error writing to the database, I want to know
+</p>
+<ul class="org-ul">
+<li>The SQL I was trying to execute
+</li>
+</ul>
+
+<p>
+If there was an network error
+</p>
+<ul class="org-ul">
+<li>The URL I was trying to read from
+</li>
+</ul>
+
+<p>
+<b>DO NOT hesitate to write your own exception classes!</b>
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-3-8" name="sec-10-3-8"></a>Fail our retry? (Do Not Do This #3)<br  /><div class="outline-text-4" id="text-10-3-8">
+<ul class="org-ul">
+<li>Some things are unreliable: a network connection – maybe it makes
+sense try again in a half second (but don’t get caught in an
+infinite loop)
+</li>
+<li>Sometimes you can ignore a problem in a small part and still get 95%
+of what you need done
+</li>
+<li>Often a retry is possible but the point of failure is not the place
+for a retry – throw and let the proper place catch
+</li>
+<li>DO NOT let your code just return bad data and move the problem to
+someplace that’s harder to debug. Fail.
+</li>
+<li>DO NOT do a retry without logging the problem
+</li>
+<li>DO NOT accept that your code will frequently print meaningless error
+messages or other garbage (TERRIBLE STYLE – <b>DO NOT DO THIS #3</b>)
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-10-3-9" name="sec-10-3-9"></a>Do Not Do This #4<br  /><div class="outline-text-4" id="text-10-3-9">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">try</span> {
+        parse1();
+        parse2();
+        parse3();
+} <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">e</span>) {
+        <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">this code is a lie</span>
+        System.err.println(&#8220;Error parsing&#8221;);
+}
+</pre>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-10-3-9-1" name="sec-10-3-9-1"></a>Why is this bad?<br  /><div class="outline-text-5" id="text-10-3-9-1">
+<p>
+Because the catch is of a very general exception type, we don't really
+know that the problem was parsing.  Could be an exception allocating
+memory, or a null pointer exception, or whatever.  Only catch general
+exception types when you <b>want</b> to be a general purpose handler.
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-10-3-10" name="sec-10-3-10"></a>Checked or Unchecked Exceptions<br  /><div class="outline-text-4" id="text-10-3-10">
+<p>
+A common java function header:
+</p>
+
+<pre class="example">
+public int read() throws java.io.IOException;
+</pre>
+
+<p>
+Do you like this?  Let's vote:
+</p>
+
+<ol class="org-ol">
+<li>I like that functions have to declare what Exceptions they throw,
+it helps me write safer code.  I can live with the fact that I
+might have to add a "throws" declaration to many of my own
+functions.
+</li>
+<li>I hate adding throws declarations to all my functions!  I'm fine
+with the fact that an unexpected exception type could abort my
+whole program.
+</li>
+<li>I feel like another compromise is possible here.
+</li>
+</ol>
+</div>
+</li>
+
+<li><a id="sec-10-3-11" name="sec-10-3-11"></a>Runtime Exceptions<br  /><div class="outline-text-4" id="text-10-3-11">
+<p>
+When you have an unlikely error that you don't want to declare in a
+throws.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">if</span>(db.isNotConnected()) {
+    <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">This would be super bizarre</span>
+    <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">RuntimeException</span>(&#8220;DB is not connected in function <span style="color: #D0372D;">closeDB</span>.  What is up?&#8221;);
+}
+</pre>
+</div>
+
+<p>
+Also when you want to convert from a checked throw to an unchecked throw.
+</p>
+</div>
+
+<ol class="org-ol"><li><a id="sec-10-3-11-1" name="sec-10-3-11-1"></a>I hereby solemnly swear<br  /><div class="outline-text-5" id="text-10-3-11-1">
+<p>
+&#x2026;that I will never catch an exception and then print something to
+standard error, eating the result.
+</p>
+</div>
+</li></ol>
+</li>
+
+<li><a id="sec-10-3-12" name="sec-10-3-12"></a>Finally<br  /><div class="outline-text-4" id="text-10-3-12">
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">try</span> {
+        file.open(); <span style="color: #8D8D84;">//</span><span style="color: #8D8D84; font-style: italic;">seriously this must be closed</span>
+        doABunchMoreStuff(file);
+} <span style="color: #0000FF;">finally</span> {
+        <span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">runs regardless of any exceptions that might // be thrown</span>
+        file.close();
+}
+</pre>
+</div>
+
+<p>
+Try with Resources is a new feature in Java 7 that does a similar thing
+</p>
+</div>
+</li>
+
+<li><a id="sec-10-3-13" name="sec-10-3-13"></a>Summary<br  /><div class="outline-text-4" id="text-10-3-13">
+<ul class="org-ul">
+<li>Use exceptions to put error handling in the place where it belongs.
+Often, that means putting it very close to the user.
+</li>
+<li>Always document everything you can (easily) in an exception
+</li>
+<li>Prefer throw to returning a bogus value, especially one like null
+that can cause problems elsewhere
+</li>
+<li>Know about runtime exceptions when you need quick &amp; dirty “the world
+has exploded” exceptions
+</li>
+<li>Don’t be shy about throwing or defining your own exception types
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> Day 4: Exception Activity</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+Go here [<a href="Code/ExceptionExample/readme.html">Code/ExceptionExample/readme.html</a>]
+</p>
+
+<p>
+The code should be in your SVN repos.
+</p>
+
+<p>
+If you get stuck you can also peek at my solution here:
+</p>
+
+<p>
+[<a href="Code/ExceptionExampleSolution/">Code/ExceptionExampleSolution/</a>]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Week 10</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Day 1: One more large-scale coding activity</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+This activity was a previous CSSE375 final exam.  It's already in your
+SVN.
+</p>
+
+<p>
+[<a href="Code/CleanSheets/CleanSheetsReadme.docx">Code/CleanSheets/CleanSheetsReadme.docx</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> Day 2: Continuing with CleanSheets</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+We'll work on cleansheets in class and I'll talk about my solution.
+</p>
+
+<p>
+You can see the full source for my solution here:
+[<a href="Code/CleanSheetsSolution">Code/CleanSheetsSolution</a>]
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> Day 3: The final summary</h3>
+<div class="outline-text-3" id="text-11-3">
+</div><ol class="org-ol"><li><a id="sec-11-3-1" name="sec-11-3-1"></a>Bad Smells and Refactoring<br  /><ol class="org-ol"><li><a id="sec-11-3-1-1" name="sec-11-3-1-1"></a>My least favorite smells<br  /><div class="outline-text-5" id="text-11-3-1-1">
+<ul class="org-ul">
+<li>Duplicated Code
+</li>
+<li>Long method/Large class
+</li>
+<li>Data Class
+</li>
+<li>Parallel Class Hierarchies
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-11-3-1-2" name="sec-11-3-1-2"></a>My design approach<br  /><div class="outline-text-5" id="text-11-3-1-2">
+<p>
+Let the code speak to you.  Refactor one part at a time and the design
+will reveal itself.  But be dilligent - get lazy and it will bite you.
+</p>
+</div>
+</li></ol>
+</li>
+<li><a id="sec-11-3-2" name="sec-11-3-2"></a>Largescale coding<br  /><div class="outline-text-4" id="text-11-3-2">
+<ul class="org-ul">
+<li>Don't get intimidated
+</li>
+<li>Don't try to understand the whole thing
+</li>
+<li>Test as yoy go, verify your understanding
+</li>
+<li>Use your tools like search and refactoring
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-11-3-3" name="sec-11-3-3"></a>Writing Unit Tests for Legacy Systems<br  /><div class="outline-text-4" id="text-11-3-3">
+<ul class="org-ul">
+<li>Before making a dangerous change, get it under test
+</li>
+<li>Which is hard, but you can do it
+</li>
+<li>Look for "seams" in the language that let you change what code is executed
+</li>
+<li>In OO languages - Extract Interface and Extract and Override Method
+get you far
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-11-3-4" name="sec-11-3-4"></a>Configuration Management<br  /><div class="outline-text-4" id="text-11-3-4">
+<ul class="org-ul">
+<li>Understand how your system is built - in total - could be tricky
+</li>
+<li>Make sure it's automated and repeatable
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-11-3-5" name="sec-11-3-5"></a>Course Evaluations<br  /><div class="outline-text-4" id="text-11-3-5">
+<ul class="org-ul">
+<li>I treat your feedback very seriously
+</li>
+<li>Your feedback is also read by the Department Head and as part of my
+yearly performance reviews
+</li>
+<li>I tried to respond to your +Delta from last time
+</li>
+<li>This is a different version of the course: more coding activities,
+less lecture on SE theory
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-11-3-6" name="sec-11-3-6"></a>A few highlights of the Final Exam<br  /></li>
+<li><a id="sec-11-3-7" name="sec-11-3-7"></a>NO CLASS FRIDAY<br  /><div class="outline-text-4" id="text-11-3-7">
+<p>
+I will be in my office if you need help on the exam
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Final Exam DUE <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-05-26 Tue&gt;</span></span></h2>
+<div class="outline-text-2" id="text-12">
+<p>
+&#x2026;at midnight like usual.
+</p>
+
+<p>
+Submitted via SVN.
+</p>
+
+<p>
+[<a href="Code/j-ftp/readme.html">Code/j-ftp/readme.html</a>]
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Stuff we didn't get to</h2>
+<div class="outline-text-2" id="text-13">
+</div><div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Day 1: The final</h3>
+</div>
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2"><span class="section-number-3">13.2</span> Day 2: Parallel Class hierarchies</h3>
+</div>
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3"><span class="section-number-3">13.3</span> Day 3: Large scale refactoring (last chapter in refactoring book)</h3>
+</div>
+<div id="outline-container-sec-13-4" class="outline-3">
+<h3 id="sec-13-4"><span class="section-number-3">13.4</span> Day 4: ???</h3>
+</div>
+<div id="outline-container-sec-13-5" class="outline-3">
+<h3 id="sec-13-5"><span class="section-number-3">13.5</span> Day 2: Feathers Refactoring</h3>
+</div>
+<div id="outline-container-sec-13-6" class="outline-3">
+<h3 id="sec-13-6"><span class="section-number-3">13.6</span> Day 3: Effects Diagram</h3>
+</div>
+
+<div id="outline-container-sec-13-7" class="outline-3">
+<h3 id="sec-13-7"><span class="section-number-3">13.7</span> Day 1 &amp; 2: One more large scale coding activity in class</h3>
+</div>
+<div id="outline-container-sec-13-8" class="outline-3">
+<h3 id="sec-13-8"><span class="section-number-3">13.8</span> Day 3: Exceptions Activity</h3>
+<div class="outline-text-3" id="text-13-8">
+<p>
+Perhaps a file backup utility
+</p>
+<ul class="org-ul">
+<li>given an manifest file
+</li>
+<li>which has a list of files and manifest files, and backup locations
+</li>
+</ul>
+
+<p>
+Rules 
+</p>
+<ul class="org-ul">
+<li>files in manifest should exist
+</li>
+<li>directories in backup location should exist
+</li>
+<li>files in backup location should NOT exist
+</li>
+<li>no loops in includes
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-13-9" class="outline-3">
+<h3 id="sec-13-9"><span class="section-number-3">13.9</span> Day 4: Exceptions 2</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-05-20 Wed 12:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

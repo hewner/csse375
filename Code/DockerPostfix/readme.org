@@ -1,0 +1,140 @@
+#+TITLE: CSSE 375 Gmail Postfix Example
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+This is a step by step explanation of how I configured a docker ubuntu
+container to send mail from the command line using Gmail as an SMTP
+server.  The goal is that I can type something approximately like
+this:
+
+: echo "An Example Message Body" | mail -s "An Example Subject" person_to_send_email_to@rose-hulman.edu
+
+...and a message will be sent via gmail to that address.
+
+Usually the reason you want to do this is to allow things like scripts
+to email you if they have errors.
+
+* Hacking it to work
+
+So the first step (at least for me) of any server configuration is
+playing around with frequent references to google and stack overflow.
+To start with, I didn't use docker at all - I just played around with
+a fresh ubuntu virtual machine.
+
+The key thing to realize here is that before I found this set of
+steps, I tried many failed configuration attempts.  I tried using
+sendmail instead of postfix, tried using rose-hulman's smtp servers
+verses gmail.  Eventually I stumble upon this handy tutorial here:
+
+https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/
+
+That (contrary to everything else I had tried previously) works.
+Woohoo!  This gives me two configuration files that look like this:
+
+[file:main.cf]
+[file:sasl_passwd]
+
+But of course, the process of trying all these mysterious things has
+left my virtual machine with a lot of extra other stuff.  Packages I
+tried to use but never worked, things like emacs and firefox.  Now I
+want to use docker to create an absolutely minimal install that I can
+use as a basis for building future containers using my gmail postfix
+configuration.
+
+* Running a basic ubuntu container
+
+I won't reproduce instructions for installing docker itself here.  I
+followed the instructions on this page:
+
+http://docs.docker.com/installation/ubuntulinux/
+
+Then I tested the installation but running
+
+: sudo docker run -it ubuntu bash
+
+Be sure you test your network config by trying to ping a server
+
+#+BEGIN_EXAMPLE
+user@ubuntu:~$ sudo docker run -it ubuntu bash
+root@ubuntu:/# ping www.google.com
+PING www.google.com (216.58.216.100) 56(84) bytes of data.
+64 bytes from ord30s22-in-f4.1e100.net (216.58.216.100): icmp_seq=1 ttl=128 time=7.46 ms
+64 bytes from ord30s22-in-f4.1e100.net (216.58.216.100): icmp_seq=2 ttl=128 time=7.47 ms
+^C
+--- www.google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 7.461/7.468/7.476/0.086 ms
+root@ubuntu:/# exit
+#+END_EXAMPLE
+
+* The Dockerfile
+
+Now in theory, we could proceed like the docker tutorial and start
+manually running command on the ubuntu docker container one stage at a
+time.  But this is a bad idea.  Why?
+
+1.  It is annoying
+2.  If something changes, we have to start the process from scratch
+
+Instead, we're going to create a Dockerfile which will make a
+reproducible process for creating our container.  It's easier to show
+than explain.  First, go and look at the non-docker instructions we're
+following online:
+
+https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/
+
+Ok, now take a look at the [file:Dockerfile].  Similar, right?
+
+If you want details, you can see lots of details about the syntax here:
+http://docs.docker.com/reference/builder/
+
+* Doing the build
+
+#+BEGIN_EXAMPLE
+user@ubuntu:~/postfixDocker$ sudo docker build -t nameforcontainer .
+Sending build context to Docker daemon 10.75 kB
+Sending build context to Docker daemon 
+Step 0 : FROM ubuntu
+ ---> b7cf8f0d9e82
+Step 1 : RUN apt-get update
+ ---> Using cache
+ ---> 7b7cdbac78a3
+Step 2 : RUN apt-get install -y postfix mailutils libsasl2-2 ca-certificates libsasl2-modules wget
+ ---> Running in 67c67d1c354e
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+
+BLAH BLAH BLAH
+
+Removing intermediate container 0c1a20e5830f
+Successfully built 0b4290a75364
+#+END_EXAMPLE
+
+* Testing
+
+Run your new container in interactive mode like this:
+
+: sudo docker run -it nameforcontainer bash
+
+Now one thing to know about docker containers is that they don't
+persist running processes between runs.  So you can't have background
+processes that start automatically.  Instead you must restart them
+yourself in scripts (or by hand as in this example):
+
+#+BEGIN_EXAMPLE
+user@ubuntu:~/postfixDocker$ sudo docker run -it nameforcontainer bash
+root@0f263cc3fa49:/# service postfix start
+ * Starting Postfix Mail Transport Agent postfix                         [ OK ] 
+root@0f263cc3fa49:/# echo "Message body" | mail -s "Message Subject" your_email@rose-hulman.edu
+#+END_EXAMPLE
+
+You should see a message in your inbox!

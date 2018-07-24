@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Courses In Class Refactoring Solution</title>
+<!-- 2015-04-02 Thu 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Buffalo" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+<script type="text/javascript" src="http://orgmode.org/org-info.js">
+/**
+ *
+ * @source: http://orgmode.org/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/org-info.js.
+ *
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Courses In Class Refactoring Solution</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Step 1: Playing with a function</a></li>
+<li><a href="#sec-2">2. Step 2: Generalize that to find (failure)</a></li>
+<li><a href="#sec-3">3. Step 3: Generalize that to update</a></li>
+<li><a href="#sec-4">4. Step 4: I try to write a version of doDBCommands for query (failure)</a></li>
+<li><a href="#sec-5">5. Step 5: What do I do?</a></li>
+<li><a href="#sec-6">6. Step 6: Extract these DB functions to a class</a></li>
+<li><a href="#sec-7">7. Step 7: Make Offering Use the New Functions</a></li>
+<li><a href="#sec-8">8. Step 8: Update Schedule</a></li>
+<li><a href="#sec-9">9. Step 9: Make doDBQuery return multiple results</a></li>
+<li><a href="#sec-10">10. Step 10: The future</a></li>
+<li><a href="#sec-11">11. Many other refactorings are possible: yours may well be nicer than mine</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Step 1: Playing with a function</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I start out without any strong intuition about what I want to do,
+except a feeling that there is a strong similarity between all the
+functions that use a database.  There are similarity between classes
+too, but I'm not 100% sure what to make of that so I decide to start
+in the simplest possible way.
+</p>
+
+<p>
+I look at the function Course::create and decide to pull out the
+database specific code, hoping that maybe I can reuse that in some of
+the other functions:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Course</span> <span style="color: #006699;">create</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>, <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">credits</span>) 
+    <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">Exception</span> 
+{
+  <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+
+  <span style="color: #0000FF;">try</span> {
+      conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+      <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+      statement.executeUpdate(
+        <span style="color: #008000;">"DELETE FROM course WHERE name = '"</span> + name + <span style="color: #008000;">"'"</span>);
+      statement.executeUpdate(
+        <span style="color: #008000;">"INSERT INTO course VALUES ('"</span> + name 
+        + <span style="color: #008000;">"', "</span> + credits + <span style="color: #008000;">")"</span>);
+      <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Course</span>(name, credits);
+  } <span style="color: #0000FF;">finally</span> {
+      <span style="color: #0000FF;">try</span> { conn.close(); } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {}
+  }
+}
+</pre>
+</div>
+
+<p>
+It takes me a minute to figure out what I want to do with the 2
+different SQL commands.  I decide on making my new function take an
+array of Strings.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">doDBCommands</span>(<span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">Exception</span> {
+        <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+
+        <span style="color: #0000FF;">try</span> {
+                conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">command</span> : commands) {
+                        statement.executeUpdate(command);
+                }
+        } <span style="color: #0000FF;">finally</span> {
+                <span style="color: #0000FF;">try</span> {
+                        conn.close();
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Course</span> <span style="color: #006699;">create</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>, <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">credits</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">Exception</span> {
+
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span> = { 
+                        <span style="color: #008000;">"DELETE FROM course WHERE name = '"</span> + name + <span style="color: #008000;">"'"</span>,
+                        <span style="color: #008000;">"INSERT INTO course VALUES ('"</span> + name + <span style="color: #008000;">"', "</span> + credits + <span style="color: #008000;">")"</span> 
+                        };
+        doDBCommands(commands);
+        <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Course</span>(name, credits);
+}
+</pre>
+</div>
+
+<p>
+Run my tests: they pass.  Woo!
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Step 2: Generalize that to find (failure)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Moving down the file, let's see if we can do the same thing to find.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Course</span> <span style="color: #006699;">find</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>) {
+        <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+        <span style="color: #0000FF;">try</span> {
+                conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">result</span> = statement
+                                .executeQuery(<span style="color: #008000;">"SELECT * FROM course WHERE Name = '"</span> + name
+                                                + <span style="color: #008000;">"'"</span>);
+                <span style="color: #0000FF;">if</span> (<span style="color: #F0DFAF; font-weight: bold;">!</span>result.next())
+                        <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+
+                <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">credits</span> = result.getInt(<span style="color: #008000;">"Credits"</span>);
+                <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Course</span>(name, credits);
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ex</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        } <span style="color: #0000FF;">finally</span> {
+                <span style="color: #0000FF;">try</span> {
+                        conn.close();
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+}
+</pre>
+</div>
+
+<p>
+Hmmm&#x2026;unfortunately this sucker calls execute <b>Query</b> not
+executeUpdate.  Maybe I could just switch my executeUpdate to
+executeQuery?
+</p>
+
+<p>
+I try it and run my tests.  No dice.
+</p>
+
+<p>
+Ok.  I think there's something here but find is gonna be more
+complicated.  Let me try instead on update &#x2013; that looks easier.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Step 3: Generalize that to update</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Update becomes
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">update</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">Exception</span> {
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span> = { 
+                        <span style="color: #008000;">"DELETE FROM COURSE WHERE name = '"</span> + name + <span style="color: #008000;">"'"</span>,
+                        <span style="color: #008000;">"INSERT INTO course VALUES('"</span> + name + <span style="color: #008000;">"',"</span> + credits + <span style="color: #008000;">")"</span> 
+                        };
+        doDBCommands(commands);
+}
+</pre>
+</div>
+
+<p>
+Sweet.  I'm now more confident I might have something here.
+</p>
+
+<p>
+Poking around, I think there are some other functions that could
+easily improved with my doDBCommands function, but many of them are
+queries and can't be.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Step 4: I try to write a version of doDBCommands for query (failure)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+I change the code to look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">ResultSet</span> <span style="color: #006699;">doDBQuery</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">querySQL</span>) {
+        <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+        <span style="color: #0000FF;">try</span> {
+                conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">result</span> = statement
+                                .executeQuery(querySQL);
+
+                <span style="color: #0000FF;">return</span> result;
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ex</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        } <span style="color: #0000FF;">finally</span> {
+                <span style="color: #0000FF;">try</span> {
+                        conn.close();
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Course</span> <span style="color: #006699;">find</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>) {
+        <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">result</span> = doDBQuery(<span style="color: #008000;">"SELECT * FROM course WHERE Name = '"</span>
+                        + name + <span style="color: #008000;">"'"</span>);
+        <span style="color: #0000FF;">try</span> {
+                <span style="color: #0000FF;">if</span> (<span style="color: #F0DFAF; font-weight: bold;">!</span>result.next())
+                        <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+
+                <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">credits</span> = result.getInt(<span style="color: #008000;">"Credits"</span>);
+                <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Course</span>(name, credits);
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">SQLException</span> <span style="color: #BA36A5;">ignored</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        }
+}
+</pre>
+</div>
+
+<p>
+I'm not fully happy with it, especially after I run my tests and they
+fail.  NullPointerException?  Oh, maybe I should not be stupidly
+swallowing the results of exceptions and returning null, huh?
+</p>
+
+<p>
+But my goal is to refactor - not change this code's error handling.
+Still adding a print statement to figure out what's up would aid my
+debugging.
+</p>
+
+<p>
+I toss a ignored.printStackTrace into find.
+</p>
+
+<pre class="example">
+java.sql.SQLException: ResultSet not open. Operation 'next' not permitted. Verify that autocommit is OFF.
+</pre>
+
+<p>
+Hmmm&#x2026;I figure out that this is because I'm calling a function on a
+resultSet after the connection is closed.  Uh oh.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Step 5: What do I do?</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Ok, so I can't use a ResultSet as my result.  But it looks like what
+is coming back is very simple - maybe I could use some other data
+structure?
+</p>
+
+<p>
+Hmmmm&#x2026;in this case the query returns an int.  What other options are
+there?  Looking around I see both ints and Strings, with some queries
+needing to get more than one value.  Also in each cause I need to get
+specific fields.
+</p>
+
+<p>
+I propose - I'll pass a list of strings, and return a list of strings
+(that can be converted into an int).
+</p>
+
+<p>
+I also rework the ways exceptions get thrown so that errors or passed
+to find as exceptions to find, which then returns null (preserving the
+existing behavior).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">String</span>[] <span style="color: #006699;">doDBQuery</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">querySQL</span>, <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">columns</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+        <span style="color: #0000FF;">try</span> {
+                conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">row</span> = statement
+                                .executeQuery(querySQL);
+                <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>row.next())
+                        <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">SQLException</span>(<span style="color: #008000;">"No rows returned!"</span>);
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">results</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[columns.length];
+                <span style="color: #0000FF;">for</span>(<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">i</span> = 0; i &lt; results.<span style="color: #6434A3;">length</span>; i++) {
+                        results[i] = row.getString(columns[i]);
+                }
+                <span style="color: #0000FF;">return</span> results;
+        } <span style="color: #0000FF;">finally</span> {
+                <span style="color: #0000FF;">try</span> {
+                        conn.close();
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Course</span> <span style="color: #006699;">find</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>) {
+        <span style="color: #0000FF;">try</span> {
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">results</span> = doDBQuery(<span style="color: #008000;">"SELECT * FROM course WHERE Name = '"</span>
+                        + name + <span style="color: #008000;">"'"</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[] {<span style="color: #008000;">"Credits"</span>});
+                <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Course</span>(name, Integer.parseInt(results[0]));
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">SQLException</span> <span style="color: #BA36A5;">ignored</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Step 6: Extract these DB functions to a class</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+At this point Course is working reasonably nicely.  But it has crazy
+static DB functions.  Let's pull thing out to their own class.
+</p>
+
+<p>
+I do a bit of renaming as well.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">class</span> <span style="color: #6434A3;">DBCommands</span> {
+        <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">url</span> = <span style="color: #008000;">"jdbc:derby:courses"</span>;
+
+        <span style="color: #0000FF;">static</span> {
+                <span style="color: #0000FF;">try</span> {
+                        Class.forName(<span style="color: #008000;">"org.apache.derby.jdbc.EmbeddedDriver"</span>);
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+
+        <span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">doDBUpdate</span>(<span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+                <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+
+                <span style="color: #0000FF;">try</span> {
+                        conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                        <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                        <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">command</span> : commands) {
+                                statement.executeUpdate(command);
+                        }
+                } <span style="color: #0000FF;">finally</span> {
+                        <span style="color: #0000FF;">try</span> {
+                                conn.close();
+                        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                        }
+                }
+        }
+
+        <span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">String</span>[] <span style="color: #006699;">doDBQuery</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">querySQL</span>, <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">columns</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+                <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+                <span style="color: #0000FF;">try</span> {
+                        conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                        <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                        <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">row</span> = statement
+                                        .executeQuery(querySQL);
+                        <span style="color: #0000FF;">if</span>(<span style="color: #F0DFAF; font-weight: bold;">!</span>row.next())
+                                <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">SQLException</span>(<span style="color: #008000;">"No rows returned!"</span>);
+                        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">results</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[columns.length];
+                        <span style="color: #0000FF;">for</span>(<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">i</span> = 0; i &lt; results.<span style="color: #6434A3;">length</span>; i++) {
+                                results[i] = row.getString(columns[i]);
+                        }
+                        <span style="color: #0000FF;">return</span> results;
+                } <span style="color: #0000FF;">finally</span> {
+                        <span style="color: #0000FF;">try</span> {
+                                conn.close();
+                        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                        }
+                }
+        }
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Step 7: Make Offering Use the New Functions</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+I test as a replace each function.
+</p>
+
+<p>
+Update and find both are easy fixes.  Max id needs another query:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">int</span> <span style="color: #006699;">getMaxOfferingId</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> 
+{
+    <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+
+    <span style="color: #0000FF;">try</span> {
+        conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+        <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+
+        <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">result</span> = statement.executeQuery(<span style="color: #008000;">"SELECT MAX(ID) FROM offering"</span>);
+        result.next();
+        <span style="color: #0000FF;">return</span> result.getInt(1);
+
+    } <span style="color: #0000FF;">finally</span> {
+        <span style="color: #0000FF;">try</span> { conn.close(); } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {}
+    }
+}
+</pre>
+</div>
+
+<p>
+Inserted a bug with my change to max id - discovered it with tests and
+quickly fixed it.
+</p>
+
+<p>
+New version of offering:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">class</span> <span style="color: #6434A3;">Offering</span> {
+    <span style="color: #0000FF;">private</span> <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">id</span>;
+    <span style="color: #0000FF;">private</span> <span style="color: #6434A3;">Course</span> <span style="color: #BA36A5;">course</span>;
+    <span style="color: #0000FF;">private</span> <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">daysTimes</span>;
+
+    <span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Offering</span> <span style="color: #006699;">create</span>(<span style="color: #6434A3;">Course</span> <span style="color: #BA36A5;">course</span>, <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">daysTimesCsv</span>) 
+        <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> 
+    {
+        <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">newId</span> = DBCommands.getMaxOfferingId() + 1;
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span> = { 
+                                <span style="color: #008000;">"INSERT INTO offering VALUES ("</span>
+                            + newId + <span style="color: #008000;">",'"</span> + course.getName() 
+                            + <span style="color: #008000;">"','"</span> + daysTimesCsv + <span style="color: #008000;">"')"</span>
+                                };
+                DBCommands.doDBUpdate(commands);
+                <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Offering</span>(newId, course, daysTimesCsv);
+    }
+
+    <span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Offering</span> <span style="color: #006699;">find</span>(<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">id</span>) {
+        <span style="color: #0000FF;">try</span> {
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">results</span> = DBCommands.doDBQuery(<span style="color: #008000;">"SELECT * FROM offering WHERE ID ="</span> + id, 
+                                <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[] {<span style="color: #008000;">"Course"</span>,<span style="color: #008000;">"DateTime"</span>});
+                <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">courseName</span> = results[0]; 
+                <span style="color: #6434A3;">Course</span> <span style="color: #BA36A5;">course</span> = Course.find(courseName); 
+                <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">dateTime</span> = results[1];
+                <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Offering</span>(id, course, dateTime);
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">SQLException</span> <span style="color: #BA36A5;">ignored</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        }
+    }
+
+    <span style="color: #0000FF;">public</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">update</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span>{
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span> = { 
+                                <span style="color: #008000;">"DELETE FROM Offering WHERE ID="</span> + id,
+                                <span style="color: #008000;">"INSERT INTO Offering VALUES("</span> + id + <span style="color: #008000;">",'"</span> +
+                              course.getName() + <span style="color: #008000;">"','"</span> + daysTimes + <span style="color: #008000;">"')"</span>
+                                };
+                DBCommands.doDBUpdate(commands);
+    }
+
+<span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">everything else is unchanged</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Step 8: Update Schedule</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+I notice there a several places where I only need to a 1 line update.
+I make a new version of doDBUpdate that takes just a string.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">doDBUpdate</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">command</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        doDBUpdate(<span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[] {command});
+}
+</pre>
+</div>
+
+<p>
+I change Offering to use the new method.
+</p>
+
+<p>
+I update deleteAll and create.
+</p>
+
+<p>
+Then I discover that Schedule::find and Schedule:all both have queries
+that iterate over several rows.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Step 9: Make doDBQuery return multiple results</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+&#x2026;and make a new DBQueryRow that all existing uses will use.  I write
+this and then run tests:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">String</span>[] <span style="color: #006699;">doDBQueryRow</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">querySQL</span>, <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">columns</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        <span style="color: #6434A3;">List</span>&lt;<span style="color: #6434A3;">String</span>[]&gt; <span style="color: #BA36A5;">results</span> = doDBQuery(querySQL,columns);
+        <span style="color: #0000FF;">if</span>(results.size() != 1) {
+                <span style="color: #0000FF;">throw</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">SQLException</span>(<span style="color: #008000;">"Expected 1 row.  Got "</span> + results.size());
+        }
+        <span style="color: #0000FF;">return</span> results.get(0);
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">List</span>&lt;<span style="color: #6434A3;">String</span>[]&gt; <span style="color: #006699;">doDBQuery</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">querySQL</span>, <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">columns</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        <span style="color: #6434A3;">Connection</span> <span style="color: #BA36A5;">conn</span> = <span style="color: #D0372D;">null</span>;
+        <span style="color: #0000FF;">try</span> {
+                conn = DriverManager.getConnection(url, <span style="color: #008000;">""</span>, <span style="color: #008000;">""</span>);
+                <span style="color: #6434A3;">Statement</span> <span style="color: #BA36A5;">statement</span> = conn.createStatement();
+                <span style="color: #6434A3;">ResultSet</span> <span style="color: #BA36A5;">rows</span> = statement
+                                .executeQuery(querySQL);
+                <span style="color: #6434A3;">List</span>&lt;<span style="color: #6434A3;">String</span>[]&gt; <span style="color: #BA36A5;">results</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">LinkedList</span>&lt;<span style="color: #6434A3;">String</span>[]&gt;();
+                <span style="color: #0000FF;">while</span>(rows.next()) {
+                        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">rowResult</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[columns.length];
+                        <span style="color: #0000FF;">for</span>(<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">i</span> = 0; i &lt; rowResult.<span style="color: #6434A3;">length</span>; i++) {
+                                rowResult[i] = rows.getString(columns[i]);
+                        }
+                        results.add(rowResult);
+                }
+                <span style="color: #0000FF;">return</span> results;
+        } <span style="color: #0000FF;">finally</span> {
+                <span style="color: #0000FF;">try</span> {
+                        conn.close();
+                } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">Exception</span> <span style="color: #BA36A5;">ignored</span>) {
+                }
+        }
+}
+</pre>
+</div>
+
+<p>
+Then I updated schedule (this took a little careful work):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">deleteAll</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        DBCommands.doDBUpdate(<span style="color: #008000;">"DELETE FROM schedule"</span>);
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Schedule</span> <span style="color: #006699;">create</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>) <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+
+        DBCommands.doDBUpdate(<span style="color: #008000;">"DELETE FROM schedule WHERE name = '"</span> + name
+                        + <span style="color: #008000;">"'"</span>);
+        <span style="color: #0000FF;">return</span> <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Schedule</span>(name);
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Schedule</span> <span style="color: #006699;">find</span>(<span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">name</span>) {
+        <span style="color: #0000FF;">try</span> {
+                <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">rowNames</span> = { <span style="color: #008000;">"OfferingId"</span> };
+                <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">sql</span> = <span style="color: #008000;">"SELECT * FROM schedule WHERE Name= '"</span> + name + <span style="color: #008000;">"'"</span>;
+
+                <span style="color: #6434A3;">Schedule</span> <span style="color: #BA36A5;">schedule</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">Schedule</span>(name);
+
+                <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">row</span> : DBCommands.doDBQuery(sql, rowNames)) {
+                        <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">offeringId</span> = Integer.parseInt(row[0]);
+                        <span style="color: #6434A3;">Offering</span> <span style="color: #BA36A5;">offering</span> = Offering.find(offeringId);
+                        schedule.add(offering);
+                }
+                <span style="color: #0000FF;">return</span> schedule;
+        } <span style="color: #0000FF;">catch</span> (<span style="color: #6434A3;">SQLException</span> <span style="color: #BA36A5;">ex</span>) {
+                <span style="color: #0000FF;">return</span> <span style="color: #D0372D;">null</span>;
+        }
+
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #0000FF;">static</span> <span style="color: #6434A3;">Collection</span>&lt;<span style="color: #6434A3;">Schedule</span>&gt; <span style="color: #006699;">all</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">rowNames</span> = { <span style="color: #008000;">"Name"</span> };
+        <span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">sql</span> = <span style="color: #008000;">"SELECT DISTINCT Name FROM schedule"</span>;
+        <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Schedule</span>&gt; <span style="color: #BA36A5;">result</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">ArrayList</span>&lt;<span style="color: #6434A3;">Schedule</span>&gt;();
+
+        <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">row</span> : DBCommands.doDBQuery(sql, rowNames)) {
+                result.add(Schedule.find(row[0]));
+
+        }
+
+        <span style="color: #0000FF;">return</span> result;
+}
+
+<span style="color: #0000FF;">public</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">update</span>() <span style="color: #0000FF;">throws</span> <span style="color: #6434A3;">SQLException</span> {
+
+        <span style="color: #6434A3;">String</span>[] <span style="color: #BA36A5;">commands</span> = <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">String</span>[schedule.size() + 1];
+        commands[0] = <span style="color: #008000;">"DELETE FROM schedule WHERE name = '"</span> + name + <span style="color: #008000;">"'"</span>;
+
+        <span style="color: #0000FF;">for</span> (<span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">i</span> = 0; i &lt; schedule.<span style="color: #6434A3;">size</span>(); i++) {
+                <span style="color: #6434A3;">Offering</span> <span style="color: #BA36A5;">offering</span> = (<span style="color: #6434A3;">Offering</span>) schedule.get(i);
+                commands[i + 1] = <span style="color: #008000;">"INSERT INTO schedule VALUES('"</span> + name + <span style="color: #008000;">"',"</span>
+                                + offering.getId() + <span style="color: #008000;">")"</span>;
+        }
+        DBCommands.doDBUpdate(commands);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Step 10: The future</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Overall, I am unhappy with the result of this refactoring.  Seems like
+what's really going on here is we want to have a closure or
+closure-like thing that lets me replace the internals of the functions
+while allow freedom to make statements and use resultset object
+freely.
+</p>
+
+<p>
+Exactly how that's implemented is tricky - maybe some superclass with
+a template method and anonymous inner classes, maybe something with
+the new Java closures&#x2026;needs a little more research but I think that
+complexity is worth it given the code here.
+</p>
+
+<p>
+But I did learn a lot doing this refactoring and now I'm positioned to
+understand the design clearly and how to fix it better - so overall I
+consider the refactoring worth it BECAUSE of what it taught me about
+the code and the design ideas it provided to the future (hopefully
+final design.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Many other refactorings are possible: yours may well be nicer than mine</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Buffalo</p>
+<p class="date">Created: 2015-04-02 Thu 17:07</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,675 @@
+DIAG_CD,DIAG_CD_DESC,DIAG_CD_FLAG
+410.00,Coronary Artery Disease,CAD
+410.00,Coronary Artery Disease,CAD
+410.01,Coronary Artery Disease,CAD
+410.02,Coronary Artery Disease,CAD
+410.10,Coronary Artery Disease,CAD
+410.11,Coronary Artery Disease,CAD
+410.12,Coronary Artery Disease,CAD
+410.20,Coronary Artery Disease,CAD
+410.21,Coronary Artery Disease,CAD
+410.22,Coronary Artery Disease,CAD
+410.30,Coronary Artery Disease,CAD
+410.31,Coronary Artery Disease,CAD
+410.32,Coronary Artery Disease,CAD
+410.40,Coronary Artery Disease,CAD
+410.41,Coronary Artery Disease,CAD
+410.42,Coronary Artery Disease,CAD
+410.50,Coronary Artery Disease,CAD
+410.51,Coronary Artery Disease,CAD
+410.52,Coronary Artery Disease,CAD
+410.60,Coronary Artery Disease,CAD
+410.61,Coronary Artery Disease,CAD
+410.62,Coronary Artery Disease,CAD
+410.70,Coronary Artery Disease,CAD
+410.71,Coronary Artery Disease,CAD
+410.72,Coronary Artery Disease,CAD
+410.80,Coronary Artery Disease,CAD
+410.81,Coronary Artery Disease,CAD
+410.82,Coronary Artery Disease,CAD
+410.90,Coronary Artery Disease,CAD
+410.91,Coronary Artery Disease,CAD
+410.92,Coronary Artery Disease,CAD
+411.00,Coronary Artery Disease,CAD
+411.10,Coronary Artery Disease,CAD
+411.81,Coronary Artery Disease,CAD
+411.89,Coronary Artery Disease,CAD
+412.00,Coronary Artery Disease,CAD
+413.00,Coronary Artery Disease,CAD
+413.00,Coronary Artery Disease,CAD
+413.10,Coronary Artery Disease,CAD
+413.90,Coronary Artery Disease,CAD
+414.01,Coronary Artery Disease,CAD
+414.02,Coronary Artery Disease,CAD
+398.91,Heart Failure,HF
+402.01,Heart Failure,HF
+402.11,Heart Failure,HF
+402.91,Heart Failure,HF
+428.00,Heart Failure,HF
+428.00,Heart Failure,HF
+428.10,Heart Failure,HF
+V42.20,Heart Failure,HF
+428.20,Heart Failure,HF
+428.21,Heart Failure,HF
+428.22,Heart Failure,HF
+428.23,Heart Failure,HF
+428.30,Heart Failure,HF
+428.30,Heart Failure,HF
+428.31,Heart Failure,HF
+428.32,Heart Failure,HF
+428.33,Heart Failure,HF
+428.40,Heart Failure,HF
+428.40,Heart Failure,HF
+428.41,Heart Failure,HF
+428.42,Heart Failure,HF
+428.43,Heart Failure,HF
+428.90,Heart Failure,HF
+250.00,Diabetes,DM
+250.00,Diabetes,DM
+250.01,Diabetes,DM
+250.02,Diabetes,DM
+250.03,Diabetes,DM
+250.10,Diabetes,DM
+250.11,Diabetes,DM
+250.12,Diabetes,DM
+250.13,Diabetes,DM
+250.20,Diabetes,DM
+250.21,Diabetes,DM
+250.22,Diabetes,DM
+250.23,Diabetes,DM
+250.30,Diabetes,DM
+250.31,Diabetes,DM
+250.32,Diabetes,DM
+250.33,Diabetes,DM
+250.40,Diabetes,DM
+250.41,Diabetes,DM
+250.42,Diabetes,DM
+250.43,Diabetes,DM
+250.50,Diabetes,DM
+250.51,Diabetes,DM
+250.52,Diabetes,DM
+250.53,Diabetes,DM
+250.60,Diabetes,DM
+250.61,Diabetes,DM
+250.62,Diabetes,DM
+250.63,Diabetes,DM
+250.70,Diabetes,DM
+250.71,Diabetes,DM
+250.72,Diabetes,DM
+250.73,Diabetes,DM
+250.80,Diabetes,DM
+250.81,Diabetes,DM
+250.82,Diabetes,DM
+250.83,Diabetes,DM
+250.90,Diabetes,DM
+250.91,Diabetes,DM
+250.92,Diabetes,DM
+250.93,Diabetes,DM
+357.20,Diabetes,DM
+362.00,Diabetes,DM
+362.00,Diabetes,DM
+362.01,Diabetes,DM
+362.02,Diabetes,DM
+362.03,Diabetes,DM
+362.04,Diabetes,DM
+362.05,Diabetes,DM
+362.06,Diabetes,DM
+362.07,Diabetes,DM
+366.41,Diabetes,DM
+648.00,Diabetes,DM
+648.00,Diabetes,DM
+648.01,Diabetes,DM
+648.02,Diabetes,DM
+648.03,Diabetes,DM
+648.04,Diabetes,DM
+585.00,Chronic Kidney Disease,CKD
+404.01,Chronic Kidney Disease,CKD
+404.03,Chronic Kidney Disease,CKD
+404.11,Chronic Kidney Disease,CKD
+404.13,Chronic Kidney Disease,CKD
+404.91,Chronic Kidney Disease,CKD
+404.93,Chronic Kidney Disease,CKD
+493.00,Asthma,ASTH
+493.00,Asthma,ASTH
+493.01,Asthma,ASTH
+493.02,Asthma,ASTH
+493.10,Asthma,ASTH
+493.11,Asthma,ASTH
+493.12,Asthma,ASTH
+493.20,Asthma,ASTH
+493.21,Asthma,ASTH
+493.22,Asthma,ASTH
+493.80,Asthma,ASTH
+493.90,Asthma,ASTH
+493.91,Asthma,ASTH
+493.92,Asthma,ASTH
+491.00,Chronic obstructive lung Disease,COPD
+491.00,Chronic obstructive lung Disease,COPD
+491.10,Chronic obstructive lung Disease,COPD
+491.20,Chronic obstructive lung Disease,COPD
+491.20,Chronic obstructive lung Disease,COPD
+491.21,Chronic obstructive lung Disease,COPD
+491.22,Chronic obstructive lung Disease,COPD
+491.80,Chronic obstructive lung Disease,COPD
+491.90,Chronic obstructive lung Disease,COPD
+492.00,Chronic obstructive lung Disease,COPD
+492.00,Chronic obstructive lung Disease,COPD
+492.80,Chronic obstructive lung Disease,COPD
+496.00,Chronic obstructive lung Disease,COPD
+272.00,Hyperlipidemia- lipid disorder,LD
+272.00,Hyperlipidemia- lipid disorder,LD
+272.10,Hyperlipidemia- lipid disorder,LD
+272.20,Hyperlipidemia- lipid disorder,LD
+272.30,Hyperlipidemia- lipid disorder,LD
+272.40,Hyperlipidemia- lipid disorder,LD
+272.50,Hyperlipidemia- lipid disorder,LD
+272.60,Hyperlipidemia- lipid disorder,LD
+272.70,Hyperlipidemia- lipid disorder,LD
+272.80,Hyperlipidemia- lipid disorder,LD
+272.90,Hyperlipidemia- lipid disorder,LD
+401.00,Hypertension,HTN
+401.10,Hypertension,HTN
+401.90,Hypertension,HTN
+585.10,Chronic Kidney Disease,CKD
+585.20,Chronic Kidney Disease,CKD
+585.30,Chronic Kidney Disease,CKD
+585.40,Chronic Kidney Disease,CKD
+585.50,Chronic Kidney Disease,CKD
+585.60,Chronic Kidney Disease,CKD
+585.90,Chronic Kidney Disease,CKD
+403.00,Chronic Kidney Disease,CKD
+403.00,Chronic Kidney Disease,CKD
+403.10,Chronic Kidney Disease,CKD
+403.10,Chronic Kidney Disease,CKD
+403.11,Chronic Kidney Disease,CKD
+403.90,Chronic Kidney Disease,CKD
+403.90,Chronic Kidney Disease,CKD
+403.91,Chronic Kidney Disease,CKD
+404.00,Chronic Kidney Disease,CKD
+404.00,Chronic Kidney Disease,CKD
+404.02,Chronic Kidney Disease,CKD
+404.10,Chronic Kidney Disease,CKD
+404.10,Chronic Kidney Disease,CKD
+404.12,Chronic Kidney Disease,CKD
+404.90,Chronic Kidney Disease,CKD
+404.90,Chronic Kidney Disease,CKD
+404.92,Chronic Kidney Disease,CKD
+290.00,Mental Health,MH
+290.10,Mental Health,MH
+290.11,Mental Health,MH
+290.12,Mental Health,MH
+290.13,Mental Health,MH
+290.20,Mental Health,MH
+290.21,Mental Health,MH
+290.30,Mental Health,MH
+290.40,Mental Health,MH
+290.41,Mental Health,MH
+290.42,Mental Health,MH
+290.43,Mental Health,MH
+290.80,Mental Health,MH
+290.90,Mental Health,MH
+293.00,Mental Health,MH
+291.10,Mental Health,MH
+293.82,Mental Health,MH
+293.83,Mental Health,MH
+293.84,Mental Health,MH
+293.90,Mental Health,MH
+294.00,Mental Health,MH
+294.10,Mental Health,MH
+294.11,Mental Health,MH
+294.80,Mental Health,MH
+294.90,Mental Health,MH
+295.00,Mental Health,MH
+295.01,Mental Health,MH
+295.02,Mental Health,MH
+295.03,Mental Health,MH
+295.04,Mental Health,MH
+295.05,Mental Health,MH
+295.10,Mental Health,MH
+295.11,Mental Health,MH
+295.12,Mental Health,MH
+295.13,Mental Health,MH
+295.14,Mental Health,MH
+295.15,Mental Health,MH
+295.20,Mental Health,MH
+295.21,Mental Health,MH
+295.22,Mental Health,MH
+295.23,Mental Health,MH
+295.24,Mental Health,MH
+295.25,Mental Health,MH
+295.30,Mental Health,MH
+295.31,Mental Health,MH
+295.32,Mental Health,MH
+295.33,Mental Health,MH
+295.34,Mental Health,MH
+295.35,Mental Health,MH
+295.40,Mental Health,MH
+295.41,Mental Health,MH
+295.42,Mental Health,MH
+295.43,Mental Health,MH
+295.44,Mental Health,MH
+295.45,Mental Health,MH
+295.50,Mental Health,MH
+295.51,Mental Health,MH
+295.52,Mental Health,MH
+295.53,Mental Health,MH
+295.54,Mental Health,MH
+295.55,Mental Health,MH
+295.60,Mental Health,MH
+295.61,Mental Health,MH
+295.62,Mental Health,MH
+295.63,Mental Health,MH
+295.64,Mental Health,MH
+295.65,Mental Health,MH
+295.70,Mental Health,MH
+295.71,Mental Health,MH
+295.72,Mental Health,MH
+295.73,Mental Health,MH
+295.74,Mental Health,MH
+295.75,Mental Health,MH
+295.80,Mental Health,MH
+295.81,Mental Health,MH
+295.82,Mental Health,MH
+295.83,Mental Health,MH
+295.84,Mental Health,MH
+295.85,Mental Health,MH
+295.90,Mental Health,MH
+295.91,Mental Health,MH
+295.92,Mental Health,MH
+295.93,Mental Health,MH
+295.94,Mental Health,MH
+295.95,Mental Health,MH
+296.00,Mental Health,MH
+296.01,Mental Health,MH
+296.02,Mental Health,MH
+296.03,Mental Health,MH
+296.04,Mental Health,MH
+296.05,Mental Health,MH
+296.06,Mental Health,MH
+296.10,Mental Health,MH
+296.11,Mental Health,MH
+296.12,Mental Health,MH
+296.13,Mental Health,MH
+296.14,Mental Health,MH
+296.15,Mental Health,MH
+296.16,Mental Health,MH
+296.20,Mental Health,MH
+296.21,Mental Health,MH
+296.22,Mental Health,MH
+296.23,Mental Health,MH
+296.24,Mental Health,MH
+296.25,Mental Health,MH
+296.26,Mental Health,MH
+296.30,Mental Health,MH
+296.31,Mental Health,MH
+296.32,Mental Health,MH
+296.33,Mental Health,MH
+296.34,Mental Health,MH
+296.35,Mental Health,MH
+296.36,Mental Health,MH
+296.40,Mental Health,MH
+296.41,Mental Health,MH
+296.42,Mental Health,MH
+296.43,Mental Health,MH
+296.44,Mental Health,MH
+296.45,Mental Health,MH
+296.46,Mental Health,MH
+296.50,Mental Health,MH
+296.51,Mental Health,MH
+296.52,Mental Health,MH
+296.53,Mental Health,MH
+296.54,Mental Health,MH
+296.55,Mental Health,MH
+296.56,Mental Health,MH
+296.60,Mental Health,MH
+296.61,Mental Health,MH
+296.62,Mental Health,MH
+296.63,Mental Health,MH
+296.64,Mental Health,MH
+296.65,Mental Health,MH
+296.66,Mental Health,MH
+296.70,Mental Health,MH
+296.80,Mental Health,MH
+296.81,Mental Health,MH
+296.82,Mental Health,MH
+296.89,Mental Health,MH
+296.90,Mental Health,MH
+296.99,Mental Health,MH
+296.92,Mental Health,MH
+297.00,Mental Health,MH
+297.10,Mental Health,MH
+297.20,Mental Health,MH
+297.30,Mental Health,MH
+297.80,Mental Health,MH
+297.90,Mental Health,MH
+298.00,Mental Health,MH
+298.10,Mental Health,MH
+298.20,Mental Health,MH
+298.30,Mental Health,MH
+298.40,Mental Health,MH
+298.80,Mental Health,MH
+298.90,Mental Health,MH
+300.00,Mental Health,MH
+300.01,Mental Health,MH
+300.02,Mental Health,MH
+300.09,Mental Health,MH
+300.10,Mental Health,MH
+300.11,Mental Health,MH
+300.12,Mental Health,MH
+300.13,Mental Health,MH
+300.14,Mental Health,MH
+300.15,Mental Health,MH
+300.16,Mental Health,MH
+300.19,Mental Health,MH
+300.20,Mental Health,MH
+300.21,Mental Health,MH
+300.22,Mental Health,MH
+300.23,Mental Health,MH
+300.29,Mental Health,MH
+300.30,Mental Health,MH
+300.30,Mental Health,MH
+300.50,Mental Health,MH
+300.60,Mental Health,MH
+300.70,Mental Health,MH
+300.81,Mental Health,MH
+300.82,Mental Health,MH
+300.89,Mental Health,MH
+300.90,Mental Health,MH
+301.00,Mental Health,MH
+301.10,Mental Health,MH
+301.11,Mental Health,MH
+301.12,Mental Health,MH
+301.13,Mental Health,MH
+301.20,Mental Health,MH
+301.21,Mental Health,MH
+301.22,Mental Health,MH
+301.30,Mental Health,MH
+301.40,Mental Health,MH
+301.50,Mental Health,MH
+301.51,Mental Health,MH
+301.59,Mental Health,MH
+301.60,Mental Health,MH
+301.70,Mental Health,MH
+301.81,Mental Health,MH
+301.82,Mental Health,MH
+301.83,Mental Health,MH
+301.84,Mental Health,MH
+301.89,Mental Health,MH
+301.90,Mental Health,MH
+302.00,Mental Health,MH
+302.10,Mental Health,MH
+302.20,Mental Health,MH
+302.30,Mental Health,MH
+302.40,Mental Health,MH
+302.50,Mental Health,MH
+302.51,Mental Health,MH
+302.52,Mental Health,MH
+302.53,Mental Health,MH
+302.60,Mental Health,MH
+302.70,Mental Health,MH
+302.71,Mental Health,MH
+302.72,Mental Health,MH
+302.73,Mental Health,MH
+302.74,Mental Health,MH
+302.75,Mental Health,MH
+302.76,Mental Health,MH
+302.79,Mental Health,MH
+302.81,Mental Health,MH
+302.82,Mental Health,MH
+302.83,Mental Health,MH
+302.84,Mental Health,MH
+302.85,Mental Health,MH
+302.89,Mental Health,MH
+302.90,Mental Health,MH
+306.00,Mental Health,MH
+306.10,Mental Health,MH
+306.20,Mental Health,MH
+306.30,Mental Health,MH
+306.40,Mental Health,MH
+306.50,Mental Health,MH
+306.51,Mental Health,MH
+306.52,Mental Health,MH
+306.53,Mental Health,MH
+306.59,Mental Health,MH
+306.60,Mental Health,MH
+306.70,Mental Health,MH
+306.80,Mental Health,MH
+306.90,Mental Health,MH
+307.00,Mental Health,MH
+307.10,Mental Health,MH
+307.20,Mental Health,MH
+307.21,Mental Health,MH
+307.22,Mental Health,MH
+307.23,Mental Health,MH
+307.30,Mental Health,MH
+307.40,Mental Health,MH
+307.41,Mental Health,MH
+307.42,Mental Health,MH
+307.43,Mental Health,MH
+307.44,Mental Health,MH
+307.45,Mental Health,MH
+307.46,Mental Health,MH
+307.47,Mental Health,MH
+307.48,Mental Health,MH
+307.49,Mental Health,MH
+307.50,Mental Health,MH
+307.51,Mental Health,MH
+307.52,Mental Health,MH
+307.53,Mental Health,MH
+307.54,Mental Health,MH
+307.59,Mental Health,MH
+307.60,Mental Health,MH
+307.70,Mental Health,MH
+307.80,Mental Health,MH
+307.81,Mental Health,MH
+307.89,Mental Health,MH
+307.90,Mental Health,MH
+308.00,Mental Health,MH
+308.10,Mental Health,MH
+308.20,Mental Health,MH
+308.30,Mental Health,MH
+308.40,Mental Health,MH
+308.90,Mental Health,MH
+309.00,Mental Health,MH
+309.10,Mental Health,MH
+309.21,Mental Health,MH
+309.22,Mental Health,MH
+309.23,Mental Health,MH
+309.24,Mental Health,MH
+309.28,Mental Health,MH
+309.29,Mental Health,MH
+309.30,Mental Health,MH
+309.40,Mental Health,MH
+309.81,Mental Health,MH
+309.82,Mental Health,MH
+309.83,Mental Health,MH
+309.89,Mental Health,MH
+309.90,Mental Health,MH
+310.00,Mental Health,MH
+310.10,Mental Health,MH
+310.20,Mental Health,MH
+310.80,Mental Health,MH
+310.90,Mental Health,MH
+311.00,Mental Health,MH
+312.00,Mental Health,MH
+312.01,Mental Health,MH
+312.02,Mental Health,MH
+312.03,Mental Health,MH
+312.10,Mental Health,MH
+312.11,Mental Health,MH
+312.12,Mental Health,MH
+312.13,Mental Health,MH
+312.20,Mental Health,MH
+312.21,Mental Health,MH
+312.22,Mental Health,MH
+312.23,Mental Health,MH
+312.30,Mental Health,MH
+312.31,Mental Health,MH
+312.32,Mental Health,MH
+312.33,Mental Health,MH
+312.34,Mental Health,MH
+312.35,Mental Health,MH
+312.39,Mental Health,MH
+312.40,Mental Health,MH
+312.81,Mental Health,MH
+312.82,Mental Health,MH
+312.89,Mental Health,MH
+312.90,Mental Health,MH
+313.00,Mental Health,MH
+313.10,Mental Health,MH
+313.21,Mental Health,MH
+313.22,Mental Health,MH
+313.23,Mental Health,MH
+313.30,Mental Health,MH
+313.81,Mental Health,MH
+313.82,Mental Health,MH
+313.83,Mental Health,MH
+313.89,Mental Health,MH
+313.90,Mental Health,MH
+314.00,Mental Health,MH
+314.01,Mental Health,MH
+314.10,Mental Health,MH
+314.20,Mental Health,MH
+314.80,Mental Health,MH
+314.90,Mental Health,MH
+315.00,Mental Health,MH
+315.01,Mental Health,MH
+315.02,Mental Health,MH
+315.09,Mental Health,MH
+315.10,Mental Health,MH
+315.20,Mental Health,MH
+315.31,Mental Health,MH
+315.32,Mental Health,MH
+315.39,Mental Health,MH
+315.40,Mental Health,MH
+315.50,Mental Health,MH
+315.80,Mental Health,MH
+315.90,Mental Health,MH
+316.00,Mental Health,MH
+799.90,Mental Health,MH
+995.50,Mental Health,MH
+995.51,Mental Health,MH
+995.52,Mental Health,MH
+995.53,Mental Health,MH
+995.54,Mental Health,MH
+995.55,Mental Health,MH
+995.59,Mental Health,MH
+995.80,Mental Health,MH
+995.81,Mental Health,MH
+995.82,Mental Health,MH
+995.83,Mental Health,MH
+995.84,Mental Health,MH
+995.85,Mental Health,MH
+V61.20,Mental Health,MH
+V61.21,Mental Health,MH
+V71.09,Mental Health,MH
+305.10,Smoker,Smoker
+291.00,Substance Abuse,SA
+291.10,Substance Abuse,SA
+291.20,Substance Abuse,SA
+291.30,Substance Abuse,SA
+291.40,Substance Abuse,SA
+291.50,Substance Abuse,SA
+291.81,Substance Abuse,SA
+291.89,Substance Abuse,SA
+291.90,Substance Abuse,SA
+292.00,Substance Abuse,SA
+292.11,Substance Abuse,SA
+292.12,Substance Abuse,SA
+292.20,Substance Abuse,SA
+292.81,Substance Abuse,SA
+292.82,Substance Abuse,SA
+292.83,Substance Abuse,SA
+292.84,Substance Abuse,SA
+292.89,Substance Abuse,SA
+292.90,Substance Abuse,SA
+303.00,Substance Abuse,SA
+303.01,Substance Abuse,SA
+303.02,Substance Abuse,SA
+303.03,Substance Abuse,SA
+303.90,Substance Abuse,SA
+303.91,Substance Abuse,SA
+303.92,Substance Abuse,SA
+303.93,Substance Abuse,SA
+304.00,Substance Abuse,SA
+304.01,Substance Abuse,SA
+304.02,Substance Abuse,SA
+304.03,Substance Abuse,SA
+304.10,Substance Abuse,SA
+304.11,Substance Abuse,SA
+304.12,Substance Abuse,SA
+304.13,Substance Abuse,SA
+304.20,Substance Abuse,SA
+304.21,Substance Abuse,SA
+304.22,Substance Abuse,SA
+304.23,Substance Abuse,SA
+304.30,Substance Abuse,SA
+304.31,Substance Abuse,SA
+304.32,Substance Abuse,SA
+304.33,Substance Abuse,SA
+304.40,Substance Abuse,SA
+304.41,Substance Abuse,SA
+304.42,Substance Abuse,SA
+304.43,Substance Abuse,SA
+304.50,Substance Abuse,SA
+304.51,Substance Abuse,SA
+304.52,Substance Abuse,SA
+304.53,Substance Abuse,SA
+304.60,Substance Abuse,SA
+304.61,Substance Abuse,SA
+304.62,Substance Abuse,SA
+304.63,Substance Abuse,SA
+304.70,Substance Abuse,SA
+304.71,Substance Abuse,SA
+304.72,Substance Abuse,SA
+304.73,Substance Abuse,SA
+304.80,Substance Abuse,SA
+304.81,Substance Abuse,SA
+304.82,Substance Abuse,SA
+304.83,Substance Abuse,SA
+304.90,Substance Abuse,SA
+304.91,Substance Abuse,SA
+304.92,Substance Abuse,SA
+304.93,Substance Abuse,SA
+305.00,Substance Abuse,SA
+305.01,Substance Abuse,SA
+305.02,Substance Abuse,SA
+305.03,Substance Abuse,SA
+305.20,Substance Abuse,SA
+305.21,Substance Abuse,SA
+305.22,Substance Abuse,SA
+305.23,Substance Abuse,SA
+305.30,Substance Abuse,SA
+305.31,Substance Abuse,SA
+305.32,Substance Abuse,SA
+305.33,Substance Abuse,SA
+305.40,Substance Abuse,SA
+305.41,Substance Abuse,SA
+305.42,Substance Abuse,SA
+305.43,Substance Abuse,SA
+305.50,Substance Abuse,SA
+305.51,Substance Abuse,SA
+305.52,Substance Abuse,SA
+305.53,Substance Abuse,SA
+305.60,Substance Abuse,SA
+305.61,Substance Abuse,SA
+305.62,Substance Abuse,SA
+305.63,Substance Abuse,SA
+305.70,Substance Abuse,SA
+305.71,Substance Abuse,SA
+305.72,Substance Abuse,SA
+305.73,Substance Abuse,SA
+305.80,Substance Abuse,SA
+308.81,Substance Abuse,SA
+305.82,Substance Abuse,SA
+305.83,Substance Abuse,SA
+305.90,Substance Abuse,SA
+305.91,Substance Abuse,SA
+305.92,Substance Abuse,SA
+305.93,Substance Abuse,SA
+995.20,Substance Abuse,SA
+278.00,Obesity unspecified,Obesity
+278.01,Morbid obesity,Obesity
+278.02,Overweight,Obesity
+278.03,Obesity hypoventilation syndrome,Obesity
+

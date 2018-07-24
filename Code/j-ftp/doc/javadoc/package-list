@@ -1,0 +1,15 @@
+net.sf.jftp
+net.sf.jftp.config
+net.sf.jftp.event
+net.sf.jftp.gui.base
+net.sf.jftp.gui.base.dir
+net.sf.jftp.gui.framework
+net.sf.jftp.gui.hostchooser
+net.sf.jftp.gui.tasks
+net.sf.jftp.net
+net.sf.jftp.net.server
+net.sf.jftp.net.wrappers
+net.sf.jftp.system
+net.sf.jftp.system.logging
+net.sf.jftp.tools
+net.sf.jftp.util

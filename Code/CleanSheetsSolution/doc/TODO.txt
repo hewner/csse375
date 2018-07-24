@@ -1,0 +1,18 @@
+FEATURES
+- Locale-dependent decimal separator
+- Disabled items in the menu
+- Selection and auto-resizing of columns
+
+MISCELLANEOUS
+- Eliminate object creation on cell lookup
+- Rename csheets.core.formula.lang to csheets.core.formula.elem
+- Skip unavailable extensions when deserializing workbooks
+- Improve error handling: collect and display errors for each cell
+- Make Spreadsheet a Cell[][]
+- Enable identifiers in the compiler
+
+POSSIBLE MAJOR IMPROVEMENTS
+- SpreadsheetML (Excel) I/O
+- Formula editor
+- Charts (using 3rd party library)
+- Locale-independence

@@ -1,0 +1,135 @@
+#+TITLE: CSSE375 Assignment: Parsing Calendar Data Part 2
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+INFOJS_OPT:t
+
+* Introduction
+
+So we're going to continue with the CalendarParse assignment, but now
+we're going to actually test your designs by adding some new features.
+
+* Step 1: Tests (33% of grade)
+
+I was a bit disappointed to see how few of you actually implemented
+tests with your code.  Given how annoying it is to actually make sure
+things are working properly by hand, perhaps you regret that decision
+in retrospect.  Anyway, if you didn't write tests now you are required
+to.
+
+** Requirement: Tests that operate on Strings
+
+In addition, most of the tests I did see just used the same sample
+files I provided.  This is definitely a good first start, but as I'm
+sure you noticed, it greatly complicates adding new test cases if you
+have to write a whole new file.
+
+I'm going to take a page from Feathers (your other textbook) pg 14.
+Proper unit tests should not touch a file system.
+
+Instead, figure out a way to write unit tests so that they can operate
+on Strings rather than on files.  That way you can write your same
+files directly in your test cases.
+
+If you'd like to keep any existing tests that use files - that's fine.
+But also add some string based tests.
+
+** Requirement: Test all filetypes and commands
+
+You must test all the file types and commands, including those you add
+in Step 3.
+
+* Step 2: Improving the design (33% of grade)
+
+So designs I saw were all over the map - everything from just a couple
+extract methods on the given code to complete redesigns with some very
+fancy features.  It may be that your design is ready to accept new
+features (if so great job!) - or it may be that you have some work to
+do.
+
+** Requirement: The Combinatorial Explosion
+
+As given, the code requires x times y functions, where x is the number
+of parsers and y is the number of commands (i.e. a unique
+implementation of each command for each file type).  This is super
+bad - and even a design that adds new classes can still have this
+problem.
+
+This needs to be fixed for your design to be considered good enough.
+
+One way to solve this is to have an intermediate type - something like
+a Calendar Event (representing one particular event in the calendar).
+Then you have type specific parsers that produce these events, and all
+the commands operate on events rather than the unique file types
+themselves.
+
+** Requirement: Each command in its own class
+
+The given system only had 2 commands - displayday and quit.  Hence,
+quite reasonably some folks left that as a case statement.  But now
+we're adding two new ones and we plan to add more in the future - this
+goes beyond the usual Rule of 3.
+
+Have an abstract class or interface to represent commands, which each
+command in it's own class.  Try to design the system so that adding
+new command requires the absolute minimum of Shotgun Surgery. 
+
+* Step 3: Adding new features (33% of grade)
+
+Time to test the quality of your code with some new features.  If
+you've got things designed right and easy to test - this should be
+pretty straightforward.  But you might also have to make some design
+changes to accommodate the new features.
+
+** New Command: search
+
+#+BEGIN_EXAMPLE
+> search Buffalo
+Meeting with Buffalo
+Another meeting with Buffalo
+Eating hot wings in Buffalo NY
+#+END_EXAMPLE
+
+Add a command that lets you enter a string, and returns all events
+that contains that string in the name.
+
+
+** New Command: next
+
+#+BEGIN_EXAMPLE
+> next
+Tuesday Meeting
+Tuesday Trivia Night
+...some time later...
+> next
+Wednesday Meeting
+...some time later...
+> next
+NO FUTURE EVENTS
+#+END_EXAMPLE
+
+Add a command that displays the next event which is starting nearest
+to now (but only in the future).  So if I have an Event 1 next Tuesday
+and Event 2 next Friday, it should print Event 1.  But if I enter the
+same command next Wednesday it should print Event 2.
+
+You only need to consider the date of events - events on the same date
+are considered to be happening at the same time.
+
+The current day is considered to be "the future".  So (in the example
+above) on next Tuesday it will print Event 1.
+
+If there are no future events, your code should print "NO FUTURE
+EVENTS".
+
+If more than one event is happening on the same day in the future,
+print all of them.
+
+Testing this one might be just slightly interesting.
+
+* Submitting
+
+Submit via the same SVN folder you did for CalendarParse Part 1.

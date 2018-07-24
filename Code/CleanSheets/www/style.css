@@ -1,0 +1,41 @@
+/**********
+ * GLOBAL *
+ **********/
+
+* {
+	text-align: center;
+	font-family: verdana;
+	font-size: 10pt;
+	color: gray;
+}
+
+body {
+	background-color: #FFF;
+	padding: 12%;
+}
+
+/**********
+ * BLOCKS *
+ **********/
+
+.frame {
+	border: 5px groove #CCC;
+	width: 470px;
+}
+
+.article {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/*********
+ * LINKS *
+ *********/
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #C00;
+}

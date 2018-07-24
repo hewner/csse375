@@ -1,0 +1,68 @@
+#+TITLE: Webpage + Monitoring Assignment
+#+AUTHOR: Buffalo
+#+EMAIL: hewner@rose-hulman.edu
+#+OPTIONS: ^:{}
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+DRAWERS: INSTRUCTOR
+
+* Introduction
+
+This is a little assignment to get you used to Docker.  It will
+require you to spend a little time poking around in the documentation
+for docker and other Unix tools, but it hopefully shouldn't be too
+hard.  If you are really unfamiliar with Unix, be sure to start early
+and get plenty of help if you need it.
+
+* Your Goal
+
+You must build a docker container that can be built with a Dockerfile
+script and invokes the proper stuff with a Dockerfile CMD directive.
+
+Your container should:
+
+1.  Run a webserver (could be anything, though I suggest apache) than
+    can serve an html page (could be the default one, I don't care).
+    Your webserver should be accessible from port 8888 on the *host*
+    (your webserver can run on whatever host you want inside the
+    container).
+2.  Have a script you wrote that is invoked frequently (once a
+    minute?) using *cron*.  The script can be in the language of your
+    choice, though I suggest a scripting language like python, ruby,
+    or perl.  Note that you'll have to ensure the cron daemon is
+    running.
+3.  The script should use webserver logfiles to determine if more than
+    3 404 (page not found) errors have occurred in the past hour.
+
+    There are 2 allowed ways to determine the "last hour".  You can
+    use the number of the hour (i.e. if I am running at 3:45 I am
+    looking for 404s starting at 3:00) OR you can use 60 minutes
+    (i.e. if I am running at 3:45 I am looking for 404s starting at
+    2:46).
+4.  If there have been 3 404s in the last hour, the script should send
+    a warning email to some email address (I recommend you use my
+    DockerPostfix package as a starting point so you don't have to get
+    email working yourself).  Note that you'll have to ensure the
+    postfix daemon is running.
+5.  (Optional) It's better if the script doesn't resend the warning
+    messages once it's already sent one for that particular hour.
+    This won't get you more points though - you'll just know in your
+    heart that you are a cool person.
+
+* Grading
+
+Grading is out of 10 points.
+
+1.  Running webserver that can serve a page (1 point)
+2.  Correct docker command to forward web traffic on the host to the
+    container (put it as a comment in your Dockerfile) (1 point)
+2.  Script that is invoked on a regular basis using cron (1 point)
+3.  Programming language of choice correctly installed and functional
+    (1 point)
+4.  Script correctly detects 404s in the past hour (1 point)
+5.  Script sends email (1 point)
+6.  Built & installed correctly from a Dockerfile (2 points)
+7.  CMD command of the Dockerfile invokes everything with no 
+    intervention (2 points)
+
